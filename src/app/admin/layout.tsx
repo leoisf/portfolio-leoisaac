@@ -43,9 +43,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="hidden md:flex w-64 flex-col justify-between border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-5">
         <div>
           <div className="flex items-center gap-2.5 px-2 py-3 mb-6">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
+            <img
+              src="/images/logo/ivector-g.png"
+              alt="Logo Leonardo Isaac"
+              className="w-9 h-9 object-contain invert dark:invert-0"
+            />
             <div>
               <h2 className="text-sm font-bold text-zinc-900 dark:text-white">Admin Studio</h2>
               <span className="text-[11px] font-mono text-zinc-500">leoisaac.com.br</span>

@@ -15,11 +15,18 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand Info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
-                Leonardo Isaac
-              </span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 font-mono">
+            <div className="flex items-center gap-3">
+              <img
+                src="/images/logo/logo_isaac_dark_mode.png"
+                alt="Leonardo Isaac"
+                className="hidden dark:block h-9 w-auto object-contain"
+              />
+              <img
+                src="/images/logo/logo_isaac_final.png"
+                alt="Leonardo Isaac"
+                className="block dark:hidden h-9 w-auto object-contain"
+              />
+              <span className="text-xs px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 font-mono">
                 leoisaac.com.br
               </span>
             </div>

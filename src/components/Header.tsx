@@ -36,23 +36,23 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
+        {/* Brand Logo Oficial */}
         <Link 
           href="/" 
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-3 group py-1"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
-            <span className="font-mono text-lg">LI</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-base font-bold tracking-tight text-zinc-900 dark:text-white leading-tight">
-              Leonardo Isaac
-            </span>
-            <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              Full Stack Dev
-            </span>
-          </div>
+          {/* Versão para Dark Mode */}
+          <img
+            src="/images/logo/logo_isaac_dark_mode.png"
+            alt="Leonardo Isaac - Portfólio"
+            className="hidden dark:block h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
+          {/* Versão para Light Mode */}
+          <img
+            src="/images/logo/logo_isaac_final.png"
+            alt="Leonardo Isaac - Portfólio"
+            className="block dark:hidden h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Navigation */}
