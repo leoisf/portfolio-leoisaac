@@ -9,6 +9,7 @@ import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SocialSection } from "@/components/sections/SocialSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
+import { ClippingSection } from "@/components/sections/ClippingSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { 
   getProfile, 
@@ -16,6 +17,7 @@ import {
   getCertificates, 
   getSkills, 
   getSocialInitiatives,
+  getClippings,
   isSupabaseConfigured 
 } from "@/lib/supabase/client";
 import { 
@@ -23,9 +25,10 @@ import {
   initialProjects, 
   initialCertificates, 
   initialSkills, 
-  initialSocialInitiatives 
+  initialSocialInitiatives,
+  initialClippings 
 } from "@/data/initialData";
-import { Project, Certificate, Skill, SocialInitiative, ProfileSettings } from "@/types/database";
+import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem } from "@/types/database";
 
 export default function HomePage() {
   const [profile, setProfile] = useState<ProfileSettings>(initialProfile);
@@ -33,24 +36,27 @@ export default function HomePage() {
   const [certificates, setCertificates] = useState<Certificate[]>(initialCertificates);
   const [skills, setSkills] = useState<Skill[]>(initialSkills);
   const [initiatives, setInitiatives] = useState<SocialInitiative[]>(initialSocialInitiatives);
+  const [clippings, setClippings] = useState<ClippingItem[]>(initialClippings);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadAllData() {
       try {
         if (isSupabaseConfigured) {
-          const [p, projs, certs, sks, inits] = await Promise.all([
+          const [p, projs, certs, sks, inits, clips] = await Promise.all([
             getProfile(),
             getProjects(),
             getCertificates(),
             getSkills(),
-            getSocialInitiatives()
+            getSocialInitiatives(),
+            getClippings()
           ]);
           setProfile(p);
           setProjects(projs);
           setCertificates(certs);
           setSkills(sks);
           setInitiatives(inits);
+          setClippings(clips);
         }
       } catch (err) {
         console.error("Error loading data from Supabase:", err);
@@ -70,6 +76,7 @@ export default function HomePage() {
         <AboutSection profile={profile} />
         <SkillsSection skills={skills} />
         <ProjectsSection projects={projects} />
+        <ClippingSection clippings={clippings} />
         <SocialSection initiatives={initiatives} />
         <CertificatesSection certificates={certificates} />
         <ContactSection profile={profile} />

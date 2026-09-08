@@ -70,3 +70,13 @@ export interface ContactMessage {
   message: string;
   created_at: string;
 }
+
+export interface ClippingItem {
+  id: string;
+  title: string;
+  source: string;
+  date?: string;
+  image_url: string;
+  category: "Telecentros" | "Escola Digital" | "Inclusão Digital" | "Geral";
+  display_order: number;
+}

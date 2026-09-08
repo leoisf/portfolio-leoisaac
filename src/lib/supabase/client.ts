@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import { initialProfile, initialProjects, initialCertificates, initialSkills, initialSocialInitiatives } from "@/data/initialData";
-import { Project, Certificate, Skill, SocialInitiative, ProfileSettings } from "@/types/database";
+import { initialProfile, initialProjects, initialCertificates, initialSkills, initialSocialInitiatives, initialClippings } from "@/data/initialData";
+import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem } from "@/types/database";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
@@ -90,4 +90,20 @@ export async function getSocialInitiatives(): Promise<SocialInitiative[]> {
     }
   }
   return initialSocialInitiatives;
+}
+
+// Helper: Fetch Clippings
+export async function getClippings(): Promise<ClippingItem[]> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("clippings")
+        .select("*")
+        .order("display_order", { ascending: true });
+      if (!error && data && data.length > 0) return data as ClippingItem[];
+    } catch {
+      // fallback
+    }
+  }
+  return initialClippings;
 }

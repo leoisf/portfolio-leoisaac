@@ -21,6 +21,7 @@ export function Header() {
     { label: "Sobre", href: "#sobre" },
     { label: "Habilidades", href: "#habilidades" },
     { label: "Projetos", href: "#projetos" },
+    { label: "Clipping", href: "#clipping" },
     { label: "Impacto Social", href: "#social" },
     { label: "Certificados", href: "#certificados" },
     { label: "Contato", href: "#contato" },
