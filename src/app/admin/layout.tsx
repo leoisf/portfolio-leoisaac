@@ -42,16 +42,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar Desktop */}
       <aside className="hidden md:flex w-64 flex-col justify-between border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-5">
         <div>
-          <div className="flex items-center gap-2.5 px-2 py-3 mb-6">
-            <img
-              src="/images/logo/ivector-g.png"
-              alt="Logo Leonardo Isaac"
-              className="w-9 h-9 object-contain invert dark:invert-0"
-            />
-            <div>
-              <h2 className="text-sm font-bold text-zinc-900 dark:text-white">Admin Studio</h2>
-              <span className="text-[11px] font-mono text-zinc-500">leoisaac.com.br</span>
+          <div className="flex flex-col gap-2 px-2 py-3 mb-6">
+            <div className="px-2 py-1 rounded-xl bg-white border border-zinc-200/80 shadow-xs inline-flex w-fit">
+              <img
+                src="/images/logo/logo_isaac_final-1.png"
+                alt="Logo Leonardo Isaac"
+                className="h-7 w-auto object-contain"
+              />
             </div>
+            <span className="text-[11px] font-mono text-zinc-500">Admin Studio • leoisaac.com.br</span>
           </div>
 
           <nav className="space-y-1">

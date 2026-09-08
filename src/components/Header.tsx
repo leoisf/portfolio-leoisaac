@@ -36,23 +36,19 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo Oficial */}
+        {/* Brand Logo Oficial Autoral */}
         <Link 
           href="/" 
-          className="flex items-center gap-3 group py-1"
+          className="flex items-center group py-1"
+          title="Leonardo Isaac"
         >
-          {/* Versão para Dark Mode */}
-          <img
-            src="/images/logo/logo_isaac_dark_mode.png"
-            alt="Leonardo Isaac - Portfólio"
-            className="hidden dark:block h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-          />
-          {/* Versão para Light Mode */}
-          <img
-            src="/images/logo/logo_isaac_final.png"
-            alt="Leonardo Isaac - Portfólio"
-            className="block dark:hidden h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-          />
+          <div className="px-2.5 py-1 rounded-xl bg-white shadow-xs border border-zinc-200/80 dark:border-zinc-700 transition-transform duration-200 group-hover:scale-105 flex items-center">
+            <img
+              src="/images/logo/logo_isaac_final-1.png"
+              alt="Leonardo Isaac - Portfólio"
+              className="h-8 sm:h-9 w-auto object-contain"
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
