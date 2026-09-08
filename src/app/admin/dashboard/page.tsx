@@ -1,0 +1,118 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { initialProjects, initialCertificates, initialSkills } from "@/data/initialData";
+import { FolderGit2, Award, Layers, Plus, ExternalLink, ShieldCheck, Database } from "lucide-react";
+import { isSupabaseConfigured } from "@/lib/supabase/client";
+
+export default function AdminDashboardPage() {
+  return (
+    <div className="space-y-8 max-w-6xl">
+      
+      {/* Top Banner */}
+      <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-r from-blue-600/10 via-indigo-600/5 to-cyan-500/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            Bem-vindo ao Painel, Leonardo!
+          </h1>
+          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            Aqui você gerencia os projetos exibidos, faz upload de novos certificados e atualiza seus dados.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Link
+            href="/admin/projetos"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500 shadow-xs"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>Novo Projeto</span>
+          </Link>
+          <Link
+            href="/admin/certificados"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>Novo Certificado</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Supabase Status Banner */}
+      <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Database className="w-5 h-5 text-blue-500" />
+          <div>
+            <h4 className="text-xs font-semibold text-zinc-900 dark:text-white">
+              Status do Banco de Dados
+            </h4>
+            <p className="text-xs text-zinc-500">
+              {isSupabaseConfigured
+                ? "Conectado ao Supabase PostgreSQL com sucesso!"
+                : "Modo Local Ativo (Dados de seed em memória/localStorage prontos para sincronizar)."}
+            </p>
+          </div>
+        </div>
+        <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold ${
+          isSupabaseConfigured ? "bg-emerald-500/10 text-emerald-500" : "bg-amber-500/10 text-amber-500"
+        }`}>
+          {isSupabaseConfigured ? "ONLINE" : "LOCAL READY"}
+        </span>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono text-zinc-500">Projetos Ativos</span>
+            <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <FolderGit2 className="w-4 h-4" />
+            </div>
+          </div>
+          <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
+            {initialProjects.length}
+          </span>
+          <div className="mt-3">
+            <Link href="/admin/projetos" className="text-xs text-blue-600 dark:text-cyan-400 font-semibold hover:underline">
+              Gerenciar projetos →
+            </Link>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono text-zinc-500">Certificados Cadastrados</span>
+            <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+              <Award className="w-4 h-4" />
+            </div>
+          </div>
+          <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
+            {initialCertificates.length}
+          </span>
+          <div className="mt-3">
+            <Link href="/admin/certificados" className="text-xs text-blue-600 dark:text-cyan-400 font-semibold hover:underline">
+              Gerenciar certificados →
+            </Link>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono text-zinc-500">Habilidades Mapeadas</span>
+            <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <Layers className="w-4 h-4" />
+            </div>
+          </div>
+          <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
+            {initialSkills.length}
+          </span>
+          <div className="mt-3">
+            <span className="text-xs text-zinc-400">Frontend, Backend, Agile, DevOps</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}

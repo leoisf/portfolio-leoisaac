@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Profissional - Leonardo Isaac (`leoisaac.com.br`)
 
-## Getting Started
+Aplicação web moderna, responsiva e de alta performance desenvolvida para apresentar a trajetória de mais de 22 anos de carreira em TI, projetos de software, impacto social e certificações de **Leonardo Isaac** (Cientista da Computação pela UFOP, Desenvolvedor Full Stack e Certified SAFe® 6 Agilist).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologias Utilizadas
+
+- **Frontend**: Next.js 15 (App Router, React 19, TypeScript)
+- **Estilização**: Tailwind CSS v4, Lucide Icons e Tema Dark/Light nativo via `next-themes`
+- **Backend & Database**: Supabase (PostgreSQL relacional, RLS e Storage)
+- **Hospedagem & CDN**: Cloudflare Pages (Deploy contínuo, SSL gratuito e CDN no Brasil)
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+portfolio-leoisaac/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx               # Landing page principal
+│   │   ├── layout.tsx             # Layout global com fontes e tema
+│   │   └── admin/                 # Painel Administrativo
+│   │       ├── login/page.tsx     # Tela de login seguro
+│   │       ├── dashboard/page.tsx # Visão geral de métricas
+│   │       ├── projetos/page.tsx  # CRUD de projetos
+│   │       └── certificados/page.tsx # CRUD de certificados
+│   ├── components/
+│   │   ├── Header.tsx             # Menu responsivo e alternador de tema
+│   │   ├── Footer.tsx             # Rodapé institucional e links sociais
+│   │   ├── ThemeToggle.tsx        # Botão Dark / Light mode
+│   │   ├── sections/              # Seções (Hero, About, Skills, Projects, etc.)
+│   │   └── ui/Modal.tsx           # Modal Lightbox para fotos e certificados
+│   ├── data/initialData.ts        # Dados reais extraídos do backup
+│   ├── lib/supabase/client.ts     # Cliente Supabase resiliente (com fallback)
+│   └── types/database.ts          # Interfaces TypeScript
+├── public/
+│   ├── docs/                      # Currículo em PDF
+│   ├── images/certificates/       # Certificados em alta resolução
+│   └── images/projects/           # Imagens e banners dos projetos
+├── supabase/
+│   └── schema.sql                 # Script SQL para criação de tabelas e RLS
+└── DEPLOY_CLOUDFLARE.md           # Guia de publicação na Cloudflare Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Como Executar Localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# 1. Instalar dependências
+npm install
 
-## Learn More
+# 2. Rodar em modo de desenvolvimento
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# Acesse no navegador:
+# Site público: http://localhost:3000
+# Painel Admin: http://localhost:3000/admin/login
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Compilação para Produção (Cloudflare Pages)
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Os arquivos estáticos otimizados serão gerados na pasta `out/`, prontos para distribuição global.
