@@ -8,7 +8,7 @@ export interface Project {
   image_url?: string;
   github_url?: string;
   live_url?: string;
-  category: "Full Stack" | "Frontend" | "Backend" | "Social / Inclusão";
+  category: "Data & IA" | "Full Stack" | "Frontend" | "Backend" | "Social / Inclusão";
   is_featured: boolean;
   display_order: number;
   created_at?: string;
@@ -22,14 +22,14 @@ export interface Certificate {
   hours?: number;
   credential_url?: string;
   image_url: string;
-  category: "Desenvolvimento" | "Metodologias Ágeis" | "Cloud / DevOps" | "Banco de Dados" | "Outros";
+  category: "Data & IA" | "Desenvolvimento" | "Metodologias Ágeis" | "Cloud / DevOps" | "Banco de Dados" | "Inclusão Digital & Social" | "Outros";
   display_order: number;
 }
 
 export interface Skill {
   id: string;
   name: string;
-  category: "Frontend" | "Backend" | "Database" | "Agile / Gestão" | "DevOps / Infra";
+  category: "Data Science & IA" | "Frontend" | "Backend" | "Database" | "Agile / Gestão" | "DevOps / Infra";
   icon_name?: string;
   level?: string;
   display_order: number;

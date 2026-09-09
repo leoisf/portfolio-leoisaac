@@ -18,6 +18,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   const categories = [
     { key: "all", label: t.projects.categories.all, filter: "Todos" },
+    { key: "data_ai", label: t.projects.categories.data_ai, filter: "Data & IA" },
     { key: "fullstack", label: t.projects.categories.fullstack, filter: "Full Stack" },
     { key: "social", label: t.projects.categories.social, filter: "Social / Inclusão" }
   ];

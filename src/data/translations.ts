@@ -12,73 +12,80 @@ export const translations = {
       contact: "Contato",
       resume: "Currículo",
       getInTouch: "Fale Comigo",
-      role: "Full Stack Dev"
+      role: "Data & AI | Full Stack"
     },
     hero: {
-      availability: "Disponível para projetos & desafios de TI",
+      availability: "Disponível para projetos & desafios de Data, IA & TI",
       greeting: "Olá, eu sou o",
-      headline: "Cientista da Computação (UFOP), Analista & Desenvolvedor Web Full Stack e Agilista com mais de 22 anos de trajetória em tecnologia e transformação digital.",
+      headline: "Cientista da Computação (UFOP), Pós-Graduando em Ciência de Dados (UFOP, Conceito A) e Especialista Full Stack / Agilista SAFe® 6 em transição ativa para Data Science & IA Generativa.",
       yearsExperience: "22+ Anos em TI",
       certifiedSafe: "Certified SAFe® 6 Agilist",
       impactMetric: "+7.000 Pessoas Impactadas",
       btnProjects: "Ver Projetos",
       btnResume: "Baixar Currículo",
       btnWhatsapp: "WhatsApp Direto",
-      graduation: "BCC - UFOP",
-      specialty: "Full Stack & Ágil",
+      graduation: "Pós Ciência de Dados & BCC (UFOP)",
+      specialty: "Data Science, IA & Full Stack",
       location: "Ouro Preto - MG, Brasil",
-      cleanCode: "Código aberto & arquitetura limpa"
+      cleanCode: "Engenharia de dados, IA & arquitetura limpa"
     },
     about: {
       tag: "// Trajetória & Experiência",
-      title: "Mais de 2 décadas transformando tecnologia em impacto real",
+      title: "Mais de 2 décadas transformando tecnologia, dados e inovação em impacto real",
       milestones: [
         {
+          year: "2026 – 2027",
+          title: "Pós-Graduação em Ciência de Dados (UFOP) & IA",
+          desc: "Especialização avançada com conceito máximo 'A' (notas 9.0 a 9.8) em Programação para Ciência de Dados, Recuperação da Informação, Estatística Descritiva e Indústria 4.0. Certificações em Databricks Fundamentals, Kiro Agentic AI, AI Cockpit Reasoning e Prompt Engineering AWS."
+        },
+        {
+          year: "2021 – Presente",
+          title: "AI/R Company (Compass UOL) & Vivo B2B (Fênix)",
+          desc: "Atuação estratégica e técnica no Programa Fênix (Vivo B2B) com SAFe® 6 Agilist, governança ágil em escala, ecossistema CRM Salesforce, Azure Cloud e integração de soluções inteligentes de IA."
+        },
+        {
+          year: "2021",
+          title: "Bacharelado em Ciência da Computação (UFOP)",
+          desc: "Graduação pelo Instituto de Ciências Exatas e Biológicas (ICEB/UFOP), consolidando sólida formação teórica e prática em computação, algoritmos avançados, engenharia de software e banco de dados."
+        },
+        {
+          year: "2017 – 2020",
+          title: "Diretor de Sistemas (Prefeitura de Ouro Preto)",
+          desc: "Gestão completa do parque tecnológico e de redes municipais, servidores corporativos Windows Server e Linux, segurança de borda pfSense e coordenação/expansão da Escola Digital."
+        },
+        {
+          year: "2003 – 2016",
+          title: "Coordenação dos Telecentros & Inclusão Digital",
+          desc: "Mais de 15 anos liderando projetos de inclusão digital e tecnologia comunitária pela Câmara Municipal, formando mais de 7.000 pessoas e implantando redes pioneiras LTSP."
+        },
+        {
           year: "Início",
-          title: "Câmara Municipal de Ouro Preto",
-          desc: "Primeiros passos no programa 'Jovens de Ouro': manutenção de redes de dados, computadores e periféricos, consolidando a base em infraestrutura."
-        },
-        {
-          year: "+15 Anos",
-          title: "Coordenação dos Telecentros Comunitários",
-          desc: "Liderança e gestão técnica de inclusão digital que capacitou e atendeu mais de 7.000 pessoas gratuitamente com acesso à internet e formação em informática."
-        },
-        {
-          year: "Inovação",
-          title: "Projeto Escola Digital",
-          desc: "Atuação na Prefeitura Municipal de Ouro Preto revitalizando laboratórios de informática escolares parados ou subutilizados, treinando educadores."
-        },
-        {
-          year: "Formação",
-          title: "Ciência da Computação (UFOP)",
-          desc: "Graduação como Bacharel em Ciência da Computação na Universidade Federal de Ouro Preto, aprofundando em engenharia de software, algoritmos e banco de dados."
-        },
-        {
-          year: "Atualmente",
-          title: "Desenvolvimento Full Stack & Agilidade",
-          desc: "Atuação corporativa de alto impacto (Compass UOL, órgãos públicos), certificado SAFe® 6 Agilist, construindo arquiteturas modernas e escaláveis."
+          title: "Bases Técnicas & Infraestrutura",
+          desc: "Primeiros passos no programa 'Jovens de Ouro': manutenção corretiva e preventiva de computadores, redes de dados e suporte a usuários, construindo sólido alicerce prático."
         }
       ]
     },
     skills: {
       tag: "// Competências & Tecnologias",
-      title: "Stack Tecnológica & Metodologias",
-      subtitle: "Ferramentas modernas, linguagens de programação e práticas ágeis utilizadas no dia a dia.",
+      title: "Stack Tecnológica, Dados & Metodologias",
+      subtitle: "Ferramentas analíticas modernas, linguagens de programação e práticas ágeis utilizadas no dia a dia.",
       categories: {
         all: "Todas",
-        frontend: "Frontend",
+        data: "Data Science & IA",
+        agile: "Agile / Gestão",
         backend: "Backend",
         database: "Database",
-        agile: "Agile / Gestão",
+        frontend: "Frontend",
         devops: "DevOps / Infra"
       }
     },
     projects: {
       tag: "// Portfólio & Entregas",
       title: "Principais Trabalhos & Projetos",
-      subtitle: "Aplicações web modernas, arquiteturas de software e iniciativas de tecnologia.",
+      subtitle: "Soluções em ciência de dados, IA generativa, aplicações full stack e iniciativas públicas de tecnologia.",
       categories: {
         all: "Todos",
+        data_ai: "Data & IA",
         fullstack: "Full Stack",
         social: "Social / Inclusão"
       },
@@ -110,13 +117,14 @@ export const translations = {
     certificates: {
       tag: "// Formação Contínua & Conquistas",
       title: "Certificados & Especializações",
-      subtitle: "Clique em qualquer certificado para visualizá-lo em alta resolução.",
+      subtitle: "Clique em qualquer certificado para visualizá-lo em alta resolução com sua documentação original.",
       categories: {
         all: "Todos",
+        data_ai: "Data Science & IA",
         agile: "Metodologias Ágeis",
         cloud: "Cloud / DevOps",
         dev: "Desenvolvimento",
-        database: "Banco de Dados"
+        social: "Inclusão Digital & Social"
       },
       validateBtn: "Validar Certificado",
       issuer: "Emissor"
@@ -124,7 +132,7 @@ export const translations = {
     contact: {
       tag: "// Fale Comigo",
       title: "Vamos construir algo incrível juntos?",
-      subtitle: "Seja para oportunidades de desenvolvimento Full Stack, consultoria em sistemas web, agilidade com SAFe/Scrum ou projetos de impacto social, estou sempre aberto a novas conexões.",
+      subtitle: "Seja para oportunidades em Ciência de Dados, IA Generativa, desenvolvimento Full Stack, consultoria em agilidade com SAFe/Scrum ou projetos de impacto social, estou sempre aberto a novas conexões.",
       emailLabel: "E-mail Principal",
       phoneLabel: "Telefone / WhatsApp",
       locationLabel: "Localização",
@@ -140,7 +148,7 @@ export const translations = {
       sendAnother: "Enviar outra mensagem"
     },
     footer: {
-      tagline: "Cientista da Computação | 22 anos transformando desafios em sistemas robustos e inclusão digital.",
+      tagline: "Cientista da Computação | Pós-Graduando em Ciência de Dados | 22 anos transformando desafios em sistemas robustos e soluções inteligentes.",
       rights: "Todos os direitos reservados.",
       backToTop: "Voltar ao topo",
       admin: "Admin"
@@ -158,73 +166,80 @@ export const translations = {
       contact: "Contact",
       resume: "Resume",
       getInTouch: "Get in Touch",
-      role: "Full Stack Dev"
+      role: "Data & AI | Full Stack"
     },
     hero: {
-      availability: "Available for projects & IT challenges",
+      availability: "Available for Data, AI & IT projects",
       greeting: "Hello, I'm",
-      headline: "Computer Scientist (UFOP), Full Stack Web Analyst & Developer, and Agilist with over 22 years of experience in technology and digital transformation.",
+      headline: "Computer Scientist (UFOP), Data Science Postgrad (UFOP, Grade A), and Full Stack / SAFe® 6 Agilist actively transitioning into Data Science & Generative AI.",
       yearsExperience: "22+ Years in IT",
       certifiedSafe: "Certified SAFe® 6 Agilist",
       impactMetric: "+7,000+ People Impacted",
       btnProjects: "View Projects",
       btnResume: "Download Resume",
       btnWhatsapp: "Direct WhatsApp",
-      graduation: "B.S. Comp Sci - UFOP",
-      specialty: "Full Stack & Agile",
+      graduation: "Data Science Postgrad & B.S. (UFOP)",
+      specialty: "Data Science, AI & Full Stack",
       location: "Ouro Preto - MG, Brazil",
-      cleanCode: "Open source & clean architecture"
+      cleanCode: "Data engineering, AI & clean architecture"
     },
     about: {
       tag: "// Trajectory & Experience",
-      title: "Over 2 decades transforming technology into real impact",
+      title: "Over 2 decades transforming technology, data, and innovation into real impact",
       milestones: [
         {
+          year: "2026 – 2027",
+          title: "Postgrad in Data Science (UFOP) & AI",
+          desc: "Advanced specialization with top 'A' grades (9.0 to 9.8) in Programming for Data Science, Information Retrieval, Descriptive Statistics, and Industry 4.0. Certified in Databricks Fundamentals, Kiro Agentic AI, AI Cockpit Reasoning, and AWS Generative AI."
+        },
+        {
+          year: "2021 – Present",
+          title: "AI/R Company (former Compass UOL) & Vivo B2B",
+          desc: "Strategic and technical leadership in the Vivo B2B Fênix program with SAFe® 6 Agilist, scaled agile governance, Salesforce CRM ecosystem, Azure Cloud, and AI tooling integration."
+        },
+        {
+          year: "2021",
+          title: "B.S. in Computer Science (UFOP)",
+          desc: "Graduated from the Institute of Exact and Biological Sciences (ICEB/UFOP), solidifying foundational algorithms, computer systems architecture, software engineering, and databases."
+        },
+        {
+          year: "2017 – 2020",
+          title: "Systems Director (City of Ouro Preto)",
+          desc: "Comprehensive management of municipal IT infrastructure, wired/wireless networks, Linux and Windows enterprise servers, pfSense perimeter security, and Digital School expansion."
+        },
+        {
+          year: "2003 – 2016",
+          title: "Community Telecenters Coordination & Digital Inclusion",
+          desc: "Over 15 years leading public digital inclusion programs, training more than 7,000 citizens for free and pioneering LTSP thin-client network deployments across municipal facilities."
+        },
+        {
           year: "Beginning",
-          title: "Ouro Preto City Council",
-          desc: "First steps in the 'Jovens de Ouro' program: hardware maintenance, data networks, and computer systems, establishing a solid infrastructure foundation."
-        },
-        {
-          year: "+15 Years",
-          title: "Coordination of Community Telecenters",
-          desc: "Leadership and technical management of digital inclusion initiatives that trained and served over 7,000 citizens with free internet and IT literacy."
-        },
-        {
-          year: "Innovation",
-          title: "Digital School Project (Escola Digital)",
-          desc: "Served at Ouro Preto City Hall revitalizing idle and underutilized school computer labs, automating learning environments and training educators."
-        },
-        {
-          year: "Education",
-          title: "Computer Science (UFOP)",
-          desc: "Bachelor's Degree in Computer Science from the Federal University of Ouro Preto (UFOP), deepening expertise in software engineering, algorithms, and databases."
-        },
-        {
-          year: "Present",
-          title: "Full Stack Development & Agile",
-          desc: "High-impact enterprise engineering (Compass UOL, public institutions), certified SAFe® 6 Agilist, building modern and resilient web architectures."
+          title: "Technical Foundations & Infrastructure",
+          desc: "Beginning of IT journey through the 'Jovens de Ouro' program: preventive and corrective computer maintenance, networking, and end-user technical support, forging a solid hands-on base."
         }
       ]
     },
     skills: {
       tag: "// Skills & Technologies",
-      title: "Tech Stack & Methodologies",
-      subtitle: "Modern tools, programming languages, and agile practices applied daily.",
+      title: "Tech Stack, Data & Methodologies",
+      subtitle: "Modern analytics tools, programming languages, and agile practices applied daily.",
       categories: {
         all: "All",
-        frontend: "Frontend",
+        data: "Data Science & AI",
+        agile: "Agile / Mgmt",
         backend: "Backend",
         database: "Database",
-        agile: "Agile / Mgmt",
+        frontend: "Frontend",
         devops: "DevOps / Infra"
       }
     },
     projects: {
       tag: "// Portfolio & Deliveries",
       title: "Key Works & Projects",
-      subtitle: "Modern web applications, software architectures, and technology initiatives.",
+      subtitle: "Data science pipelines, generative AI solutions, full-stack web applications, and public technology initiatives.",
       categories: {
         all: "All",
+        data_ai: "Data & AI",
         fullstack: "Full Stack",
         social: "Social / Inclusion"
       },
@@ -256,13 +271,14 @@ export const translations = {
     certificates: {
       tag: "// Lifelong Learning & Achievements",
       title: "Certificates & Specializations",
-      subtitle: "Click on any certificate to view it in high resolution.",
+      subtitle: "Click on any certificate to view it in high resolution with original documentation.",
       categories: {
         all: "All",
+        data_ai: "Data Science & AI",
         agile: "Agile Methodologies",
         cloud: "Cloud / DevOps",
         dev: "Development",
-        database: "Databases"
+        social: "Digital & Social Inclusion"
       },
       validateBtn: "Verify Credential",
       issuer: "Issuer"
@@ -270,7 +286,7 @@ export const translations = {
     contact: {
       tag: "// Get in Touch",
       title: "Let's build something amazing together",
-      subtitle: "Whether for Full Stack development opportunities, web architecture consulting, agility with SAFe/Scrum, or social impact initiatives, I'm always open to connecting.",
+      subtitle: "Whether for Data Science, Generative AI, Full Stack development opportunities, web architecture consulting, agility with SAFe/Scrum, or social impact initiatives, I'm always open to connecting.",
       emailLabel: "Primary Email",
       phoneLabel: "Phone / WhatsApp",
       locationLabel: "Location",
@@ -286,7 +302,7 @@ export const translations = {
       sendAnother: "Send another message"
     },
     footer: {
-      tagline: "Computer Scientist | 22 years transforming challenges into robust systems and digital inclusion.",
+      tagline: "Computer Scientist | Data Science Postgrad | 22 years transforming challenges into robust systems and intelligent solutions.",
       rights: "All rights reserved.",
       backToTop: "Back to top",
       admin: "Admin"

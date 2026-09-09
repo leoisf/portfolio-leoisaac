@@ -17,10 +17,11 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
 
   const categories = [
     { key: "all", label: t.certificates.categories.all, filter: "Todos" },
+    { key: "data_ai", label: t.certificates.categories.data_ai, filter: "Data & IA" },
     { key: "agile", label: t.certificates.categories.agile, filter: "Metodologias Ágeis" },
     { key: "cloud", label: t.certificates.categories.cloud, filter: "Cloud / DevOps" },
     { key: "dev", label: t.certificates.categories.dev, filter: "Desenvolvimento" },
-    { key: "database", label: t.certificates.categories.database, filter: "Banco de Dados" }
+    { key: "social", label: t.certificates.categories.social, filter: "Inclusão Digital & Social" }
   ];
 
   const activeFilter = categories.find(c => c.key === selectedCat)?.filter || "Todos";

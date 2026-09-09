@@ -3,8 +3,8 @@ import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, Clippin
 export const initialProfile: ProfileSettings = {
   id: "profile-leo-1",
   full_name: "Leonardo Isaac",
-  headline: "Cientista da Computação | Analista & Desenvolvedor Full Stack | Agilista",
-  bio: "Bacharel em Ciência da Computação formado pela Universidade Federal de Ouro Preto (UFOP), com mais de 22 anos de atuação nos mais diversos segmentos da Tecnologia da Informação. Especialista no desenvolvimento de sistemas web modernos, arquiteturas escaláveis e banco de dados relacional. Histórico comprovado de liderança em projetos de inclusão digital e transformação tecnológica de impacto comunitário.",
+  headline: "Cientista da Computação | Especialista em Ciência de Dados & IA Generativa | Agilista (SAFe® 6)",
+  bio: "Bacharel em Ciência da Computação e Pós-Graduando em Ciência de Dados pela Universidade Federal de Ouro Preto (UFOP, Conceito A), com mais de 22 anos de sólida atuação em Tecnologia da Informação. Em transição e especialização ativa para as áreas de Ciência de Dados, IA Generativa, Databricks e Agentic AI, combinando liderança técnica corporativa com SAFe® 6 Agilist (AI/R Company / Vivo B2B) e um histórico de impacto comunitário com mais de 7.000 pessoas capacitadas.",
   years_experience: 22,
   people_impacted: "+7.000",
   cv_url: "/docs/curriculum_LEONARDO_ISAAC.pdf",
@@ -16,56 +16,87 @@ export const initialProfile: ProfileSettings = {
 };
 
 export const initialSkills: Skill[] = [
-  // Frontend
-  { id: "sk-1", name: "React", category: "Frontend", display_order: 1 },
-  { id: "sk-2", name: "Next.js", category: "Frontend", display_order: 2 },
-  { id: "sk-3", name: "TypeScript", category: "Frontend", display_order: 3 },
-  { id: "sk-4", name: "JavaScript (ES6+)", category: "Frontend", display_order: 4 },
-  { id: "sk-5", name: "Tailwind CSS", category: "Frontend", display_order: 5 },
-  { id: "sk-6", name: "HTML5 & CSS3", category: "Frontend", display_order: 6 },
-  { id: "sk-7", name: "Bootstrap", category: "Frontend", display_order: 7 },
-  
-  // Backend
-  { id: "sk-8", name: "Node.js", category: "Backend", display_order: 8 },
-  { id: "sk-9", name: "Python", category: "Backend", display_order: 9 },
-  { id: "sk-10", name: "PHP", category: "Backend", display_order: 10 },
-  { id: "sk-11", name: "REST APIs", category: "Backend", display_order: 11 },
-  { id: "sk-12", name: "Composer", category: "Backend", display_order: 12 },
-
-  // Database
-  { id: "sk-13", name: "PostgreSQL", category: "Database", display_order: 13 },
-  { id: "sk-14", name: "MySQL", category: "Database", display_order: 14 },
-  { id: "sk-15", name: "Supabase", category: "Database", display_order: 15 },
-  { id: "sk-16", name: "Modelagem Relacional", category: "Database", display_order: 16 },
+  // Data Science & IA
+  { id: "sk-data-1", name: "Python (Pandas, NumPy, Scikit-learn)", category: "Data Science & IA", display_order: 1 },
+  { id: "sk-data-2", name: "Databricks & Apache Spark", category: "Data Science & IA", display_order: 2 },
+  { id: "sk-data-3", name: "IA Generativa & Prompt Engineering", category: "Data Science & IA", display_order: 3 },
+  { id: "sk-data-4", name: "Agentic AI (Kiro & Cockpit Reasoning)", category: "Data Science & IA", display_order: 4 },
+  { id: "sk-data-5", name: "Recuperação da Informação & NLP", category: "Data Science & IA", display_order: 5 },
+  { id: "sk-data-6", name: "Redução de Dimensão (PCA, t-SNE)", category: "Data Science & IA", display_order: 6 },
+  { id: "sk-data-7", name: "Estatística Descritiva & Visualização", category: "Data Science & IA", display_order: 7 },
+  { id: "sk-data-8", name: "Power BI & Dashboards", category: "Data Science & IA", display_order: 8 },
 
   // Agile & Gestão
-  { id: "sk-17", name: "Certified SAFe® 6 Agilist", category: "Agile / Gestão", display_order: 17 },
-  { id: "sk-18", name: "Scrum & Kanban", category: "Agile / Gestão", display_order: 18 },
-  { id: "sk-19", name: "Gestão de Projetos Sociais", category: "Agile / Gestão", display_order: 19 },
-  { id: "sk-20", name: "Liderança de Equipes", category: "Agile / Gestão", display_order: 20 },
+  { id: "sk-agile-1", name: "Certified SAFe® 6 Agilist", category: "Agile / Gestão", display_order: 9 },
+  { id: "sk-agile-2", name: "SAFe® 6 POPM", category: "Agile / Gestão", display_order: 10 },
+  { id: "sk-agile-3", name: "Scrum & Kanban", category: "Agile / Gestão", display_order: 11 },
+  { id: "sk-agile-4", name: "Gestão de Projetos & Equipes", category: "Agile / Gestão", display_order: 12 },
 
-  // DevOps & Ferramentas
-  { id: "sk-21", name: "Git & GitHub", category: "DevOps / Infra", display_order: 21 },
-  { id: "sk-22", name: "Docker", category: "DevOps / Infra", display_order: 22 },
-  { id: "sk-23", name: "AWS Cloud Fundamentals", category: "DevOps / Infra", display_order: 23 },
-  { id: "sk-24", name: "Cloudflare & CDN", category: "DevOps / Infra", display_order: 24 },
-  { id: "sk-25", name: "Redes Lógicas & Hardware", category: "DevOps / Infra", display_order: 25 },
+  // Backend & Cloud
+  { id: "sk-back-1", name: "Node.js & Express", category: "Backend", display_order: 13 },
+  { id: "sk-back-2", name: "Python (Backend & Scripts)", category: "Backend", display_order: 14 },
+  { id: "sk-back-3", name: "REST APIs & Microsserviços", category: "Backend", display_order: 15 },
+  { id: "sk-back-4", name: "PHP & Laravel", category: "Backend", display_order: 16 },
+
+  // Database
+  { id: "sk-db-1", name: "PostgreSQL", category: "Database", display_order: 17 },
+  { id: "sk-db-2", name: "MySQL", category: "Database", display_order: 18 },
+  { id: "sk-db-3", name: "Supabase", category: "Database", display_order: 19 },
+  { id: "sk-db-4", name: "Modelagem Relacional", category: "Database", display_order: 20 },
+
+  // Frontend
+  { id: "sk-front-1", name: "React & Next.js", category: "Frontend", display_order: 21 },
+  { id: "sk-front-2", name: "TypeScript", category: "Frontend", display_order: 22 },
+  { id: "sk-front-3", name: "JavaScript (ES6+)", category: "Frontend", display_order: 23 },
+  { id: "sk-front-4", name: "Tailwind CSS", category: "Frontend", display_order: 24 },
+  { id: "sk-front-5", name: "HTML5 & CSS3", category: "Frontend", display_order: 25 },
+
+  // DevOps & Infra
+  { id: "sk-ops-1", name: "Docker & Containers", category: "DevOps / Infra", display_order: 26 },
+  { id: "sk-ops-2", name: "AWS Cloud & Amazon Q", category: "DevOps / Infra", display_order: 27 },
+  { id: "sk-ops-3", name: "Git & GitHub Actions", category: "DevOps / Infra", display_order: 28 },
+  { id: "sk-ops-4", name: "Cloudflare Pages & CDN", category: "DevOps / Infra", display_order: 29 },
+  { id: "sk-ops-5", name: "Linux Server & Redes", category: "DevOps / Infra", display_order: 30 }
 ];
 
 export const initialProjects: Project[] = [
+  {
+    id: "proj-data-1",
+    title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
+    slug: "pipeline-ciencia-dados-ufop",
+    short_description: "Desenvolvimento de pipelines analíticos com Python (Pandas, Scikit-learn, Seaborn) para recuperação de informação, redução de dimensão (PCA) e estatística descritiva.",
+    full_description: "Projeto acadêmico e prático desenvolvido no programa de Pós-Graduação em Ciência de Dados da UFOP (Conceito A). Inclui pré-processamento avançado de dados heterogêneos, engenharia de atributos, redução dimensional com PCA e t-SNE, treinamento de classificadores e visualizações analíticas de alta interpretabilidade.",
+    technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "Matplotlib", "Seaborn", "Jupyter"],
+    image_url: "/images/projects/system.jpg",
+    category: "Data & IA",
+    is_featured: true,
+    display_order: 1
+  },
   {
     id: "proj-1",
     title: "Portfólio Web Moderno & Painel Dinâmico",
     slug: "portfolio-web-moderno",
     short_description: "Arquitetura Jamstack de alta performance com Next.js 15, TypeScript, Tailwind CSS, Supabase (PostgreSQL + Auth + Storage) e deploy na Cloudflare.",
-    full_description: "Refatoração completa do portfólio pessoal migrado de WordPress para uma arquitetura moderna sem custos de infraestrutura. Inclui autenticação segura, painel administrativo dinâmico para uploads de projetos e certificados, suporte nativo a temas Dark/Light e pontuação 95+ no Google Lighthouse.",
+    full_description: "Refatoração completa do portfólio pessoal migrado de WordPress para uma arquitetura moderna sem custos de infraestrutura. Inclui suporte nativo bilíngue (Português/Inglês), autenticação segura, painel administrativo dinâmico para uploads de projetos e certificados, suporte nativo a temas Dark/Light e pontuação 95+ no Google Lighthouse.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Cloudflare Pages"],
     image_url: "/images/projects/system.jpg",
     github_url: "https://github.com/leoisf/portfolio-leoisaac",
     live_url: "https://leoisaac.com.br",
     category: "Full Stack",
     is_featured: true,
-    display_order: 1
+    display_order: 2
+  },
+  {
+    id: "proj-compass",
+    title: "Transformação Digital & Agilidade Vivo B2B (AI/R)",
+    slug: "transformacao-digital-vivo-b2b",
+    short_description: "Atuação analítica e técnica no Programa Estruturante Fênix (Vivo B2B) com SAFe® 6, ecossistema CRM Salesforce, Azure Cloud e IA Generativa.",
+    full_description: "Participação de alto nível na governança ágil e entrega contínua de funcionalidades críticas no projeto Vivo Fênix B2B. Condução de cerimônias ágeis, mapeamento de dependências, refinamentos técnicos e integração de ferramentas modernas de Inteligência Artificial (Kiro Agentic AI, AI Cockpit) para otimização de fluxos operacionais.",
+    technologies: ["SAFe® 6 Agilist", "Salesforce CRM", "Microsoft Azure", "Jira", "Kiro AI", "Databricks"],
+    image_url: "/images/projects/system_e.jpg",
+    category: "Full Stack",
+    is_featured: true,
+    display_order: 3
   },
   {
     id: "proj-2",
@@ -73,11 +104,11 @@ export const initialProjects: Project[] = [
     slug: "telecentros-comunitarios",
     short_description: "Coordenação de projeto público de inclusão digital que atendeu mais de 7.000 cidadãos com acesso gratuito à internet e cursos profissionalizantes.",
     full_description: "Iniciativa realizada em parceria com a Câmara Municipal de Ouro Preto. Atuação na coordenação geral, capacitação técnica de instrutores, gestão da infraestrutura de redes e laboratórios de informática, além da aplicação de metodologias educacionais inclusivas por mais de 15 anos.",
-    technologies: ["Gestão de Projetos", "Infraestrutura de Redes", "Capacitação", "Inclusão Digital"],
+    technologies: ["Gestão de Projetos", "Infraestrutura de Redes", "LTSP", "Capacitação", "Inclusão Digital"],
     image_url: "/images/projects/tc.jpeg",
     category: "Social / Inclusão",
     is_featured: true,
-    display_order: 2
+    display_order: 4
   },
   {
     id: "proj-3",
@@ -89,19 +120,7 @@ export const initialProjects: Project[] = [
     image_url: "/images/projects/ED.png",
     category: "Social / Inclusão",
     is_featured: true,
-    display_order: 3
-  },
-  {
-    id: "proj-4",
-    title: "Soluções Corporativas Full Stack na Compass UOL",
-    slug: "solucoes-corporativas-compass",
-    short_description: "Atuação como analista e desenvolvedor em squads ágeis com SAFe 6, focando em aplicações escaláveis, microsserviços e inovação contínua.",
-    full_description: "Participação no desenvolvimento e manutenção de sistemas corporativos de alta criticidade, aplicando boas práticas de engenharia de software, Clean Code, testes e metodologias ágeis em escala.",
-    technologies: ["React", "Node.js", "Python", "SAFe 6", "Docker", "Git"],
-    image_url: "/images/projects/system_e.jpg",
-    category: "Full Stack",
-    is_featured: true,
-    display_order: 4
+    display_order: 5
   }
 ];
 
@@ -140,88 +159,357 @@ export const initialSocialInitiatives: SocialInitiative[] = [
 ];
 
 export const initialCertificates: Certificate[] = [
+  // === DATA & IA ===
   {
-    id: "cert-safe",
+    id: "cert-kiro-agentic",
+    title: "Certified AI/R Kiro Agentic AI",
+    issuer: "AI/R Company",
+    issue_date: "2026-07",
+    image_url: "/images/certificates/AIR_Certified_Kiro_Agentic_AI.png",
+    category: "Data & IA",
+    display_order: 1
+  },
+  {
+    id: "cert-reasoning",
+    title: "AI Cockpit Reasoning Certified",
+    issuer: "AI/R Company",
+    issue_date: "2026-07",
+    image_url: "/images/certificates/AIR_AI_Cockpit_Reasoning_Certified.png",
+    category: "Data & IA",
+    display_order: 2
+  },
+  {
+    id: "cert-kiro-dev",
+    title: "Amazon Kiro: Agentic AI Development",
+    issuer: "AI/R Company",
+    issue_date: "2026-03",
+    image_url: "/images/certificates/AIR_Amazon_Kiro_Agentic_AI_Development.png",
+    category: "Data & IA",
+    display_order: 3
+  },
+  {
+    id: "cert-aws-prompt",
+    title: "Prompt Engineering with Generative AI",
+    issuer: "AWS Training & Certification",
+    issue_date: "2024",
+    image_url: "/images/certificates/AWS_Prompt_Engineering_Generative_AI.png",
+    category: "Data & IA",
+    display_order: 4
+  },
+  {
+    id: "cert-aws-q-fund",
+    title: "Amazon Q Developer Fundamentals",
+    issuer: "AWS Training & Certification",
+    issue_date: "2024",
+    image_url: "/images/certificates/AWS_Amazon_Q_Developer_Fundamentals.png",
+    category: "Data & IA",
+    display_order: 5
+  },
+
+  // === METODOLOGIAS ÁGEIS ===
+  {
+    id: "cert-safe-agilist",
     title: "Certified SAFe® 6 Agilist",
     issuer: "Scaled Agile",
     issue_date: "2025-04",
     credential_url: "https://www.credly.com",
-    image_url: "/images/certificates/01.png",
+    image_url: "/images/certificates/Certified_SAFe_6_Agilist.png",
     category: "Metodologias Ágeis",
-    display_order: 1
-  },
-  {
-    id: "cert-aws",
-    title: "AWS Training & Certification - Certificate of Completion",
-    issuer: "Amazon Web Services (AWS)",
-    issue_date: "2023-06",
-    image_url: "/images/certificates/02.png",
-    category: "Cloud / DevOps",
-    display_order: 2
-  },
-  {
-    id: "cert-python",
-    title: "Composição de Programas em Python",
-    issuer: "Universidade Federal de Ouro Preto (UFOP)",
-    image_url: "/images/certificates/Composição_de_Programas_em_Python-Certificado_de_conclusão_de_curso_141.png",
-    category: "Desenvolvimento",
-    display_order: 3
-  },
-  {
-    id: "cert-ufop",
-    title: "Bacharelado em Ciência da Computação",
-    issuer: "UFOP - Universidade Federal de Ouro Preto",
-    image_url: "/images/certificates/04.png",
-    category: "Desenvolvimento",
-    display_order: 4
-  },
-  {
-    id: "cert-05",
-    title: "Desenvolvimento Web Full Stack & Modern JS",
-    issuer: "Alura / Especialização Web",
-    image_url: "/images/certificates/05.png",
-    category: "Desenvolvimento",
-    display_order: 5
-  },
-  {
-    id: "cert-08",
-    title: "Administração e Modelagem de Bancos de Dados",
-    issuer: "Especialização em Banco de Dados Relacional",
-    image_url: "/images/certificates/08.png",
-    category: "Banco de Dados",
     display_order: 6
   },
   {
-    id: "cert-09",
-    title: "Gestão Ágil de Projetos & Liderança Técnica",
-    issuer: "Capacitação Profissional",
-    image_url: "/images/certificates/09.png",
+    id: "cert-safe-popm",
+    title: "SAFe® 6 Product Owner / Product Manager (POPM)",
+    issuer: "Scaled Agile",
+    issue_date: "2025",
+    image_url: "/images/certificates/SAFe_POPM.png",
     category: "Metodologias Ágeis",
     display_order: 7
   },
   {
-    id: "cert-10",
-    title: "Arquitetura de Sistemas & APIs REST",
-    issuer: "Especialização Técnica",
-    image_url: "/images/certificates/10.png",
-    category: "Desenvolvimento",
+    id: "cert-gov-mg-projetos",
+    title: "Introdução ao Planejamento e Gerenciamento de Projetos",
+    issuer: "Governo de Minas / Projeto Estruturador",
+    issue_date: "2006-05",
+    image_url: "/images/certificates/09.png",
+    category: "Metodologias Ágeis",
     display_order: 8
   },
+
+  // === CLOUD / DEVOPS ===
   {
-    id: "cert-11",
-    title: "Redes Lógicas de Computadores & Infraestrutura",
-    issuer: "Formação Técnica de Infraestrutura",
-    image_url: "/images/certificates/11.png",
+    id: "cert-alura-docker",
+    title: "Docker: Criando Containers sem Dor de Cabeça",
+    issuer: "Alura",
+    issue_date: "2023-06",
+    image_url: "/images/certificates/Alura_Docker_Containers.png",
     category: "Cloud / DevOps",
     display_order: 9
   },
   {
-    id: "cert-12",
-    title: "Segurança da Informação e Boas Práticas",
-    issuer: "Certificação Profissional",
-    image_url: "/images/certificates/12.png",
+    id: "cert-air-software-seguro",
+    title: "Desenvolvimento de Software Seguro",
+    issuer: "AI/R Company",
+    issue_date: "2026-06",
+    image_url: "/images/certificates/AIR_Desenvolvimento_Software_Seguro.png",
     category: "Cloud / DevOps",
     display_order: 10
+  },
+  {
+    id: "cert-air-sec-info",
+    title: "Segurança da Informação - AIR 2026",
+    issuer: "AI/R Company",
+    issue_date: "2026-08",
+    image_url: "/images/certificates/AIR_Seguranca_da_Informacao_2026.png",
+    category: "Cloud / DevOps",
+    display_order: 11
+  },
+  {
+    id: "cert-rnp-proinfo",
+    title: "Formação de Suporte Técnico Para Laboratórios Proinfo (32h)",
+    issuer: "Escola Superior de Redes RNP / IBICT / UnB",
+    issue_date: "2010-10",
+    image_url: "/images/certificates/16.png",
+    category: "Cloud / DevOps",
+    display_order: 12
+  },
+  {
+    id: "cert-ufop-linux",
+    title: "Curso de Introdução em Linux (40h)",
+    issuer: "UFOP - Universidade Federal de Ouro Preto",
+    issue_date: "2004-12",
+    image_url: "/images/certificates/6.png",
+    category: "Cloud / DevOps",
+    display_order: 13
+  },
+
+  // === DESENVOLVIMENTO ===
+  {
+    id: "cert-python-ufmg",
+    title: "Composição de Programas em Python (10h)",
+    issuer: "UFMG - Universidade Federal de Minas Gerais (DCC)",
+    issue_date: "2020-07",
+    image_url: "/images/certificates/28.png",
+    category: "Desenvolvimento",
+    display_order: 14
+  },
+  {
+    id: "cert-benchmark",
+    title: "Benchmark Certificate 2023",
+    issuer: "Compass UOL / AI/R",
+    issue_date: "2023-08",
+    image_url: "/images/certificates/benchmark_certificate_2023.jpg",
+    category: "Desenvolvimento",
+    display_order: 15
+  },
+  {
+    id: "cert-alura-typescript",
+    title: "TypeScript: Evoluindo seu JavaScript",
+    issuer: "Alura",
+    issue_date: "2023-06",
+    image_url: "/images/certificates/Alura_TypeScript.png",
+    category: "Desenvolvimento",
+    display_order: 16
+  },
+  {
+    id: "cert-alura-nodejs",
+    title: "Node.js: Streaming de Dados e Repositório",
+    issuer: "Alura",
+    issue_date: "2023-06",
+    image_url: "/images/certificates/Alura_NodeJS_Streaming.png",
+    category: "Desenvolvimento",
+    display_order: 17
+  },
+  {
+    id: "cert-alura-rest",
+    title: "REST com Node.js: API com Express e MySQL",
+    issuer: "Alura",
+    issue_date: "2023-06",
+    image_url: "/images/certificates/Alura_Rest_NodeJS_MySQL.png",
+    category: "Desenvolvimento",
+    display_order: 18
+  },
+  {
+    id: "cert-alura-js-browser",
+    title: "JavaScript: Conhecendo o Browser e Padrões de Projeto",
+    issuer: "Alura",
+    issue_date: "2023-06",
+    image_url: "/images/certificates/Alura_JavaScript_Browser.png",
+    category: "Desenvolvimento",
+    display_order: 19
+  },
+  {
+    id: "cert-dio-es6",
+    title: "JavaScript ES6 Essencial (4h)",
+    issuer: "Digital Innovation One",
+    issue_date: "2020-04",
+    image_url: "/images/certificates/24.png",
+    category: "Desenvolvimento",
+    display_order: 20
+  },
+  {
+    id: "cert-dio-angular",
+    title: "Introdução ao Angular 8 (5h)",
+    issuer: "Digital Innovation One",
+    issue_date: "2020-04",
+    image_url: "/images/certificates/26.png",
+    category: "Desenvolvimento",
+    display_order: 21
+  },
+  {
+    id: "cert-dio-bootstrap",
+    title: "Construindo Páginas para Internet com Bootstrap (4h)",
+    issuer: "Digital Innovation One",
+    issue_date: "2020-04",
+    image_url: "/images/certificates/25.png",
+    category: "Desenvolvimento",
+    display_order: 22
+  },
+  {
+    id: "cert-dio-js-web",
+    title: "Programação para Internet com JavaScript (2h)",
+    issuer: "Digital Innovation One",
+    issue_date: "2020-04",
+    image_url: "/images/certificates/27.png",
+    category: "Desenvolvimento",
+    display_order: 23
+  },
+  {
+    id: "cert-dio-jquery",
+    title: "Introdução à Biblioteca jQuery (2h)",
+    issuer: "Digital Innovation One",
+    issue_date: "2020-04",
+    image_url: "/images/certificates/23.png",
+    category: "Desenvolvimento",
+    display_order: 24
+  },
+  {
+    id: "cert-ufop-android-1",
+    title: "Programação para Dispositivos Móveis Android - Módulo I (32h)",
+    issuer: "Framework Training Center",
+    issue_date: "2013-12",
+    image_url: "/images/certificates/20.png",
+    category: "Desenvolvimento",
+    display_order: 25
+  },
+  {
+    id: "cert-ufop-android-2",
+    title: "Programação para Dispositivos Móveis Android - Módulo II (32h)",
+    issuer: "Framework Training Center",
+    issue_date: "2013-12",
+    image_url: "/images/certificates/21.png",
+    category: "Desenvolvimento",
+    display_order: 26
+  },
+  {
+    id: "cert-ufop-omnet",
+    title: "Curso de Omnet++ (8h) - Laboratório IMÓBILIS",
+    issuer: "UFOP / DECOM",
+    issue_date: "2014-05",
+    image_url: "/images/certificates/22.jpeg",
+    category: "Desenvolvimento",
+    display_order: 27
+  },
+  {
+    id: "cert-ufop-rails",
+    title: "I Workshop da Computação: Ruby on Rails (4h)",
+    issuer: "UFOP / DECOM",
+    issue_date: "2013-06",
+    image_url: "/images/certificates/17.png",
+    category: "Desenvolvimento",
+    display_order: 28
+  },
+
+  // === INCLUSÃO DIGITAL & SOCIAL ===
+  {
+    id: "cert-bb-telecentros-1",
+    title: "Formação Básica de Coordenadores de Telecentros Comunitários",
+    issuer: "Banco do Brasil & ONG Programando o Futuro",
+    issue_date: "2005-03",
+    image_url: "/images/certificates/08.png",
+    category: "Inclusão Digital & Social",
+    display_order: 29
+  },
+  {
+    id: "cert-bb-telecentros-2",
+    title: "Metodologia para Capacitação de Monitores de Telecentros (56h)",
+    issuer: "Fundação Banco do Brasil & ONG Programando o Futuro",
+    issue_date: "2006-07",
+    image_url: "/images/certificates/12.png",
+    category: "Inclusão Digital & Social",
+    display_order: 30
+  },
+  {
+    id: "cert-mct-inclusao",
+    title: "Seminário Inclusão Digital: Impactos e Oportunidades no Sudeste",
+    issuer: "Ministério da Ciência e Tecnologia & Governo de Minas",
+    issue_date: "2005-09",
+    image_url: "/images/certificates/10.png",
+    category: "Inclusão Digital & Social",
+    display_order: 31
+  },
+  {
+    id: "cert-personalidade-2006",
+    title: "Personalidade do Ano 2006 - Destaque Cultura & Telecentros",
+    issuer: "Comissão de Juventude de Ouro Preto",
+    issue_date: "2006-12",
+    image_url: "/images/certificates/18.png",
+    category: "Inclusão Digital & Social",
+    display_order: 32
+  },
+  {
+    id: "cert-ctid-oficina",
+    title: "8ª Oficina para Inclusão Digital - CTID",
+    issuer: "Comitê Técnico de Inclusão Digital",
+    issue_date: "2009-11",
+    image_url: "/images/certificates/14.png",
+    category: "Inclusão Digital & Social",
+    display_order: 33
+  },
+  {
+    id: "cert-minc-cultura",
+    title: "Encontro de Conhecimentos Livres & MetaReciclagem (24h)",
+    issuer: "Ministério da Cultura - Programa Cultura Viva",
+    issue_date: "2006-06",
+    image_url: "/images/certificates/13.png",
+    category: "Inclusão Digital & Social",
+    display_order: 34
+  },
+  {
+    id: "cert-ufop-openoffice",
+    title: "Curso de Treinamento em OpenOffice (40h)",
+    issuer: "UFOP - Universidade Federal de Ouro Preto",
+    issue_date: "2004-12",
+    image_url: "/images/certificates/7.png",
+    category: "Inclusão Digital & Social",
+    display_order: 35
+  },
+  {
+    id: "cert-sebrae-empreender",
+    title: "Aprender a Empreender pela Internet (16h)",
+    issuer: "SEBRAE",
+    issue_date: "2006-07",
+    image_url: "/images/certificates/11.png",
+    category: "Inclusão Digital & Social",
+    display_order: 36
+  },
+  {
+    id: "cert-prodemge-info",
+    title: "Informática Instrumental (80h)",
+    issuer: "SEE-MG & Prodemge",
+    issue_date: "1998-12",
+    image_url: "/images/certificates/02.png",
+    category: "Inclusão Digital & Social",
+    display_order: 37
+  },
+  {
+    id: "cert-unesco-fundamental",
+    title: "1º Ciclo do Ensino Fundamental - UNESCO",
+    issuer: "E.E. Dom Velloso",
+    issue_date: "1997-12",
+    image_url: "/images/certificates/01.png",
+    category: "Inclusão Digital & Social",
+    display_order: 38
   }
 ];
 

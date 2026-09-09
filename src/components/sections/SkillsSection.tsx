@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Skill } from "@/types/database";
 import { useLanguage } from "@/context/LanguageContext";
-import { Cpu, Layers, Database, GitMerge, ShieldCheck } from "lucide-react";
+import { Cpu, Layers, Database, GitMerge, ShieldCheck, Sparkles } from "lucide-react";
 
 interface SkillsSectionProps {
   skills: Skill[];
@@ -15,10 +15,11 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   const categories = [
     { key: "all", label: t.skills.categories.all, filter: "Todas" },
-    { key: "frontend", label: t.skills.categories.frontend, filter: "Frontend" },
+    { key: "data", label: t.skills.categories.data, filter: "Data Science & IA" },
+    { key: "agile", label: t.skills.categories.agile, filter: "Agile / Gestão" },
     { key: "backend", label: t.skills.categories.backend, filter: "Backend" },
     { key: "database", label: t.skills.categories.database, filter: "Database" },
-    { key: "agile", label: t.skills.categories.agile, filter: "Agile / Gestão" },
+    { key: "frontend", label: t.skills.categories.frontend, filter: "Frontend" },
     { key: "devops", label: t.skills.categories.devops, filter: "DevOps / Infra" }
   ];
 
@@ -30,6 +31,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
+      case "Data Science & IA": return Sparkles;
       case "Frontend": return Layers;
       case "Backend": return Cpu;
       case "Database": return Database;
