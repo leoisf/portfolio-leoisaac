@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Skill } from "@/types/database";
+import { useLanguage } from "@/context/LanguageContext";
 import { Cpu, Layers, Database, GitMerge, ShieldCheck } from "lucide-react";
 
 interface SkillsSectionProps {
@@ -9,20 +10,23 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
+  const { t, language } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const categories = [
-    "Todas",
-    "Frontend",
-    "Backend",
-    "Database",
-    "Agile / Gestão",
-    "DevOps / Infra"
+    { key: "all", label: t.skills.categories.all, filter: "Todas" },
+    { key: "frontend", label: t.skills.categories.frontend, filter: "Frontend" },
+    { key: "backend", label: t.skills.categories.backend, filter: "Backend" },
+    { key: "database", label: t.skills.categories.database, filter: "Database" },
+    { key: "agile", label: t.skills.categories.agile, filter: "Agile / Gestão" },
+    { key: "devops", label: t.skills.categories.devops, filter: "DevOps / Infra" }
   ];
 
-  const filteredSkills = selectedCategory === "Todas"
+  const activeFilter = categories.find(c => c.key === selectedCategory)?.filter || "Todas";
+
+  const filteredSkills = activeFilter === "Todas"
     ? skills
-    : skills.filter((s) => s.category === selectedCategory);
+    : skills.filter((s) => s.category === activeFilter);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -36,37 +40,34 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   return (
     <section id="habilidades" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Section Title */}
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-2">
-          // Competências & Tecnologias
+          {t.skills.tag}
         </h2>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-          Stack Tecnológica & Metodologias
+          {t.skills.title}
         </h3>
         <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-sm">
-          Ferramentas modernas, linguagens de programação e práticas ágeis utilizadas no dia a dia.
+          {t.skills.subtitle}
         </p>
       </div>
 
-      {/* Category Tabs */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
+            key={cat.key}
+            onClick={() => setSelectedCategory(cat.key)}
             className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-xl transition-all duration-200 ${
-              selectedCategory === cat
+              selectedCategory === cat.key
                 ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
                 : "bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800"
             }`}
           >
-            {cat}
+            {cat.label}
           </button>
         ))}
       </div>
 
-      {/* Skills Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
         {filteredSkills.map((skill) => {
           const Icon = getCategoryIcon(skill.category);

@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { ProfileSettings } from "@/types/database";
+import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, Download, MessageSquare, Terminal, Award, Users, CheckCircle2 } from "lucide-react";
 
 interface HeroSectionProps {
@@ -10,6 +10,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ profile }: HeroSectionProps) {
+  const { t, language } = useLanguage();
+
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background Gradients */}
@@ -24,35 +26,35 @@ export function HeroSection({ profile }: HeroSectionProps) {
             {/* Availability Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span>Disponível para projetos & desafios de TI</span>
+              <span>{t.hero.availability}</span>
             </div>
 
             {/* Headline Title */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
-              Olá, eu sou o <br />
+              {t.hero.greeting} <br />
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent">
                 {profile.full_name}
               </span>
             </h1>
 
             {/* Subtitle / Headline */}
-            <p className="mt-4 text-lg sm:text-xl font-medium text-zinc-600 dark:text-zinc-300 max-w-2xl leading-relaxed">
-              Cientista da Computação (UFOP), Analista & Desenvolvedor Web Full Stack e Agilista com mais de 22 anos de trajetória em tecnologia e transformação digital.
+            <p className="mt-4 text-base sm:text-lg font-medium text-zinc-600 dark:text-zinc-300 max-w-2xl leading-relaxed">
+              {t.hero.headline}
             </p>
 
             {/* Key Metrics Pill Badges */}
             <div className="mt-6 flex flex-wrap gap-2.5">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300">
                 <Terminal className="w-3.5 h-3.5 text-blue-500" />
-                22+ Anos em TI
+                {t.hero.yearsExperience}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300">
                 <Award className="w-3.5 h-3.5 text-amber-500" />
-                Certified SAFe® 6 Agilist
+                {t.hero.certifiedSafe}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300">
                 <Users className="w-3.5 h-3.5 text-emerald-500" />
-                +7.000 Pessoas Impactadas
+                {t.hero.impactMetric}
               </span>
             </div>
 
@@ -62,7 +64,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                 href="#projetos"
                 className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-200"
               >
-                <span>Ver Projetos</span>
+                <span>{t.hero.btnProjects}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
@@ -72,17 +74,17 @@ export function HeroSection({ profile }: HeroSectionProps) {
                 className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 shadow-xs hover:-translate-y-0.5 transition-all duration-200"
               >
                 <Download className="w-4 h-4 text-blue-500" />
-                <span>Baixar Currículo</span>
+                <span>{t.hero.btnResume}</span>
               </a>
 
               <a
-                href={`https://wa.me/${profile.whatsapp.replace(/[^0-9]/g, "")}?text=Ol%C3%A1%20Leonardo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar.`}
+                href={`https://wa.me/${profile.whatsapp.replace(/[^0-9]/g, "")}?text=Olá%20Leonardo!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-500" />
-                <span>WhatsApp Direto</span>
+                <span>{t.hero.btnWhatsapp}</span>
               </a>
             </div>
           </div>
@@ -90,7 +92,6 @@ export function HeroSection({ profile }: HeroSectionProps) {
           {/* Right Column: Profile Visual Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-sm">
-              {/* Outer decorative card */}
               <div className="relative rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl p-6 shadow-2xl">
                 
                 {/* Header of code card */}
@@ -111,7 +112,6 @@ export function HeroSection({ profile }: HeroSectionProps) {
                       alt={profile.full_name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        // Fallback to initials if image fails
                         e.currentTarget.style.display = "none";
                       }}
                     />
@@ -125,21 +125,21 @@ export function HeroSection({ profile }: HeroSectionProps) {
                 <div className="space-y-2.5 font-mono text-xs">
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
                     <span className="text-zinc-500">Graduação:</span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold">BCC - UFOP</span>
+                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{t.hero.graduation}</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
                     <span className="text-zinc-500">Especialidade:</span>
-                    <span className="text-blue-600 dark:text-cyan-400 font-semibold">Full Stack & Ágil</span>
+                    <span className="text-blue-600 dark:text-cyan-400 font-semibold">{t.hero.specialty}</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
                     <span className="text-zinc-500">Localização:</span>
-                    <span className="text-zinc-800 dark:text-zinc-200">{profile.location}</span>
+                    <span className="text-zinc-800 dark:text-zinc-200">{t.hero.location}</span>
                   </div>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-center gap-2 text-xs text-zinc-500">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Código aberto & arquitetura limpa</span>
+                  <span>{t.hero.cleanCode}</span>
                 </div>
               </div>
             </div>

@@ -3,21 +3,30 @@
 import React, { useState } from "react";
 import { ClippingItem } from "@/types/database";
 import { Modal } from "@/components/ui/Modal";
-import { Newspaper, Eye, Sparkles, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Newspaper, Eye } from "lucide-react";
 
 interface ClippingSectionProps {
   clippings: ClippingItem[];
 }
 
 export function ClippingSection({ clippings }: ClippingSectionProps) {
+  const { t } = useLanguage();
   const [activeClip, setActiveClip] = useState<ClippingItem | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string>("Todos");
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const categories = ["Todos", "Telecentros", "Escola Digital", "Inclusão Digital"];
+  const categories = [
+    { key: "all", label: t.clipping.categories.all, filter: "Todos" },
+    { key: "telecentros", label: t.clipping.categories.telecentros, filter: "Telecentros" },
+    { key: "escolaDigital", label: t.clipping.categories.escolaDigital, filter: "Escola Digital" },
+    { key: "inclusao", label: t.clipping.categories.inclusao, filter: "Inclusão Digital" }
+  ];
 
-  const filteredClippings = activeCategory === "Todos"
+  const activeFilter = categories.find(c => c.key === activeCategory)?.filter || "Todos";
+
+  const filteredClippings = activeFilter === "Todos"
     ? clippings
-    : clippings.filter((c) => c.category === activeCategory);
+    : clippings.filter((c) => c.category === activeFilter);
 
   return (
     <section id="clipping" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,13 +34,13 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-3">
           <Newspaper className="w-4 h-4" />
-          <span>Imprensa & Registro Histórico</span>
+          <span>{t.clipping.tag}</span>
         </div>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-          Clipping & Matérias na Mídia
+          {t.clipping.title}
         </h3>
         <p className="mt-3 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
-          Reportagens e matérias de jornais registrando a repercussão pública dos projetos de inclusão digital, formação comunitária e tecnologia em Ouro Preto.
+          {t.clipping.subtitle}
         </p>
       </div>
 
@@ -39,15 +48,15 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
       <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
+            key={cat.key}
+            onClick={() => setActiveCategory(cat.key)}
             className={`px-4 py-2 text-xs font-medium rounded-xl transition-all ${
-              activeCategory === cat
+              activeCategory === cat.key
                 ? "bg-blue-600 text-white shadow-xs"
                 : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
             }`}
           >
-            {cat}
+            {cat.label}
           </button>
         ))}
       </div>
@@ -69,7 +78,7 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white text-xs font-semibold backdrop-blur-2xs">
                 <Eye className="w-4 h-4" />
-                <span>Ler Matéria</span>
+                <span>{t.clipping.readArticle}</span>
               </div>
             </div>
 
@@ -114,7 +123,7 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
                   {activeClip.title}
                 </h4>
                 <p className="text-xs text-zinc-500">
-                  Veículo: <span className="font-semibold text-zinc-700 dark:text-zinc-300">{activeClip.source}</span>
+                  {t.clipping.mediaSource}: <span className="font-semibold text-zinc-700 dark:text-zinc-300">{activeClip.source}</span>
                 </p>
               </div>
 

@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, Code2, ShieldCheck, Download, MessageSquare } from "lucide-react";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "@/context/LanguageContext";
+import { Menu, X, Download, MessageSquare } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,20 +21,20 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Habilidades", href: "#habilidades" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Clipping", href: "#clipping" },
-    { label: "Impacto Social", href: "#social" },
-    { label: "Certificados", href: "#certificados" },
-    { label: "Contato", href: "#contato" },
+    { label: t.nav.about, href: "#sobre" },
+    { label: t.nav.skills, href: "#habilidades" },
+    { label: t.nav.projects, href: "#projetos" },
+    { label: t.nav.clipping, href: "#clipping" },
+    { label: t.nav.social, href: "#social" },
+    { label: t.nav.certificates, href: "#certificados" },
+    { label: t.nav.contact, href: "#contato" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800/80 shadow-xs py-3"
+          ? "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800/80 shadow-xs py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -42,22 +45,27 @@ export function Header() {
           className="flex items-center group py-1"
           title="Leonardo Isaac"
         >
-          <div className="px-2.5 py-1 rounded-xl bg-white shadow-xs border border-zinc-200/80 dark:border-zinc-700 transition-transform duration-200 group-hover:scale-105 flex items-center">
-            <img
-              src="/images/logo/logo_isaac_final-1.png"
-              alt="Leonardo Isaac - Portfólio"
-              className="h-8 sm:h-9 w-auto object-contain"
-            />
-          </div>
+          {/* Logo Clara para Modo Dark */}
+          <img
+            src="/images/logo/logo_isaac_light.png"
+            alt="Leonardo Isaac - Portfólio"
+            className="hidden dark:block h-9 sm:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
+          {/* Logo Original Escura para Modo Light */}
+          <img
+            src="/images/logo/logo_isaac_final-1.png"
+            alt="Leonardo Isaac - Portfólio"
+            className="block dark:hidden h-9 sm:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-zinc-100/80 dark:bg-zinc-900/60 p-1.5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800">
+        <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/80 dark:bg-zinc-900/60 p-1.5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="px-3.5 py-1.5 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 rounded-xl hover:bg-white dark:hover:bg-zinc-800/80 transition-all duration-200"
+              className="px-3.5 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 rounded-xl hover:bg-white dark:hover:bg-zinc-800/80 transition-all duration-200"
             >
               {link.label}
             </a>
@@ -65,7 +73,8 @@ export function Header() {
         </nav>
 
         {/* Right CTA buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2.5">
+          <LanguageToggle />
           <ThemeToggle />
           <a
             href="/docs/curriculum_LEONARDO_ISAAC.pdf"
@@ -73,19 +82,20 @@ export function Header() {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors shadow-xs"
           >
             <Download className="w-3.5 h-3.5 text-blue-500" />
-            <span>Currículo</span>
+            <span>{t.nav.resume}</span>
           </a>
           <a
             href="#contato"
             className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-600/20 hover:shadow-blue-600/30 transition-all duration-200"
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>Fale Comigo</span>
+            <span>{t.nav.getInTouch}</span>
           </a>
         </div>
 
         {/* Mobile menu button */}
         <div className="flex md:hidden items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -117,14 +127,14 @@ export function Header() {
                 download
                 className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200"
               >
-                Baixar CV
+                {t.nav.resume}
               </a>
               <a
                 href="#contato"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl bg-blue-600 text-white"
               >
-                Contato
+                {t.nav.contact}
               </a>
             </div>
           </nav>

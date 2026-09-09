@@ -2,13 +2,15 @@
 
 import React, { useState } from "react";
 import { ProfileSettings } from "@/types/database";
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 
 interface ContactSectionProps {
   profile: ProfileSettings;
 }
 
 export function ContactSection({ profile }: ContactSectionProps) {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -16,7 +18,6 @@ export function ContactSection({ profile }: ContactSectionProps) {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
-    // Construct WhatsApp message or mailto
     const text = `Olá Leonardo, meu nome é ${formData.name} (${formData.email}): ${formData.message}`;
     const waUrl = `https://wa.me/${profile.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank");
@@ -30,13 +31,13 @@ export function ContactSection({ profile }: ContactSectionProps) {
         {/* Info Column */}
         <div className="lg:col-span-5">
           <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-2">
-            // Fale Comigo
+            {t.contact.tag}
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-            Vamos construir algo incrível juntos?
+            {t.contact.title}
           </h3>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
-            Seja para oportunidades de desenvolvimento Full Stack, consultoria em sistemas web, agilidade com SAFe/Scrum ou projetos de impacto social, estou sempre aberto a novas conexões.
+            {t.contact.subtitle}
           </p>
 
           <div className="mt-8 space-y-4">
@@ -48,7 +49,7 @@ export function ContactSection({ profile }: ContactSectionProps) {
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs text-zinc-400 block font-mono">E-mail Principal</span>
+                <span className="text-xs text-zinc-400 block font-mono">{t.contact.emailLabel}</span>
                 <span className="text-sm font-semibold text-zinc-900 dark:text-white">{profile.email}</span>
               </div>
             </a>
@@ -63,7 +64,7 @@ export function ContactSection({ profile }: ContactSectionProps) {
                 <Phone className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs text-zinc-400 block font-mono">Telefone / WhatsApp</span>
+                <span className="text-xs text-zinc-400 block font-mono">{t.contact.phoneLabel}</span>
                 <span className="text-sm font-semibold text-zinc-900 dark:text-white">{profile.whatsapp}</span>
               </div>
             </a>
@@ -73,7 +74,7 @@ export function ContactSection({ profile }: ContactSectionProps) {
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs text-zinc-400 block font-mono">Localização</span>
+                <span className="text-xs text-zinc-400 block font-mono">{t.contact.locationLabel}</span>
                 <span className="text-sm font-semibold text-zinc-900 dark:text-white">{profile.location}</span>
               </div>
             </div>
@@ -89,58 +90,58 @@ export function ContactSection({ profile }: ContactSectionProps) {
                   <CheckCircle className="w-7 h-7" />
                 </div>
                 <h4 className="text-xl font-bold text-zinc-900 dark:text-white">
-                  Mensagem Encaminhada!
+                  {t.contact.sentTitle}
                 </h4>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
-                  Obrigado pelo contato! Retornarei o mais breve possível.
+                  {t.contact.sentDesc}
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="px-5 py-2 text-xs font-semibold rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
                 >
-                  Enviar outra mensagem
+                  {t.contact.sendAnother}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label className="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Seu Nome
+                    {t.contact.formName}
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Ex: João da Silva"
+                    placeholder={t.contact.namePlaceholder}
                     className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-sm"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Seu E-mail
+                    {t.contact.formEmail}
                   </label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="seu.email@empresa.com"
+                    placeholder={t.contact.emailPlaceholder}
                     className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-sm"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                    Mensagem
+                    {t.contact.formMessage}
                   </label>
                   <textarea
                     required
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Olá Leonardo, gostaria de conversar sobre..."
+                    placeholder={t.contact.messagePlaceholder}
                     className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/80 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 text-sm"
                   />
                 </div>
@@ -150,7 +151,7 @@ export function ContactSection({ profile }: ContactSectionProps) {
                   className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm shadow-md shadow-blue-600/25 transition-all"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Enviar Mensagem via WhatsApp / Direto</span>
+                  <span>{t.contact.submitBtn}</span>
                 </button>
               </form>
             )}

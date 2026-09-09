@@ -3,22 +3,30 @@
 import React, { useState } from "react";
 import { Project } from "@/types/database";
 import { Modal } from "@/components/ui/Modal";
-import { ExternalLink, Sparkles, FolderGit2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 import { GithubIcon } from "@/components/icons";
+import { ExternalLink, Sparkles, FolderGit2 } from "lucide-react";
 
 interface ProjectsSectionProps {
   projects: Project[];
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const [activeCategory, setActiveCategory] = useState<string>("Todos");
+  const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const categories = ["Todos", "Full Stack", "Social / Inclusão"];
+  const categories = [
+    { key: "all", label: t.projects.categories.all, filter: "Todos" },
+    { key: "fullstack", label: t.projects.categories.fullstack, filter: "Full Stack" },
+    { key: "social", label: t.projects.categories.social, filter: "Social / Inclusão" }
+  ];
 
-  const filteredProjects = activeCategory === "Todos"
+  const activeFilter = categories.find(c => c.key === activeCategory)?.filter || "Todos";
+
+  const filteredProjects = activeFilter === "Todos"
     ? projects
-    : projects.filter((p) => p.category === activeCategory);
+    : projects.filter((p) => p.category === activeFilter);
 
   return (
     <section id="projetos" className="py-24 bg-zinc-50/50 dark:bg-zinc-950/40 border-y border-zinc-200/80 dark:border-zinc-800/80">
@@ -28,13 +36,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-2">
-              // Portfólio & Entregas
+              {t.projects.tag}
             </h2>
             <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-              Principais Trabalhos & Projetos
+              {t.projects.title}
             </h3>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400 text-sm">
-              Aplicações web modernas, arquiteturas de software e iniciativas de tecnologia.
+              {t.projects.subtitle}
             </p>
           </div>
 
@@ -42,15 +50,15 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <div className="flex items-center gap-2">
             {categories.map((cat) => (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
                 className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all ${
-                  activeCategory === cat
+                  activeCategory === cat.key
                     ? "bg-blue-600 text-white shadow-xs"
                     : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                 }`}
               >
-                {cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -80,7 +88,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 )}
                 
-                {/* Category Badge */}
                 <div className="absolute top-3 left-3">
                   <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-zinc-900/80 text-white backdrop-blur-md border border-white/10">
                     {project.category}
@@ -103,7 +110,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 </div>
 
                 <div className="mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800/80">
-                  {/* Tech Badges */}
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.technologies.slice(0, 4).map((tech) => (
                       <span
@@ -120,14 +126,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     )}
                   </div>
 
-                  {/* Actions */}
                   <div className="flex items-center justify-between">
                     <button
                       onClick={() => setActiveProject(project)}
                       className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline inline-flex items-center gap-1"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
-                      Ver detalhes
+                      {t.projects.viewDetails}
                     </button>
 
                     <div className="flex items-center gap-2">
@@ -181,7 +186,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
               <div>
                 <h5 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-1">
-                  Sobre o Projeto
+                  {t.projects.aboutProject}
                 </h5>
                 <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {activeProject.full_description || activeProject.short_description}
@@ -190,7 +195,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
               <div>
                 <h5 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
-                  Tecnologias Utilizadas
+                  {t.projects.techUsed}
                 </h5>
                 <div className="flex flex-wrap gap-2">
                   {activeProject.technologies.map((tech) => (
@@ -212,7 +217,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500"
                   >
-                    <span>Acessar Projeto</span>
+                    <span>{t.projects.liveProject}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
@@ -224,7 +229,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800"
                   >
                     <GithubIcon className="w-3.5 h-3.5" />
-                    <span>Ver Código no GitHub</span>
+                    <span>{t.projects.githubRepo}</span>
                   </a>
                 )}
               </div>
