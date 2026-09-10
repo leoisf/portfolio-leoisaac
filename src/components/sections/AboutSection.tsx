@@ -22,11 +22,19 @@ interface AboutSectionProps {
 export function AboutSection({ profile }: AboutSectionProps) {
   const { t, language } = useLanguage();
 
+  const INITIAL_VISIBLE_COUNT = 3;
+
   // Initially expand the current active role (index 0)
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set([0]));
+  // Control whether all milestones or only initial records are shown
+  const [showAllMilestones, setShowAllMilestones] = useState<boolean>(false);
 
   const milestones = t.about.milestones;
-  const allExpanded = expandedItems.size === milestones.length;
+  const displayedMilestones = showAllMilestones 
+    ? milestones 
+    : milestones.slice(0, INITIAL_VISIBLE_COUNT);
+
+  const allExpanded = expandedItems.size === milestones.length && showAllMilestones;
 
   const toggleItem = (index: number) => {
     setExpandedItems((prev) => {
@@ -44,6 +52,7 @@ export function AboutSection({ profile }: AboutSectionProps) {
     if (allExpanded) {
       setExpandedItems(new Set([0])); // keep current role open
     } else {
+      setShowAllMilestones(true);
       setExpandedItems(new Set(milestones.map((_, i) => i)));
     }
   };
@@ -102,7 +111,7 @@ export function AboutSection({ profile }: AboutSectionProps) {
           <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-800" />
 
           <div className="space-y-8 sm:space-y-10">
-            {milestones.map((item, index) => {
+            {displayedMilestones.map((item, index) => {
               const Icon = getMilestoneIcon(index);
               const isEven = index % 2 === 0;
               const isExpanded = expandedItems.has(index);
@@ -252,6 +261,27 @@ export function AboutSection({ profile }: AboutSectionProps) {
               );
             })}
           </div>
+
+          {/* Show More / Show Less Button */}
+          {milestones.length > INITIAL_VISIBLE_COUNT && (
+            <div className="mt-12 flex justify-center relative z-10">
+              <button
+                onClick={() => setShowAllMilestones((prev) => !prev)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/60 dark:hover:border-blue-500/60 hover:text-blue-600 dark:hover:text-cyan-400 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer group"
+              >
+                <span>
+                  {showAllMilestones 
+                    ? t.about.showLessMilestones 
+                    : `${t.about.showMoreMilestones} (+${milestones.length - INITIAL_VISIBLE_COUNT})`}
+                </span>
+                <ChevronDown 
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    showAllMilestones ? "rotate-180" : "group-hover:translate-y-0.5"
+                  }`} 
+                />
+              </button>
+            </div>
+          )}
         </div>
 
       </div>
