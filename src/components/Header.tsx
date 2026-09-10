@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
-import { Menu, X, Download, MessageSquare } from "lucide-react";
+import { Menu, X, Download, MessageSquare, History } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,6 +74,16 @@ export function Header() {
 
         {/* Right CTA buttons */}
         <div className="hidden md:flex items-center gap-2.5">
+          <a
+            href="/antigo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:border-blue-500/50 dark:hover:border-cyan-400/50 transition-colors shadow-xs"
+            title={t.nav.legacySite}
+          >
+            <History className="w-3.5 h-3.5 text-blue-500 dark:text-cyan-400" />
+            <span>{t.nav.legacySite}</span>
+          </a>
           <LanguageToggle />
           <ThemeToggle />
           <a
@@ -121,6 +131,16 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/antigo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-xl text-sm font-medium text-blue-600 dark:text-cyan-400 bg-blue-50/60 dark:bg-blue-950/40 flex items-center gap-2"
+            >
+              <History className="w-4 h-4" />
+              <span>{t.nav.legacySite}</span>
+            </a>
             <div className="pt-3 mt-2 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
               <a
                 href="/docs/curriculum_LEONARDO_ISAAC.pdf"

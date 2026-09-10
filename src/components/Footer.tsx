@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Mail, Shield } from "lucide-react";
+import { ArrowUp, Mail, Shield, History } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -83,8 +83,20 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} Leonardo Isaac. {t.footer.rights}
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a
+              href="/antigo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-cyan-400 transition-colors"
+              title={t.footer.legacySite}
+            >
+              <History className="w-3.5 h-3.5 text-blue-500 dark:text-cyan-400" />
+              <span className="font-medium underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700 hover:decoration-blue-500">{t.footer.legacySite}</span>
+            </a>
+            <span className="text-zinc-300 dark:text-zinc-700 hidden sm:inline">•</span>
             <span>Next.js 15 • Supabase • Cloudflare Pages</span>
+            <span className="text-zinc-300 dark:text-zinc-700 hidden sm:inline">•</span>
             <Link
               href="/admin/login"
               className="flex items-center gap-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"

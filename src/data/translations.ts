@@ -12,6 +12,7 @@ export const translations = {
       contact: "Contato",
       resume: "Currículo",
       getInTouch: "Fale Comigo",
+      legacySite: "Site Antigo",
       role: "Data & AI | Full Stack"
     },
     hero: {
@@ -269,6 +270,7 @@ export const translations = {
       tagline: "Cientista da Computação | Pós-Graduando em Ciência de Dados | 22 anos transformando desafios em sistemas robustos e soluções inteligentes.",
       rights: "Todos os direitos reservados.",
       backToTop: "Voltar ao topo",
+      legacySite: "Versão Anterior (WordPress)",
       admin: "Admin"
     }
   },
@@ -284,6 +286,7 @@ export const translations = {
       contact: "Contact",
       resume: "Resume",
       getInTouch: "Get in Touch",
+      legacySite: "Legacy Site",
       role: "Data & AI | Full Stack"
     },
     hero: {
@@ -541,6 +544,7 @@ export const translations = {
       tagline: "Computer Scientist | Data Science Postgrad | 22 years transforming challenges into robust systems and intelligent solutions.",
       rights: "All rights reserved.",
       backToTop: "Back to top",
+      legacySite: "Previous Version (WordPress)",
       admin: "Admin"
     }
   }
