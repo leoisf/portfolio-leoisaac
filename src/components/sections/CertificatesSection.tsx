@@ -4,16 +4,19 @@ import React, { useState } from "react";
 import { Certificate } from "@/types/database";
 import { Modal } from "@/components/ui/Modal";
 import { useLanguage } from "@/context/LanguageContext";
-import { Award, ExternalLink, Eye } from "lucide-react";
+import { Award, ExternalLink, Eye, ChevronDown, ChevronUp } from "lucide-react";
 
 interface CertificatesSectionProps {
   certificates: Certificate[];
 }
 
+const INITIAL_COUNT = 8;
+
 export function CertificatesSection({ certificates }: CertificatesSectionProps) {
   const { t } = useLanguage();
   const [activeCert, setActiveCert] = useState<Certificate | null>(null);
   const [selectedCat, setSelectedCat] = useState<string>("all");
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const categories = [
     { key: "all", label: t.certificates.categories.all, filter: "Todos" },
@@ -24,11 +27,20 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
     { key: "social", label: t.certificates.categories.social, filter: "Inclusão Digital & Social" }
   ];
 
+  const handleCategoryChange = (catKey: string) => {
+    setSelectedCat(catKey);
+    setShowAll(false);
+  };
+
   const activeFilter = categories.find(c => c.key === selectedCat)?.filter || "Todos";
 
   const filteredCerts = activeFilter === "Todos"
     ? certificates
     : certificates.filter((c) => c.category === activeFilter);
+
+  const displayedCerts = showAll
+    ? filteredCerts
+    : filteredCerts.slice(0, INITIAL_COUNT);
 
   return (
     <section id="certificados" className="py-24 bg-zinc-50/50 dark:bg-zinc-950/40 border-y border-zinc-200/80 dark:border-zinc-800/80">
@@ -52,7 +64,7 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
           {categories.map((cat) => (
             <button
               key={cat.key}
-              onClick={() => setSelectedCat(cat.key)}
+              onClick={() => handleCategoryChange(cat.key)}
               className={`px-4 py-2 text-xs font-medium rounded-xl transition-all ${
                 selectedCat === cat.key
                   ? "bg-blue-600 text-white shadow-xs"
@@ -66,7 +78,7 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
 
         {/* Certificates Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredCerts.map((cert) => (
+          {displayedCerts.map((cert) => (
             <div
               key={cert.id}
               onClick={() => setActiveCert(cert)}
@@ -80,7 +92,7 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white text-xs font-semibold backdrop-blur-2xs">
                   <Eye className="w-4 h-4" />
-                  <span>{t.clipping.readArticle}</span>
+                  <span>{t.clipping.readArticle === "Ler Matéria" ? "Visualizar Certificado" : "View Certificate"}</span>
                 </div>
               </div>
 
@@ -101,6 +113,23 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
             </div>
           ))}
         </div>
+
+        {/* Show More / Show All Button */}
+        {filteredCerts.length > INITIAL_COUNT && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-xs"
+            >
+              <span>
+                {showAll
+                  ? t.certificates.showLess
+                  : `${t.certificates.viewAll} (${filteredCerts.length})`}
+              </span>
+              {showAll ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+          </div>
+        )}
 
         {/* Lightbox Modal */}
         <Modal

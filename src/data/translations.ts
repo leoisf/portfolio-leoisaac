@@ -225,7 +225,10 @@ export const translations = {
         inclusao: "Inclusão Digital"
       },
       readArticle: "Ler Matéria",
-      mediaSource: "Veículo"
+      mediaSource: "Veículo",
+      viewAll: "Visualizar todas as matérias",
+      viewMore: "Visualizar mais matérias",
+      showLess: "Mostrar menos"
     },
     social: {
       badge: "Transformação Social & Inclusão Digital",
@@ -246,7 +249,10 @@ export const translations = {
         social: "Inclusão Digital & Social"
       },
       validateBtn: "Validar Certificado",
-      issuer: "Emissor"
+      issuer: "Emissor",
+      viewAll: "Visualizar todos os certificados",
+      viewMore: "Visualizar mais certificados",
+      showLess: "Mostrar menos"
     },
     contact: {
       tag: "// Fale Comigo",
@@ -499,7 +505,10 @@ export const translations = {
         inclusao: "Digital Inclusion"
       },
       readArticle: "Read Article",
-      mediaSource: "Media Outlet"
+      mediaSource: "Media Outlet",
+      viewAll: "View all articles",
+      viewMore: "View more articles",
+      showLess: "Show less"
     },
     social: {
       badge: "Social Transformation & Digital Inclusion",
@@ -520,7 +529,10 @@ export const translations = {
         social: "Digital & Social Inclusion"
       },
       validateBtn: "Verify Credential",
-      issuer: "Issuer"
+      issuer: "Issuer",
+      viewAll: "View all certificates",
+      viewMore: "View more certificates",
+      showLess: "Show less"
     },
     contact: {
       tag: "// Get in Touch",

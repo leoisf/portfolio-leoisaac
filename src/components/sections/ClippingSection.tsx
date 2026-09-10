@@ -4,16 +4,19 @@ import React, { useState } from "react";
 import { ClippingItem } from "@/types/database";
 import { Modal } from "@/components/ui/Modal";
 import { useLanguage } from "@/context/LanguageContext";
-import { Newspaper, Eye } from "lucide-react";
+import { Newspaper, Eye, ChevronDown, ChevronUp } from "lucide-react";
 
 interface ClippingSectionProps {
   clippings: ClippingItem[];
 }
 
+const INITIAL_COUNT = 8;
+
 export function ClippingSection({ clippings }: ClippingSectionProps) {
   const { t } = useLanguage();
   const [activeClip, setActiveClip] = useState<ClippingItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const categories = [
     { key: "all", label: t.clipping.categories.all, filter: "Todos" },
@@ -22,11 +25,20 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
     { key: "inclusao", label: t.clipping.categories.inclusao, filter: "Inclusão Digital" }
   ];
 
+  const handleCategoryChange = (catKey: string) => {
+    setActiveCategory(catKey);
+    setShowAll(false);
+  };
+
   const activeFilter = categories.find(c => c.key === activeCategory)?.filter || "Todos";
 
   const filteredClippings = activeFilter === "Todos"
     ? clippings
     : clippings.filter((c) => c.category === activeFilter);
+
+  const displayedClippings = showAll
+    ? filteredClippings
+    : filteredClippings.slice(0, INITIAL_COUNT);
 
   return (
     <section id="clipping" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,7 +61,7 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
         {categories.map((cat) => (
           <button
             key={cat.key}
-            onClick={() => setActiveCategory(cat.key)}
+            onClick={() => handleCategoryChange(cat.key)}
             className={`px-4 py-2 text-xs font-medium rounded-xl transition-all ${
               activeCategory === cat.key
                 ? "bg-blue-600 text-white shadow-xs"
@@ -63,7 +75,7 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
 
       {/* Clippings Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredClippings.map((item) => (
+        {displayedClippings.map((item) => (
           <div
             key={item.id}
             onClick={() => setActiveClip(item)}
@@ -100,6 +112,23 @@ export function ClippingSection({ clippings }: ClippingSectionProps) {
           </div>
         ))}
       </div>
+
+      {/* Show More / Show All Button */}
+      {filteredClippings.length > INITIAL_COUNT && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-xs"
+          >
+            <span>
+              {showAll
+                ? t.clipping.showLess
+                : `${t.clipping.viewAll} (${filteredClippings.length})`}
+            </span>
+            {showAll ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
+      )}
 
       {/* Lightbox Modal */}
       <Modal

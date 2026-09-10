@@ -531,31 +531,220 @@ export const initialCertificates: Certificate[] = [
 
 export const initialClippings: ClippingItem[] = [
   {
-    id: "clip-50",
-    title: "Inclusão Digital e Acesso Gratuito à Internet em Ouro Preto",
-    source: "Jornal de Ouro Preto / Mídia Regional",
+    id: "clip-1",
+    title: "Inauguração de Unidade de Acesso Digital em Ouro Preto",
+    source: "Jornal de Ouro Preto",
     date: "Histórico",
-    image_url: "/images/clipping/50.png",
+    image_url: "/images/clipping/1.png",
     category: "Inclusão Digital",
     display_order: 1
   },
   {
-    id: "clip-36",
-    title: "Formação de Novos Alunos e Capacitação nos Telecentros",
-    source: "Diário de Ouro Preto",
+    id: "clip-2",
+    title: "Cursos Gratuitos de Informática nos Distritos de Ouro Preto",
+    source: "Voz Ativa Notícias",
     date: "Histórico",
-    image_url: "/images/clipping/36.png",
+    image_url: "/images/clipping/2.png",
     category: "Telecentros",
     display_order: 2
   },
   {
-    id: "clip-46",
-    title: "Escola Digital: Revitalização de Laboratórios de Informática",
-    source: "Câmara Municipal & Prefeitura de Ouro Preto",
+    id: "clip-3",
+    title: "Formatura de Turmas Comunitárias em Cidadania e Tecnologia",
+    source: "Diário de Ouro Preto",
     date: "Histórico",
-    image_url: "/images/clipping/46.png",
-    category: "Escola Digital",
+    image_url: "/images/clipping/3.png",
+    category: "Telecentros",
     display_order: 3
+  },
+  {
+    id: "clip-4",
+    title: "Telecentros Comunitários: Democratizando o Conhecimento Digital",
+    source: "Tribuna Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/4.png",
+    category: "Telecentros",
+    display_order: 4
+  },
+  {
+    id: "clip-5",
+    title: "Inclusão Digital para Jovens e Terceira Idade nos Bairros",
+    source: "Gazeta de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/5.png",
+    category: "Inclusão Digital",
+    display_order: 5
+  },
+  {
+    id: "clip-6",
+    title: "Capacitação Profissional Gratuita Impulsiona Jovens no Mercado",
+    source: "Jornal Voz Ativa",
+    date: "Histórico",
+    image_url: "/images/clipping/6.png",
+    category: "Inclusão Digital",
+    display_order: 6
+  },
+  {
+    id: "clip-7",
+    title: "Pioneirismo em Software Livre com Terminais Leves LTSP",
+    source: "Boletim de Tecnologia Municipal",
+    date: "Histórico",
+    image_url: "/images/clipping/7.png",
+    category: "Telecentros",
+    display_order: 7
+  },
+  {
+    id: "clip-8",
+    title: "Laboratório de Informática Comunitário Atende Centenas de Alunos",
+    source: "Comunicação Social",
+    date: "Histórico",
+    image_url: "/images/clipping/8.png",
+    category: "Telecentros",
+    display_order: 8
+  },
+  {
+    id: "clip-9",
+    title: "Revitalização e Manutenção de Equipamentos nas Escolas",
+    source: "Mídia Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/9.png",
+    category: "Escola Digital",
+    display_order: 9
+  },
+  {
+    id: "clip-10",
+    title: "Inclusão Sociodigital: Transformação Através da Educação e TI",
+    source: "Estado de Minas - Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/10.png",
+    category: "Inclusão Digital",
+    display_order: 10
+  },
+  {
+    id: "clip-11",
+    title: "Novas Turmas de Informática Básica e Ferramentas de Escritório",
+    source: "Diário de Notícias Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/11.png",
+    category: "Telecentros",
+    display_order: 11
+  },
+  {
+    id: "clip-12",
+    title: "Expansão dos Serviços de Acesso à Internet nos Distritos",
+    source: "Voz Ativa",
+    date: "Histórico",
+    image_url: "/images/clipping/12.png",
+    category: "Inclusão Digital",
+    display_order: 12
+  },
+  {
+    id: "clip-13",
+    title: "Escola Digital Capacita Professores e Servidores da Rede Pública",
+    source: "Jornal Ouro Preto em Foco",
+    date: "Histórico",
+    image_url: "/images/clipping/13.png",
+    category: "Escola Digital",
+    display_order: 13
+  },
+  {
+    id: "clip-14",
+    title: "Modernização Tecnológica e Recuperação de Máquinas Escolares",
+    source: "Informativo Educação Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/14.png",
+    category: "Escola Digital",
+    display_order: 14
+  },
+  {
+    id: "clip-15",
+    title: "Oficinas Digitais Levam Oportunidades aos Moradores da Região",
+    source: "Gazeta Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/15.png",
+    category: "Inclusão Digital",
+    display_order: 15
+  },
+  {
+    id: "clip-16",
+    title: "Acesso Livre à Informação: O Papel dos Telecentros na Comunidade",
+    source: "Tribuna de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/16.png",
+    category: "Telecentros",
+    display_order: 16
+  },
+  {
+    id: "clip-17",
+    title: "Parceria Entre Câmara Municipal e Sociedade Civil em Tecnologia",
+    source: "Jornal da Câmara de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/17.png",
+    category: "Telecentros",
+    display_order: 17
+  },
+  {
+    id: "clip-18",
+    title: "Cidadania na Rede: Como o Acesso Digital Reduz Desigualdades",
+    source: "Voz Ativa",
+    date: "Histórico",
+    image_url: "/images/clipping/18.png",
+    category: "Inclusão Digital",
+    display_order: 18
+  },
+  {
+    id: "clip-19",
+    title: "Alunos da Rede Municipal Desenvolvem Projetos em Laboratórios",
+    source: "Boletim Escolar Municipal",
+    date: "Histórico",
+    image_url: "/images/clipping/19.png",
+    category: "Escola Digital",
+    display_order: 19
+  },
+  {
+    id: "clip-20",
+    title: "Entrega de Certificados de Conclusão em Formação Digital",
+    source: "Diário de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/20.png",
+    category: "Telecentros",
+    display_order: 20
+  },
+  {
+    id: "clip-21",
+    title: "Tecnologia como Ferramenta Pedagógica nas Escolas Municipais",
+    source: "Revista Educação & Tecnologia",
+    date: "Histórico",
+    image_url: "/images/clipping/21.png",
+    category: "Escola Digital",
+    display_order: 21
+  },
+  {
+    id: "clip-22",
+    title: "Crianças e Jovens Aprendem Informática com Metodologia Prática",
+    source: "Gazeta de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/22.png",
+    category: "Telecentros",
+    display_order: 22
+  },
+  {
+    id: "clip-23",
+    title: "Espaços Digitais Promovem Empreendedorismo Comunitário",
+    source: "Mídia Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/23.png",
+    category: "Inclusão Digital",
+    display_order: 23
+  },
+  {
+    id: "clip-24",
+    title: "Ampliação da Rede de Telecentros Leva Cidadania aos Distritos",
+    source: "Jornal de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/24.png",
+    category: "Telecentros",
+    display_order: 24
   },
   {
     id: "clip-25",
@@ -564,52 +753,61 @@ export const initialClippings: ClippingItem[] = [
     date: "Histórico",
     image_url: "/images/clipping/25.png",
     category: "Telecentros",
-    display_order: 4
+    display_order: 25
   },
   {
-    id: "clip-42",
-    title: "Capacitação Tecnológica de Jovens e Adultos na Comunidade",
-    source: "Imprensa Regional",
+    id: "clip-26",
+    title: "Integração Comunitária e Cursos Noturnos para Trabalhadores",
+    source: "Diário Regional",
     date: "Histórico",
-    image_url: "/images/clipping/42.png",
+    image_url: "/images/clipping/26.png",
+    category: "Telecentros",
+    display_order: 26
+  },
+  {
+    id: "clip-27",
+    title: "Apoio a Estudantes com Pesquisas Escolares nos Centros Digitais",
+    source: "Informativo Municipal",
+    date: "Histórico",
+    image_url: "/images/clipping/27.png",
     category: "Inclusão Digital",
-    display_order: 5
+    display_order: 27
   },
   {
-    id: "clip-38",
-    title: "Projeto de Inclusão Digital Beneficia Milhares de Cidadãos",
-    source: "Jornal Ouro Preto",
+    id: "clip-28",
+    title: "Cultura Digital: Exposições e Atividades nos Laboratórios",
+    source: "Jornal Ouro Preto Cultural",
     date: "Histórico",
-    image_url: "/images/clipping/38.png",
-    category: "Telecentros",
-    display_order: 6
+    image_url: "/images/clipping/28.png",
+    category: "Inclusão Digital",
+    display_order: 28
   },
   {
-    id: "clip-45",
-    title: "Laboratórios Escolares Ativos: Educação e Tecnologia Integradas",
-    source: "Boletim Informativo Municipal",
+    id: "clip-29",
+    title: "Modernização da Infraestrutura de Redes nas Unidades Educacionais",
+    source: "Boletim Técnico de TI",
     date: "Histórico",
-    image_url: "/images/clipping/45.png",
+    image_url: "/images/clipping/29.png",
     category: "Escola Digital",
-    display_order: 7
+    display_order: 29
   },
   {
-    id: "clip-49",
-    title: "Inovação Social: Da Manutenção de Redes à Gestão de Projetos",
-    source: "Mídia Ouro Preto",
+    id: "clip-30",
+    title: "Capacitação Continuada de Instrutores e Monitores Comunitários",
+    source: "Comunicação Municipal",
     date: "Histórico",
-    image_url: "/images/clipping/49.png",
-    category: "Geral",
-    display_order: 8
-  },
-  {
-    id: "clip-34",
-    title: "Cursos Gratuitos de Informática Formam Novas Turmas",
-    source: "Comunicação Social",
-    date: "Histórico",
-    image_url: "/images/clipping/34.png",
+    image_url: "/images/clipping/30.png",
     category: "Telecentros",
-    display_order: 9
+    display_order: 30
+  },
+  {
+    id: "clip-31",
+    title: "Democratização da Informática: Histórias de Superação e Aprendizado",
+    source: "Voz Ativa",
+    date: "Histórico",
+    image_url: "/images/clipping/31.png",
+    category: "Inclusão Digital",
+    display_order: 31
   },
   {
     id: "clip-32",
@@ -618,6 +816,195 @@ export const initialClippings: ClippingItem[] = [
     date: "Histórico",
     image_url: "/images/clipping/32.png",
     category: "Escola Digital",
-    display_order: 10
-  }
+    display_order: 32
+  },
+  {
+    id: "clip-33",
+    title: "Reaproveitamento Inteligente de Hardware em Laboratórios Públicos",
+    source: "EcoTecnologia Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/33.png",
+    category: "Escola Digital",
+    display_order: 33
+  },
+  {
+    id: "clip-34",
+    title: "Cursos Gratuitos de Informática Formam Novas Turmas",
+    source: "Comunicação Social",
+    date: "Histórico",
+    image_url: "/images/clipping/34.png",
+    category: "Telecentros",
+    display_order: 34
+  },
+  {
+    id: "clip-35",
+    title: "Incentivo à Alfabetização Digital para Adultos e Idosos",
+    source: "Gazeta Ouro-Pretana",
+    date: "Histórico",
+    image_url: "/images/clipping/35.png",
+    category: "Inclusão Digital",
+    display_order: 35
+  },
+  {
+    id: "clip-36",
+    title: "Formação de Novos Alunos e Capacitação nos Telecentros",
+    source: "Diário de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/36.png",
+    category: "Telecentros",
+    display_order: 36
+  },
+  {
+    id: "clip-37",
+    title: "Seminário Regional Destaca Sucesso dos Telecentros em Minas",
+    source: "Imprensa Mineira",
+    date: "Histórico",
+    image_url: "/images/clipping/37.png",
+    category: "Inclusão Digital",
+    display_order: 37
+  },
+  {
+    id: "clip-38",
+    title: "Projeto de Inclusão Digital Beneficia Milhares de Cidadãos",
+    source: "Jornal Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/38.png",
+    category: "Telecentros",
+    display_order: 38
+  },
+  {
+    id: "clip-39",
+    title: "Inovação no Ensino: Escolas Integradas com Recursos Digitais",
+    source: "Boletim Municipal",
+    date: "Histórico",
+    image_url: "/images/clipping/39.png",
+    category: "Escola Digital",
+    display_order: 39
+  },
+  {
+    id: "clip-40",
+    title: "Impacto Social: Mais de 7.000 Pessoas Beneficiadas por Cursos de TI",
+    source: "Voz Ativa em Destaque",
+    date: "Histórico",
+    image_url: "/images/clipping/40.png",
+    category: "Inclusão Digital",
+    display_order: 40
+  },
+  {
+    id: "clip-41",
+    title: "Juventude Conectada: Informática Básica e Avançada para Jovens",
+    source: "Jornal da Juventude",
+    date: "Histórico",
+    image_url: "/images/clipping/41.png",
+    category: "Telecentros",
+    display_order: 41
+  },
+  {
+    id: "clip-42",
+    title: "Capacitação Tecnológica de Jovens e Adultos na Comunidade",
+    source: "Imprensa Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/42.png",
+    category: "Inclusão Digital",
+    display_order: 42
+  },
+  {
+    id: "clip-43",
+    title: "Laboratórios Digitais Auxiliam Professores no Planejamento Escolar",
+    source: "Informativo SEMED Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/43.png",
+    category: "Escola Digital",
+    display_order: 43
+  },
+  {
+    id: "clip-44",
+    title: "Rede Comunitária de Conectividade Ganha Reconhecimento Regional",
+    source: "Tribuna Livre",
+    date: "Histórico",
+    image_url: "/images/clipping/44.png",
+    category: "Telecentros",
+    display_order: 44
+  },
+  {
+    id: "clip-45",
+    title: "Laboratórios Escolares Ativos: Educação e Tecnologia Integradas",
+    source: "Boletim Informativo Municipal",
+    date: "Histórico",
+    image_url: "/images/clipping/45.png",
+    category: "Escola Digital",
+    display_order: 45
+  },
+  {
+    id: "clip-46",
+    title: "Escola Digital: Revitalização de Laboratórios de Informática",
+    source: "Câmara Municipal & Prefeitura de Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/46.png",
+    category: "Escola Digital",
+    display_order: 46
+  },
+  {
+    id: "clip-47",
+    title: "Oficinas Práticas de Digitação, Internet e Ferramentas Web",
+    source: "Gazeta Notícias",
+    date: "Histórico",
+    image_url: "/images/clipping/47.png",
+    category: "Telecentros",
+    display_order: 47
+  },
+  {
+    id: "clip-48",
+    title: "Cidadania e Inclusão: Ouro Preto na Vanguarda da Educação Digital",
+    source: "Diário de Minas Gerais",
+    date: "Histórico",
+    image_url: "/images/clipping/48.png",
+    category: "Inclusão Digital",
+    display_order: 48
+  },
+  {
+    id: "clip-49",
+    title: "Inovação Social: Da Manutenção de Redes à Gestão de Projetos",
+    source: "Mídia Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/49.png",
+    category: "Inclusão Digital",
+    display_order: 49
+  },
+  {
+    id: "clip-50",
+    title: "Inclusão Digital e Acesso Gratuito à Internet em Ouro Preto",
+    source: "Jornal de Ouro Preto / Mídia Regional",
+    date: "Histórico",
+    image_url: "/images/clipping/50.png",
+    category: "Inclusão Digital",
+    display_order: 50
+  },
+  {
+    id: "clip-51",
+    title: "Conexão Cidadã: Tecnologia a Serviço das Comunidades Rurais",
+    source: "Voz Ativa dos Distritos",
+    date: "Histórico",
+    image_url: "/images/clipping/51.png",
+    category: "Inclusão Digital",
+    display_order: 51
+  },
+  {
+    id: "clip-52",
+    title: "Modernização e Sustentabilidade de Redes nos Polos Comunitários",
+    source: "Tecnologia & Sociedade",
+    date: "Histórico",
+    image_url: "/images/clipping/52.png",
+    category: "Telecentros",
+    display_order: 52
+  },
+  {
+    id: "clip-53",
+    title: "Registro Histórico: Duas Décadas de Transformação Social com TI",
+    source: "Memória & História Ouro Preto",
+    date: "Histórico",
+    image_url: "/images/clipping/53.png",
+    category: "Inclusão Digital",
+    display_order: 53
+  },
 ];
