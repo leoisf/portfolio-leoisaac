@@ -52,6 +52,7 @@ export interface ProfileSettings {
   full_name: string;
   headline: string;
   bio: string;
+  avatar_url?: string;
   years_experience: number;
   people_impacted: string;
   cv_url: string;

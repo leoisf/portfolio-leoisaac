@@ -12,6 +12,9 @@ interface HeroSectionProps {
 export function HeroSection({ profile }: HeroSectionProps) {
   const { t, language } = useLanguage();
 
+  const [imgError, setImgError] = React.useState(false);
+  const avatarSrc = profile.avatar_url || "/images/profile/leo.png";
+
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background Gradients */}
@@ -106,33 +109,37 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
                 {/* Profile Image with glow */}
                 <div className="my-6 relative flex justify-center">
-                  <div className="relative w-36 h-36 rounded-2xl overflow-hidden border-2 border-blue-500/30 shadow-xl bg-gradient-to-b from-blue-500/10 to-indigo-500/20 flex items-center justify-center">
-                    <img
-                      src="/images/profile/leo.png"
-                      alt={profile.full_name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
-                    <span className="font-mono text-3xl font-bold text-blue-600 dark:text-blue-400">
-                      LI
-                    </span>
+                  <div className="relative w-40 h-40 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl bg-gradient-to-b from-blue-600/20 via-indigo-600/20 to-zinc-900/90 flex items-center justify-center group">
+                    {!imgError ? (
+                      <img
+                        src={avatarSrc}
+                        alt={profile.full_name}
+                        className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                        onError={() => setImgError(true)}
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <span className="font-mono text-3xl font-bold text-blue-600 dark:text-blue-400">
+                          LI
+                        </span>
+                        <span className="text-[10px] font-mono text-zinc-400">Leonardo Isaac</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {/* Micro tech specs */}
                 <div className="space-y-2.5 font-mono text-xs">
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">Graduação:</span>
+                    <span className="text-zinc-500">{language === "en" ? "Education:" : "Graduação:"}</span>
                     <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{t.hero.graduation}</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">Especialidade:</span>
+                    <span className="text-zinc-500">{language === "en" ? "Specialty:" : "Especialidade:"}</span>
                     <span className="text-blue-600 dark:text-cyan-400 font-semibold">{t.hero.specialty}</span>
                   </div>
                   <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">Localização:</span>
+                    <span className="text-zinc-500">{language === "en" ? "Location:" : "Localização:"}</span>
                     <span className="text-zinc-800 dark:text-zinc-200">{t.hero.location}</span>
                   </div>
                 </div>

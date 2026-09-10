@@ -3,16 +3,17 @@ import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, Clippin
 export const initialProfile: ProfileSettings = {
   id: "profile-leo-1",
   full_name: "Leonardo Isaac",
-  headline: "Cientista da Computação | Especialista em Ciência de Dados & IA Generativa | Agilista (SAFe® 6)",
-  bio: "Bacharel em Ciência da Computação e Pós-Graduando em Ciência de Dados pela Universidade Federal de Ouro Preto (UFOP, Conceito A), com mais de 22 anos de sólida atuação em Tecnologia da Informação. Em transição e especialização ativa para as áreas de Ciência de Dados, IA Generativa, Databricks e Agentic AI, combinando liderança técnica corporativa com SAFe® 6 Agilist (AI/R Company / Vivo B2B) e um histórico de impacto comunitário com mais de 7.000 pessoas capacitadas.",
+  headline: "Full-Stack Developer (Embraer) | Ciência de Dados & IA | SAFe® 6 Agilist",
+  bio: "Bacharel em Ciência da Computação e Pós-Graduando em Ciência de Dados pela UFOP (Conceito A), com mais de 22 anos de sólida atuação em Tecnologia da Informação. Atualmente atuando como Full-Stack Developer na AI/R Company alocado na Embraer (Squad de Sustentação AMS Comercial), sustentando sistemas web com Java, Kotlin, React, AWS Lambda/Aurora e Datadog com abordagem API First. Combina liderança técnica ágil (Certified SAFe® 6 Agilist) com transição ativa para Ciência de Dados e IA Generativa.",
   years_experience: 22,
   people_impacted: "+7.000",
   cv_url: "/docs/curriculum_LEONARDO_ISAAC.pdf",
+  avatar_url: "/images/profile/leo.png",
   whatsapp: "+5531988527732",
   email: "contato@leoisaac.com.br",
   linkedin: "https://www.linkedin.com/in/leonardo-isaac-silva-flores-9b66236b",
   github: "https://github.com/leoisf",
-  location: "Ouro Preto - MG, Brasil"
+  location: "Ouro Preto - MG / São José dos Campos - SP, Brasil"
 };
 
 export const initialSkills: Skill[] = [
@@ -32,34 +33,49 @@ export const initialSkills: Skill[] = [
   { id: "sk-agile-3", name: "Scrum & Kanban", category: "Agile / Gestão", display_order: 11 },
   { id: "sk-agile-4", name: "Gestão de Projetos & Equipes", category: "Agile / Gestão", display_order: 12 },
 
-  // Backend & Cloud
-  { id: "sk-back-1", name: "Node.js & Express", category: "Backend", display_order: 13 },
-  { id: "sk-back-2", name: "Python (Backend & Scripts)", category: "Backend", display_order: 14 },
-  { id: "sk-back-3", name: "REST APIs & Microsserviços", category: "Backend", display_order: 15 },
-  { id: "sk-back-4", name: "PHP & Laravel", category: "Backend", display_order: 16 },
+  // Backend
+  { id: "sk-back-java", name: "Java", category: "Backend", display_order: 13 },
+  { id: "sk-back-kt", name: "Kotlin", category: "Backend", display_order: 14 },
+  { id: "sk-back-api", name: "API First & RESTful Services", category: "Backend", display_order: 15 },
+  { id: "sk-back-1", name: "Node.js & Express", category: "Backend", display_order: 16 },
+  { id: "sk-back-2", name: "Python (Backend & Scripts)", category: "Backend", display_order: 17 },
 
   // Database
-  { id: "sk-db-1", name: "PostgreSQL", category: "Database", display_order: 17 },
-  { id: "sk-db-2", name: "MySQL", category: "Database", display_order: 18 },
-  { id: "sk-db-3", name: "Supabase", category: "Database", display_order: 19 },
-  { id: "sk-db-4", name: "Modelagem Relacional", category: "Database", display_order: 20 },
+  { id: "sk-db-1", name: "PostgreSQL & AWS Aurora", category: "Database", display_order: 18 },
+  { id: "sk-db-2", name: "MySQL", category: "Database", display_order: 19 },
+  { id: "sk-db-3", name: "Supabase", category: "Database", display_order: 20 },
+  { id: "sk-db-4", name: "Modelagem Relacional", category: "Database", display_order: 21 },
 
   // Frontend
-  { id: "sk-front-1", name: "React & Next.js", category: "Frontend", display_order: 21 },
-  { id: "sk-front-2", name: "TypeScript", category: "Frontend", display_order: 22 },
-  { id: "sk-front-3", name: "JavaScript (ES6+)", category: "Frontend", display_order: 23 },
-  { id: "sk-front-4", name: "Tailwind CSS", category: "Frontend", display_order: 24 },
-  { id: "sk-front-5", name: "HTML5 & CSS3", category: "Frontend", display_order: 25 },
+  { id: "sk-front-1", name: "React & Next.js", category: "Frontend", display_order: 22 },
+  { id: "sk-front-2", name: "TypeScript", category: "Frontend", display_order: 23 },
+  { id: "sk-front-3", name: "JavaScript (ES6+)", category: "Frontend", display_order: 24 },
+  { id: "sk-front-4", name: "Tailwind CSS", category: "Frontend", display_order: 25 },
+  { id: "sk-front-5", name: "WebDev (HTML5 & CSS3)", category: "Frontend", display_order: 26 },
 
   // DevOps & Infra
-  { id: "sk-ops-1", name: "Docker & Containers", category: "DevOps / Infra", display_order: 26 },
-  { id: "sk-ops-2", name: "AWS Cloud & Amazon Q", category: "DevOps / Infra", display_order: 27 },
-  { id: "sk-ops-3", name: "Git & GitHub Actions", category: "DevOps / Infra", display_order: 28 },
-  { id: "sk-ops-4", name: "Cloudflare Pages & CDN", category: "DevOps / Infra", display_order: 29 },
-  { id: "sk-ops-5", name: "Linux Server & Redes", category: "DevOps / Infra", display_order: 30 }
+  { id: "sk-ops-dd", name: "Datadog (Observabilidade & APM)", category: "DevOps / Infra", display_order: 27 },
+  { id: "sk-ops-lambda", name: "AWS Lambda & Secrets Manager", category: "DevOps / Infra", display_order: 28 },
+  { id: "sk-ops-1", name: "Docker & Containers", category: "DevOps / Infra", display_order: 29 },
+  { id: "sk-ops-2", name: "AWS Cloud & Amazon Q", category: "DevOps / Infra", display_order: 30 },
+  { id: "sk-ops-3", name: "Git, GitHub & GitHub Copilot", category: "DevOps / Infra", display_order: 31 },
+  { id: "sk-ops-4", name: "Cloudflare Pages & CDN", category: "DevOps / Infra", display_order: 32 },
+  { id: "sk-ops-5", name: "Linux Server & Redes", category: "DevOps / Infra", display_order: 33 }
 ];
 
 export const initialProjects: Project[] = [
+  {
+    id: "proj-embraer-ams",
+    title: "Sustentação AMS & Engenharia Web Embraer (AI/R)",
+    slug: "sustentacao-ams-embraer",
+    short_description: "Atuação como Full-Stack Developer na Squad de Sustentação AMS Comercial da Embraer: sistemas web com Java, Kotlin, React, API First e Cloud AWS.",
+    full_description: "Atuação técnica como Desenvolvedor Web Full Stack na sustentação contínua de sistemas web de missão crítica para o segmento de aviação comercial da Embraer (São José dos Campos - SP). Aplicação de arquitetura API First, microsserviços em Java e Kotlin, interfaces reativas em React, banco de dados AWS Aurora / PostgreSQL, gerenciamento seguro de credenciais com AWS Secrets Manager, execuções serverless com AWS Lambda, observabilidade e monitoramento em tempo real com Datadog, além de tutoriais técnicos e documentações de alta qualidade com auxílio de GitHub Copilot e Kiro.",
+    technologies: ["Java", "Kotlin", "React", "AWS Aurora", "AWS Lambda", "Datadog", "PostgreSQL", "AWS Secrets Manager", "API First", "GitHub Copilot", "Kiro"],
+    image_url: "/images/projects/system_e.jpg",
+    category: "Full Stack",
+    is_featured: true,
+    display_order: 1
+  },
   {
     id: "proj-data-1",
     title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
@@ -70,7 +86,7 @@ export const initialProjects: Project[] = [
     image_url: "/images/projects/system.jpg",
     category: "Data & IA",
     is_featured: true,
-    display_order: 1
+    display_order: 2
   },
   {
     id: "proj-1",
@@ -84,7 +100,7 @@ export const initialProjects: Project[] = [
     live_url: "https://leoisaac.com.br",
     category: "Full Stack",
     is_featured: true,
-    display_order: 2
+    display_order: 3
   },
   {
     id: "proj-compass",
@@ -96,7 +112,7 @@ export const initialProjects: Project[] = [
     image_url: "/images/projects/system_e.jpg",
     category: "Full Stack",
     is_featured: true,
-    display_order: 3
+    display_order: 4
   },
   {
     id: "proj-2",
@@ -108,7 +124,7 @@ export const initialProjects: Project[] = [
     image_url: "/images/projects/tc.jpeg",
     category: "Social / Inclusão",
     is_featured: true,
-    display_order: 4
+    display_order: 5
   },
   {
     id: "proj-3",
@@ -120,7 +136,7 @@ export const initialProjects: Project[] = [
     image_url: "/images/projects/ED.png",
     category: "Social / Inclusão",
     is_featured: true,
-    display_order: 5
+    display_order: 6
   }
 ];
 
