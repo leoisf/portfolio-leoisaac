@@ -75,7 +75,7 @@ export function Header() {
         {/* Right CTA buttons */}
         <div className="hidden md:flex items-center gap-2.5">
           <a
-            href="/antigo/"
+            href="/antigo/index.html"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:border-blue-500/50 dark:hover:border-cyan-400/50 transition-colors shadow-xs"
@@ -132,7 +132,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="/antigo/"
+              href="/antigo/index.html"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}

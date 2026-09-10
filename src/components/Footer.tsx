@@ -85,7 +85,7 @@ export function Footer() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <a
-              href="/antigo/"
+              href="/antigo/index.html"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-zinc-500 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-cyan-400 transition-colors"
