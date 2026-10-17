@@ -24,20 +24,20 @@ export function HeroSection({ profile }: HeroSectionProps) {
   const { t, language } = useLanguage();
 
   const [imgError, setImgError] = useState(false);
-  const avatarSrc = profile.avatar_url || "/images/profile/leo.png";
+  const avatarSrc = profile.avatar_url || "/images/profile/foto_perfil.png";
 
   const roles = language === "en" 
     ? [
-        "Full-Stack Developer (Embraer - AI/R)",
-        "Data Science & Machine Learning (UFOP)",
-        "Certified SAFe® 6 Agilist & POPM",
-        "Modern Jamstack & Cloud Architecture"
+        "Full-Stack Web Engineering & Microservices",
+        "Data Science, Applied Modeling & AI",
+        "Enterprise Agile Governance (SAFe® 6)",
+        "High-Reliability Cloud Architecture"
       ]
     : [
-        "Full-Stack Developer (Embraer - AI/R)",
-        "Ciência de Dados & IA (UFOP)",
-        "Certified SAFe® 6 Agilist & POPM",
-        "Engenharia Web Jamstack & Cloud"
+        "Engenharia Web Full-Stack & Microsserviços",
+        "Ciência de Dados, Modelagem Aplicada & IA",
+        "Governança Ágil em Escala (SAFe® 6)",
+        "Arquitetura Cloud & Alta Disponibilidade"
       ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -135,37 +135,27 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   <span className="text-xs font-mono text-zinc-400">leonardo-isaac.ts</span>
                 </div>
 
-                {/* Profile Header Block */}
-                <div className="my-5 flex items-center gap-4">
-                  <div className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-md bg-gradient-to-b from-blue-600/20 to-zinc-900 shrink-0">
+                {/* Profile Photo in High Quality & Role Badge */}
+                <div className="my-5 flex flex-col items-center text-center">
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl bg-gradient-to-b from-blue-600/20 via-indigo-600/10 to-zinc-900 p-1 group">
                     {!imgError ? (
                       <img
                         src={avatarSrc}
                         alt={profile.full_name}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top rounded-xl transition-transform duration-300 group-hover:scale-105"
                         onError={() => setImgError(true)}
                       />
                     ) : (
                       <div className="flex flex-col items-center justify-center gap-1 w-full h-full">
-                        <span className="font-mono text-xl font-bold text-blue-600 dark:text-blue-400">
+                        <span className="font-mono text-2xl font-bold text-blue-600 dark:text-blue-400">
                           LI
                         </span>
                       </div>
                     )}
                   </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <span className="text-[11px] font-mono font-medium text-emerald-600 dark:text-emerald-400">
-                        {t.hero.availability}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white truncate mt-0.5">
-                      {profile.full_name}
-                    </h3>
-                    <p className="text-xs text-blue-600 dark:text-cyan-400 font-semibold truncate">
-                      {t.hero.currentRole}
-                    </p>
+                  <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-500/30 text-blue-600 dark:text-cyan-400 text-[11px] font-mono font-medium shadow-2xs">
+                    <Briefcase className="w-3.5 h-3.5" />
+                    <span>{t.hero.currentRole}</span>
                   </div>
                 </div>
 
@@ -203,7 +193,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
                   <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                     <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
-                      <Briefcase className="w-3.5 h-3.5 text-indigo-500" />
+                      <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
                       <span>{language === "en" ? "Trajectory:" : "Trajetória:"}</span>
                     </span>
                     <span className="text-blue-600 dark:text-cyan-400 font-semibold text-left sm:text-right">

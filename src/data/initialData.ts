@@ -8,7 +8,7 @@ export const initialProfile: ProfileSettings = {
   years_experience: 22,
   people_impacted: "+7.000",
   cv_url: "/docs/curriculum_LEONARDO_ISAAC.pdf",
-  avatar_url: "/images/profile/leo.png",
+  avatar_url: "/images/profile/foto_perfil.png",
   whatsapp: "+5531988527732",
   email: "contato@leoisaac.com.br",
   linkedin: "https://www.linkedin.com/in/leonardo-isaac-silva-flores-9b66236b",
