@@ -90,7 +90,7 @@ export function AboutSection({ profile }: AboutSectionProps) {
             {t.about.title}
           </h3>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
-            {language === "en" ? t.hero.headline : profile.bio}
+            {t.about.summary}
           </p>
         </div>
 

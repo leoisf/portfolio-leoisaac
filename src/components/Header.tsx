@@ -23,10 +23,10 @@ export function Header() {
   const navLinks = [
     { label: t.nav.about, href: "#sobre" },
     { label: t.nav.skills, href: "#habilidades" },
+    { label: t.nav.certificates, href: "#certificados" },
     { label: t.nav.projects, href: "#projetos" },
     { label: t.nav.clipping, href: "#clipping" },
     { label: t.nav.social, href: "#social" },
-    { label: t.nav.certificates, href: "#certificados" },
     { label: t.nav.contact, href: "#contato" },
   ];
 

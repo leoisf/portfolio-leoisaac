@@ -7,13 +7,12 @@ import {
   ArrowRight, 
   Download, 
   MessageSquare, 
-  Terminal, 
-  Award, 
-  Users, 
   CheckCircle2, 
-  Code2, 
   Sparkles, 
-  ShieldCheck 
+  ShieldCheck,
+  GraduationCap,
+  Briefcase,
+  MapPin
 } from "lucide-react";
 import { HeroConstellation } from "@/components/ui/HeroConstellation";
 
@@ -99,22 +98,6 @@ export function HeroSection({ profile }: HeroSectionProps) {
               {t.hero.headline}
             </p>
 
-            {/* Key Metrics Pill Badges */}
-            <div className="mt-6 flex flex-wrap gap-2.5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300 shadow-2xs">
-                <Terminal className="w-3.5 h-3.5 text-blue-500" />
-                {t.hero.yearsExperience}
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300 shadow-2xs">
-                <Award className="w-3.5 h-3.5 text-amber-500" />
-                {t.hero.certifiedSafe}
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-zinc-700 dark:text-zinc-300 shadow-2xs">
-                <Users className="w-3.5 h-3.5 text-emerald-500" />
-                {t.hero.impactMetric}
-              </span>
-            </div>
-
             {/* Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
@@ -126,19 +109,10 @@ export function HeroSection({ profile }: HeroSectionProps) {
               </a>
 
               <a
-                href={profile.cv_url}
-                download
-                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 shadow-xs hover:-translate-y-0.5 transition-all duration-200"
-              >
-                <Download className="w-4 h-4 text-blue-500" />
-                <span>{t.hero.btnResume}</span>
-              </a>
-
-              <a
                 href={`https://wa.me/${profile.whatsapp.replace(/[^0-9]/g, "")}?text=Olá%20Leonardo!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 shadow-xs hover:-translate-y-0.5 transition-all duration-200"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-500" />
                 <span>{t.hero.btnWhatsapp}</span>
@@ -146,34 +120,10 @@ export function HeroSection({ profile }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: Profile Visual Card with Floating Elements */}
+          {/* Right Column: Unified Official Profile Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-sm">
-              
-              {/* Floating Orbit Badges */}
-              <div className="absolute -top-3.5 -right-3.5 sm:-right-5 z-20 animate-float pointer-events-none">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 border border-blue-500/30 text-zinc-800 dark:text-zinc-200 text-[11px] font-mono shadow-lg shadow-blue-500/10 backdrop-blur-md">
-                  <Code2 className="w-3.5 h-3.5 text-blue-500" />
-                  <span>Next.js 16 • React 19</span>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-3.5 -left-3.5 sm:-left-5 z-20 animate-float-reverse pointer-events-none">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 border border-indigo-500/30 text-zinc-800 dark:text-zinc-200 text-[11px] font-mono shadow-lg shadow-indigo-500/10 backdrop-blur-md">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Python & Data Science</span>
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 -left-6 z-20 hidden sm:flex animate-float pointer-events-none">
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/95 dark:bg-zinc-900/95 border border-emerald-500/30 text-zinc-800 dark:text-zinc-200 text-[10px] font-mono shadow-md backdrop-blur-md">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>SAFe® 6</span>
-                </div>
-              </div>
-
-              {/* Main Card */}
-              <div className="relative rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl p-6 shadow-2xl">
+            <div className="w-full max-w-md">
+              <div className="relative rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-6 shadow-2xl">
                 
                 {/* Header of code card */}
                 <div className="flex items-center justify-between pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
@@ -185,48 +135,95 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   <span className="text-xs font-mono text-zinc-400">leonardo-isaac.ts</span>
                 </div>
 
-                {/* Profile Image with glow */}
-                <div className="my-6 relative flex justify-center">
-                  <div className="relative w-40 h-40 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl bg-gradient-to-b from-blue-600/20 via-indigo-600/20 to-zinc-900/90 flex items-center justify-center group">
-                    <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 opacity-25 blur-md animate-glow-pulse -z-10" />
+                {/* Profile Header Block */}
+                <div className="my-5 flex items-center gap-4">
+                  <div className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-md bg-gradient-to-b from-blue-600/20 to-zinc-900 shrink-0">
                     {!imgError ? (
                       <img
                         src={avatarSrc}
                         alt={profile.full_name}
-                        className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top"
                         onError={() => setImgError(true)}
                       />
                     ) : (
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <span className="font-mono text-3xl font-bold text-blue-600 dark:text-blue-400">
+                      <div className="flex flex-col items-center justify-center gap-1 w-full h-full">
+                        <span className="font-mono text-xl font-bold text-blue-600 dark:text-blue-400">
                           LI
                         </span>
-                        <span className="text-[10px] font-mono text-zinc-400">Leonardo Isaac</span>
                       </div>
                     )}
                   </div>
-                </div>
-
-                {/* Micro tech specs */}
-                <div className="space-y-2.5 font-mono text-xs">
-                  <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">{language === "en" ? "Education:" : "Graduação:"}</span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold">{t.hero.graduation}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">{language === "en" ? "Specialty:" : "Especialidade:"}</span>
-                    <span className="text-blue-600 dark:text-cyan-400 font-semibold">{t.hero.specialty}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-2 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50">
-                    <span className="text-zinc-500">{language === "en" ? "Location:" : "Localização:"}</span>
-                    <span className="text-zinc-800 dark:text-zinc-200">{t.hero.location}</span>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[11px] font-mono font-medium text-emerald-600 dark:text-emerald-400">
+                        {t.hero.availability}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white truncate mt-0.5">
+                      {profile.full_name}
+                    </h3>
+                    <p className="text-xs text-blue-600 dark:text-cyan-400 font-semibold truncate">
+                      {t.hero.currentRole}
+                    </p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-center gap-2 text-xs text-zinc-500">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>{t.hero.cleanCode}</span>
+                {/* Unified Specs & Credential Lines */}
+                <div className="space-y-2 text-xs font-mono">
+                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
+                      <GraduationCap className="w-3.5 h-3.5 text-blue-500" />
+                      <span>{language === "en" ? "Education:" : "Formação:"}</span>
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
+                      {t.hero.graduation}
+                    </span>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                      <span>{language === "en" ? "Agile Method:" : "Metodologia:"}</span>
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
+                      {t.hero.safeRole}
+                    </span>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
+                      <MapPin className="w-3.5 h-3.5 text-amber-500" />
+                      <span>{language === "en" ? "Location:" : "Localização:"}</span>
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
+                      {t.hero.location}
+                    </span>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
+                      <Briefcase className="w-3.5 h-3.5 text-indigo-500" />
+                      <span>{language === "en" ? "Trajectory:" : "Trajetória:"}</span>
+                    </span>
+                    <span className="text-blue-600 dark:text-cyan-400 font-semibold text-left sm:text-right">
+                      {t.hero.experienceSummary}
+                    </span>
+                  </div>
                 </div>
+
+                {/* Bottom Card Action: Official CV Download */}
+                <div className="mt-4 pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80">
+                  <a
+                    href={profile.cv_url}
+                    download
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100/80 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-900 dark:text-white text-xs font-semibold transition-colors shadow-2xs"
+                  >
+                    <Download className="w-4 h-4 text-blue-500" />
+                    <span>{t.hero.downloadCvCard}</span>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
