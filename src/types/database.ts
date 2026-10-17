@@ -12,6 +12,14 @@ export interface Project {
   is_featured: boolean;
   display_order: number;
   created_at?: string;
+  repo_name?: string;
+  repo_type?: "public" | "enterprise" | "social";
+  primary_language?: string;
+  default_branch?: string;
+  highlights?: string[];
+  stars_count?: number;
+  forks_count?: number;
+  clipping_anchor?: string;
 }
 
 export interface Certificate {
@@ -24,6 +32,7 @@ export interface Certificate {
   image_url: string;
   category: "Data & IA" | "Desenvolvimento" | "Metodologias Ágeis" | "Cloud / DevOps" | "Banco de Dados" | "Inclusão Digital & Social" | "Outros";
   display_order: number;
+  is_featured?: boolean;
 }
 
 export interface Skill {

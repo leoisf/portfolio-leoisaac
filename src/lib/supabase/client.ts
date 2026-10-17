@@ -15,6 +15,16 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
 
+// Storage Keys for Local Dynamic Fallback
+const STORAGE_PROJECTS_KEY = "portfolio_projects_custom";
+const STORAGE_CERTS_KEY = "portfolio_certs_custom";
+
+function dispatchUpdate() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event("portfolio_data_changed"));
+  }
+}
+
 // Helper: Fetch Profile with fallback to local seed
 export async function getProfile(): Promise<ProfileSettings> {
   if (supabase) {
@@ -28,7 +38,7 @@ export async function getProfile(): Promise<ProfileSettings> {
   return initialProfile;
 }
 
-// Helper: Fetch Projects
+// Helper: Fetch Projects (Supabase -> LocalStorage -> initialData)
 export async function getProjects(): Promise<Project[]> {
   if (supabase) {
     try {
@@ -41,7 +51,96 @@ export async function getProjects(): Promise<Project[]> {
       // fallback
     }
   }
+
+  if (typeof window !== "undefined") {
+    try {
+      const local = localStorage.getItem(STORAGE_PROJECTS_KEY);
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error("Erro ao ler projetos do localStorage:", e);
+    }
+  }
+
   return initialProjects;
+}
+
+// Helper: Save new Project
+export async function saveProject(project: Project): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("projects").insert([project]);
+    } catch (err) {
+      console.error("Erro ao salvar projeto no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getProjects();
+      const updated = [project, ...current.filter(p => p.id !== project.id)];
+      localStorage.setItem(STORAGE_PROJECTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao salvar no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Update existing Project
+export async function updateProject(project: Project): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("projects").update(project).eq("id", project.id);
+    } catch (err) {
+      console.error("Erro ao atualizar projeto no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getProjects();
+      const updated = current.map(p => p.id === project.id ? { ...p, ...project } : p);
+      localStorage.setItem(STORAGE_PROJECTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao atualizar no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Delete Project
+export async function deleteProject(id: string): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("projects").delete().eq("id", id);
+    } catch (err) {
+      console.error("Erro ao excluir projeto no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getProjects();
+      const updated = current.filter(p => p.id !== id);
+      localStorage.setItem(STORAGE_PROJECTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao excluir do localStorage:", e);
+    }
+  }
+}
+
+// Helper: Reset Projects to seed data
+export function resetProjectsToDefault(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(STORAGE_PROJECTS_KEY);
+    dispatchUpdate();
+  }
 }
 
 // Helper: Fetch Certificates
@@ -57,7 +156,96 @@ export async function getCertificates(): Promise<Certificate[]> {
       // fallback
     }
   }
+
+  if (typeof window !== "undefined") {
+    try {
+      const local = localStorage.getItem(STORAGE_CERTS_KEY);
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error("Erro ao ler certificados do localStorage:", e);
+    }
+  }
+
   return initialCertificates;
+}
+
+// Helper: Save Certificate
+export async function saveCertificate(cert: Certificate): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("certificates").insert([cert]);
+    } catch (err) {
+      console.error("Erro ao salvar certificado no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getCertificates();
+      const updated = [cert, ...current.filter(c => c.id !== cert.id)];
+      localStorage.setItem(STORAGE_CERTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao salvar certificado no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Update Certificate
+export async function updateCertificate(cert: Certificate): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("certificates").update(cert).eq("id", cert.id);
+    } catch (err) {
+      console.error("Erro ao atualizar certificado no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getCertificates();
+      const updated = current.map(c => c.id === cert.id ? { ...c, ...cert } : c);
+      localStorage.setItem(STORAGE_CERTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao atualizar certificado no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Delete Certificate
+export async function deleteCertificate(id: string): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("certificates").delete().eq("id", id);
+    } catch (err) {
+      console.error("Erro ao excluir certificado no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getCertificates();
+      const updated = current.filter(c => c.id !== id);
+      localStorage.setItem(STORAGE_CERTS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao excluir certificado do localStorage:", e);
+    }
+  }
+}
+
+// Helper: Reset Certificates to seed data
+export function resetCertificatesToDefault(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(STORAGE_CERTS_KEY);
+    dispatchUpdate();
+  }
 }
 
 // Helper: Fetch Skills

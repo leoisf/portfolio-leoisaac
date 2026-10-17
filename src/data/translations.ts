@@ -18,7 +18,7 @@ export const translations = {
     hero: {
       availability: "Disponível para projetos & desafios de Data, IA & TI",
       greeting: "Olá, eu sou o",
-      headline: "Full-Stack Developer (Embraer) | Pós em Ciência de Dados & BCC (UFOP, Conceito A) | Agilista SAFe® 6 | +22 Anos de Carreira em TI.",
+      headline: "Desenvolvedor Full-Stack na Embraer (via AI/R), pós-graduando em Ciência de Dados na UFOP e agilista SAFe® 6. Mais de 20 anos na estrada da tecnologia — criando software resiliente, simplificando processos e unindo engenharia, dados e negócios.",
       yearsExperience: "22+ Anos em TI",
       certifiedSafe: "Certified SAFe® 6 Agilist",
       impactMetric: "+7.000 Pessoas Impactadas",
@@ -32,7 +32,7 @@ export const translations = {
     },
     about: {
       tag: "// Trajetória & Experiência",
-      title: "Mais de 2 décadas transformando tecnologia, dados e inovação em impacto real",
+      title: "Duas décadas transformando tecnologia, dados e processos em impacto real",
       expandAll: "Expandir todos os detalhes",
       collapseAll: "Recolher todos",
       viewDetails: "Ver detalhes",
@@ -199,20 +199,34 @@ export const translations = {
       }
     },
     projects: {
-      tag: "// Portfólio & Entregas",
+      tag: "// Portfólio, Git & Entregas",
       title: "Principais Trabalhos & Projetos",
-      subtitle: "Soluções em ciência de dados, IA generativa, aplicações full stack e iniciativas públicas de tecnologia.",
+      subtitle: "Projetos em código aberto no GitHub, soluções corporativas de missão crítica em Data/IA e iniciativas de impacto social.",
+      gitHubBadge: "Engenharia de Software & Git Hub",
+      gitHubProfileCta: "Explorar Repositórios no GitHub",
+      terminalStatus: "git status: active • repositórios com branch main sincronizados",
       categories: {
         all: "Todos",
+        github: "Repositórios Git",
         data_ai: "Data & IA",
         fullstack: "Full Stack",
         social: "Social / Inclusão"
       },
       viewDetails: "Ver detalhes",
+      badges: {
+        public: "Repositório Público",
+        enterprise: "Corporativo / Privado",
+        social: "Impacto Social & Público"
+      },
+      highlights: "Destaques Técnicos & Entregas",
       aboutProject: "Sobre o Projeto",
       techUsed: "Tecnologias Utilizadas",
-      liveProject: "Acessar Projeto",
-      githubRepo: "Ver Código no GitHub"
+      liveProject: "Acessar Projeto Online",
+      githubRepo: "Ver Código no GitHub",
+      copyClone: "Copiar git clone",
+      copied: "Comando copiado!",
+      viewSocialHistory: "Ver Ações Sociais",
+      viewClipping: "Ver Clipping na Imprensa"
     },
     clipping: {
       tag: "Imprensa & Registro Histórico",
@@ -238,8 +252,15 @@ export const translations = {
     },
     certificates: {
       tag: "// Formação Contínua & Conquistas",
-      title: "Certificados & Especializações",
-      subtitle: "Clique em qualquer certificado para visualizá-lo em alta resolução com sua documentação original.",
+      title: "Certificações & Credenciais",
+      subtitle: "Reconhecimento oficial em metodologias ágeis em escala, inteligência artificial generativa, engenharia em nuvem e ciência de dados.",
+      featuredTag: "Credenciais de Alto Impacto",
+      featuredTitle: "Certificações de Peso & Credenciais Verificadas",
+      featuredSubtitle: "Emitidas por instituições globais de referência como Scaled Agile (SAFe®), AWS, UFOP e AI/R.",
+      verifiedBadge: "Credencial Oficial Verificada",
+      statsTotal: "+40 Certificações",
+      statsIssuers: "Scaled Agile, AWS & UFOP",
+      statsFocus: "Agilidade, IA & Nuvem",
       categories: {
         all: "Todos",
         data_ai: "Data Science & IA",
@@ -248,9 +269,10 @@ export const translations = {
         dev: "Desenvolvimento",
         social: "Inclusão Digital & Social"
       },
-      validateBtn: "Validar Certificado",
+      validateBtn: "Validar Credencial",
+      viewCertificateBtn: "Ver Certificado",
       issuer: "Emissor",
-      viewAll: "Visualizar todos os certificados",
+      viewAll: "Visualizar acervo completo",
       viewMore: "Visualizar mais certificados",
       showLess: "Mostrar menos"
     },
@@ -296,9 +318,9 @@ export const translations = {
       role: "Data & AI | Full Stack"
     },
     hero: {
-      availability: "Available for Data, AI & IT projects",
+      availability: "Available for Data, AI & Engineering challenges",
       greeting: "Hello, I'm",
-      headline: "Full-Stack Developer (Embraer) | Data Science Postgrad & B.S. (UFOP, Grade A) | SAFe® 6 Agilist | 22+ Years of Career in IT.",
+      headline: "Full-Stack Developer at Embraer (via AI/R), Data Science postgrad at UFOP, and certified SAFe® 6 Agilist. 20+ years in technology — building resilient software, streamlining architectures, and bridging engineering, data, and business.",
       yearsExperience: "22+ Years in IT",
       certifiedSafe: "Certified SAFe® 6 Agilist",
       impactMetric: "+7,000+ People Impacted",
@@ -312,7 +334,7 @@ export const translations = {
     },
     about: {
       tag: "// Trajectory & Experience",
-      title: "Over 2 decades transforming technology, data, and innovation into real impact",
+      title: "Two decades transforming technology, data, and processes into real impact",
       expandAll: "Expand all details",
       collapseAll: "Collapse all",
       viewDetails: "View details",
@@ -479,20 +501,34 @@ export const translations = {
       }
     },
     projects: {
-      tag: "// Portfolio & Deliveries",
+      tag: "// Portfolio, Git & Deliveries",
       title: "Key Works & Projects",
-      subtitle: "Data science pipelines, generative AI solutions, full-stack web applications, and public technology initiatives.",
+      subtitle: "Open-source projects on GitHub, mission-critical enterprise solutions in Data/AI, and digital inclusion initiatives.",
+      gitHubBadge: "Software Engineering & Git Hub",
+      gitHubProfileCta: "Explore Repositories on GitHub",
+      terminalStatus: "git status: active • repositories on main branch up to date",
       categories: {
         all: "All",
+        github: "Git Repositories",
         data_ai: "Data & AI",
         fullstack: "Full Stack",
         social: "Social / Inclusion"
       },
       viewDetails: "View details",
+      badges: {
+        public: "Public Repository",
+        enterprise: "Enterprise / Private",
+        social: "Social & Public Initiative"
+      },
+      highlights: "Technical Highlights & Deliverables",
       aboutProject: "About the Project",
       techUsed: "Technologies Used",
       liveProject: "Open Live Demo",
-      githubRepo: "View Code on GitHub"
+      githubRepo: "View Code on GitHub",
+      copyClone: "Copy git clone",
+      copied: "Command copied!",
+      viewSocialHistory: "View Social Initiatives",
+      viewClipping: "View Press Coverage"
     },
     clipping: {
       tag: "Press & Historical Records",
@@ -518,8 +554,15 @@ export const translations = {
     },
     certificates: {
       tag: "// Lifelong Learning & Achievements",
-      title: "Certificates & Specializations",
-      subtitle: "Click on any certificate to view it in high resolution with original documentation.",
+      title: "Certificates & Credentials",
+      subtitle: "Official recognition across enterprise agile frameworks, generative AI, cloud architecture, and data science.",
+      featuredTag: "High-Impact Credentials",
+      featuredTitle: "Industry-Standard Certifications & Verified Credentials",
+      featuredSubtitle: "Issued by leading global institutions including Scaled Agile (SAFe®), AWS, UFOP, and AI/R.",
+      verifiedBadge: "Verified Official Credential",
+      statsTotal: "+40 Certificates",
+      statsIssuers: "Scaled Agile, AWS & UFOP",
+      statsFocus: "Agile, AI & Cloud",
       categories: {
         all: "All",
         data_ai: "Data Science & AI",
@@ -529,8 +572,9 @@ export const translations = {
         social: "Digital & Social Inclusion"
       },
       validateBtn: "Verify Credential",
+      viewCertificateBtn: "View Certificate",
       issuer: "Issuer",
-      viewAll: "View all certificates",
+      viewAll: "View full collection",
       viewMore: "View more certificates",
       showLess: "Show less"
     },

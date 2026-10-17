@@ -77,6 +77,18 @@ create table if not exists social_initiatives (
 );
 
 -- 6. TABELA DE MENSAGENS DE CONTATO
+-- 6. TABELA DE CLIPPINGS / MATÉRIAS
+create table if not exists clippings (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  source text not null,
+  date text,
+  image_url text not null,
+  category text default 'Telecentros',
+  display_order int default 0
+);
+
+-- 7. TABELA DE MENSAGENS DE CONTATO
 create table if not exists contact_messages (
   id uuid primary key default gen_random_uuid(),
   name text not null,
@@ -97,6 +109,7 @@ alter table projects enable row level security;
 alter table certificates enable row level security;
 alter table skills enable row level security;
 alter table social_initiatives enable row level security;
+alter table clippings enable row level security;
 alter table contact_messages enable row level security;
 
 -- Leitura pública
@@ -105,6 +118,7 @@ create policy "Permitir leitura pública em projetos" on projects for select usi
 create policy "Permitir leitura pública em certificados" on certificates for select using (true);
 create policy "Permitir leitura pública em skills" on skills for select using (true);
 create policy "Permitir leitura pública em iniciativas sociais" on social_initiatives for select using (true);
+create policy "Permitir leitura pública em clippings" on clippings for select using (true);
 
 -- Permitir qualquer pessoa enviar mensagem de contato
 create policy "Permitir envio de mensagem de contato" on contact_messages for insert with check (true);
@@ -115,6 +129,7 @@ create policy "Admin edita projetos" on projects for all using (auth.role() = 'a
 create policy "Admin edita certificados" on certificates for all using (auth.role() = 'authenticated');
 create policy "Admin edita skills" on skills for all using (auth.role() = 'authenticated');
 create policy "Admin edita iniciativas sociais" on social_initiatives for all using (auth.role() = 'authenticated');
+create policy "Admin edita clippings" on clippings for all using (auth.role() = 'authenticated');
 create policy "Admin gerencia mensagens" on contact_messages for select using (auth.role() = 'authenticated');
 
 -- ========================================================

@@ -3,8 +3,8 @@ import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, Clippin
 export const initialProfile: ProfileSettings = {
   id: "profile-leo-1",
   full_name: "Leonardo Isaac",
-  headline: "Full-Stack Developer (Embraer) | Ciência de Dados & IA | SAFe® 6 Agilist",
-  bio: "Bacharel em Ciência da Computação e Pós-Graduando em Ciência de Dados pela UFOP (Conceito A), com mais de 22 anos de sólida atuação em Tecnologia da Informação. Atualmente atuando como Full-Stack Developer na AI/R Company alocado na Embraer (Squad de Sustentação AMS Comercial), sustentando sistemas web com Java, Kotlin, React, AWS Lambda/Aurora e Datadog com abordagem API First. Combina liderança técnica ágil (Certified SAFe® 6 Agilist) com transição ativa para Ciência de Dados e IA Generativa.",
+  headline: "Full-Stack Developer (Embraer) | Ciência de Dados & IA (UFOP) | Certified SAFe® 6 Agilist",
+  bio: "Desenvolvedor Full-Stack na AI/R Company, atualmente alocado na Embraer na squad de sustentação de sistemas críticos da aviação comercial. Tenho mais de 20 anos de trajetória em tecnologia — comecei na infraestrutura e suporte comunitário, liderei entregas ágeis em larga escala na Vivo B2B (Certified SAFe® 6 Agilist) e hoje concilio desenvolvimento web moderno (Java, Kotlin, React, AWS) com pós-graduação em Ciência de Dados na UFOP. Foco em código limpo, arquitetura sólida e soluções que realmente funcionam em produção.",
   years_experience: 22,
   people_impacted: "+7.000",
   cv_url: "/docs/curriculum_LEONARDO_ISAAC.pdf",
@@ -73,34 +73,106 @@ export const initialProjects: Project[] = [
     technologies: ["Java", "Kotlin", "React", "AWS Aurora", "AWS Lambda", "Datadog", "PostgreSQL", "AWS Secrets Manager", "API First", "GitHub Copilot", "Kiro"],
     image_url: "/images/projects/system_e.jpg",
     category: "Full Stack",
+    repo_name: "Embraer / Squad AMS Comercial",
+    repo_type: "enterprise",
+    primary_language: "Java / Kotlin",
+    default_branch: "production",
+    highlights: [
+      "Sustentação de sistemas web críticos de aviação comercial com arquitetura API First",
+      "Microsserviços resilientes em Java e Kotlin com AWS Aurora e funções serverless Lambda",
+      "Observabilidade APM em tempo real com Datadog e suporte de IA generativa (GitHub Copilot/Kiro)"
+    ],
     is_featured: true,
     display_order: 1
-  },
-  {
-    id: "proj-data-1",
-    title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
-    slug: "pipeline-ciencia-dados-ufop",
-    short_description: "Desenvolvimento de pipelines analíticos com Python (Pandas, Scikit-learn, Seaborn) para recuperação de informação, redução de dimensão (PCA) e estatística descritiva.",
-    full_description: "Projeto acadêmico e prático desenvolvido no programa de Pós-Graduação em Ciência de Dados da UFOP (Conceito A). Inclui pré-processamento avançado de dados heterogêneos, engenharia de atributos, redução dimensional com PCA e t-SNE, treinamento de classificadores e visualizações analíticas de alta interpretabilidade.",
-    technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "Matplotlib", "Seaborn", "Jupyter"],
-    image_url: "/images/projects/system.jpg",
-    category: "Data & IA",
-    is_featured: true,
-    display_order: 2
   },
   {
     id: "proj-1",
     title: "Portfólio Web Moderno & Painel Dinâmico",
     slug: "portfolio-web-moderno",
-    short_description: "Arquitetura Jamstack de alta performance com Next.js 15, TypeScript, Tailwind CSS, Supabase (PostgreSQL + Auth + Storage) e deploy na Cloudflare.",
-    full_description: "Refatoração completa do portfólio pessoal migrado de WordPress para uma arquitetura moderna sem custos de infraestrutura. Inclui suporte nativo bilíngue (Português/Inglês), autenticação segura, painel administrativo dinâmico para uploads de projetos e certificados, suporte nativo a temas Dark/Light e pontuação 95+ no Google Lighthouse.",
+    short_description: "Arquitetura Jamstack de alta performance com Next.js 16, TypeScript, Tailwind CSS, Supabase (PostgreSQL + Auth + Storage) e deploy Cloudflare.",
+    full_description: "Refatoração completa do ecossistema do portfólio pessoal migrado de WordPress para uma arquitetura moderna sem custos fixos de servidor. Inclui suporte nativo bilíngue (Português/Inglês), autenticação segura, painel administrativo dinâmico com Supabase, temas Dark/Light nativos e pontuação 95+ no Google Lighthouse.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Cloudflare Pages"],
     image_url: "/images/projects/system.jpg",
+    category: "Full Stack",
+    repo_name: "leoisf/portfolio-leoisaac",
+    repo_type: "public",
+    primary_language: "TypeScript",
+    default_branch: "master",
+    highlights: [
+      "Arquitetura Jamstack Next.js 16 com exportação estática ultra-veloz na Cloudflare",
+      "Integração híbrida Supabase para persistência de dados, autenticação e storage",
+      "Design responsivo com tema Dark/Light, internacionalização (i18n) e SEO técnico"
+    ],
     github_url: "https://github.com/leoisf/portfolio-leoisaac",
     live_url: "https://leoisaac.com.br",
-    category: "Full Stack",
+    is_featured: true,
+    display_order: 2
+  },
+  {
+    id: "proj-data-1",
+    title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
+    slug: "pipeline-ciencia-dados-ufop",
+    short_description: "Pipelines analíticos com Python (Pandas, Scikit-learn, Seaborn) para recuperação de informação, redução dimensional (PCA) e modelagem descritiva.",
+    full_description: "Projeto acadêmico e técnico desenvolvido no programa de Pós-Graduação em Ciência de Dados da UFOP (Conceito A). Abrange pré-processamento avançado de dados heterogêneos, engenharia de atributos, redução dimensional com PCA e t-SNE, treinamento de classificadores supervisionados e visualizações interpretáveis em Jupyter Notebooks.",
+    technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "t-SNE", "Matplotlib", "Seaborn", "Jupyter"],
+    image_url: "/images/projects/system.jpg",
+    category: "Data & IA",
+    repo_name: "leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
+    repo_type: "public",
+    primary_language: "Python",
+    default_branch: "main",
+    highlights: [
+      "Pipelines analíticos com Pandas, NumPy, Scikit-learn e visualizações interpretáveis",
+      "Redução dimensional avançada com PCA e t-SNE preservando variância estatística",
+      "Notebooks reprodutíveis focados em recuperação de informação e estatística descritiva"
+    ],
+    github_url: "https://github.com/leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
     is_featured: true,
     display_order: 3
+  },
+  {
+    id: "proj-turguides",
+    title: "TurGuides - Plataforma Conectando Guias a Turistas",
+    slug: "turguides-app",
+    short_description: "Aplicativo mobile desenvolvido em Dart/Flutter para intermediação direta entre guias locais e turistas com geolocalização e roteiros.",
+    full_description: "Solução para turismo inteligente com geolocalização de atrativos históricos e conexão entre guias credenciados e visitantes. Construído com arquitetura reativa em Flutter/Dart, integração de APIs de mapas, gerenciamento de estado e interface intuitiva.",
+    technologies: ["Dart", "Flutter", "Mobile", "REST API", "Geolocalização", "Git"],
+    image_url: "/images/projects/system.jpg",
+    category: "Full Stack",
+    repo_name: "leoisf/TurGuides",
+    repo_type: "public",
+    primary_language: "Dart",
+    default_branch: "main",
+    highlights: [
+      "Aplicativo móvel multiplataforma com interfaces reativas em Dart e Flutter",
+      "Mapeamento de rotas turísticas e conexão dinâmica entre guias e viajantes",
+      "Código aberto disponibilizado sob licença MIT no GitHub"
+    ],
+    github_url: "https://github.com/leoisf/TurGuides",
+    is_featured: true,
+    display_order: 4
+  },
+  {
+    id: "proj-api-crud",
+    title: "API RESTful Modular com Node.js & TypeScript",
+    slug: "api-crud-typescript-nodejs",
+    short_description: "Serviço de backend em TypeScript com arquitetura limpa em camadas, validações rigorosas, rotas REST e conteinerização Docker.",
+    full_description: "API desenvolvida aplicando conceitos modernos de tipagem estrita com TypeScript, separação de responsabilidades em camadas de serviço e controlador, tratamento uniforme de exceções e preparação para orquestração em contêineres Docker.",
+    technologies: ["TypeScript", "Node.js", "Express", "Docker", "REST API", "Git"],
+    image_url: "/images/projects/system_e.jpg",
+    category: "Full Stack",
+    repo_name: "leoisf/api-crud-typescript-nodejs",
+    repo_type: "public",
+    primary_language: "TypeScript",
+    default_branch: "master",
+    highlights: [
+      "Arquitetura em camadas com tipagem rigorosa em TypeScript e Express",
+      "Tratamento robusto de requisições RESTful e padronização de respostas JSON",
+      "Ambiente padronizado pronto para execução e testes via Docker container"
+    ],
+    github_url: "https://github.com/leoisf/api-crud-typescript-nodejs",
+    is_featured: true,
+    display_order: 5
   },
   {
     id: "proj-compass",
@@ -111,20 +183,39 @@ export const initialProjects: Project[] = [
     technologies: ["SAFe® 6 Agilist", "Salesforce CRM", "Microsoft Azure", "Jira", "Kiro AI", "Databricks"],
     image_url: "/images/projects/system_e.jpg",
     category: "Full Stack",
+    repo_name: "Vivo Fênix B2B / AI/R",
+    repo_type: "enterprise",
+    primary_language: "Salesforce / SAFe",
+    default_branch: "release",
+    highlights: [
+      "Governança técnica ágil em entregas contínuas em larga escala com SAFe® 6 Agilist",
+      "Alinhamento em ecossistema empresarial Salesforce CRM e nuvem Microsoft Azure",
+      "Adoção de esteiras com inteligência artificial generativa e Agentic AI para eficiência"
+    ],
     is_featured: true,
-    display_order: 4
+    display_order: 6
   },
   {
     id: "proj-2",
     title: "Telecentros Comunitários - Inclusão Digital",
     slug: "telecentros-comunitarios",
-    short_description: "Coordenação de projeto público de inclusão digital que atendeu mais de 7.000 cidadãos com acesso gratuito à internet e cursos profissionalizantes.",
+    short_description: "Coordenação de projeto público pioneiro de inclusão digital que atendeu mais de 7.000 cidadãos com acesso gratuito à internet e cursos.",
     full_description: "Iniciativa realizada em parceria com a Câmara Municipal de Ouro Preto. Atuação na coordenação geral, capacitação técnica de instrutores, gestão da infraestrutura de redes e laboratórios de informática, além da aplicação de metodologias educacionais inclusivas por mais de 15 anos.",
-    technologies: ["Gestão de Projetos", "Infraestrutura de Redes", "LTSP", "Capacitação", "Inclusão Digital"],
+    technologies: ["Gestão de Projetos", "Infraestrutura de Redes", "LTSP", "Linux", "Capacitação", "Inclusão Digital"],
     image_url: "/images/projects/tc.jpeg",
     category: "Social / Inclusão",
+    repo_name: "Câmara Municipal de Ouro Preto / Telecentros",
+    repo_type: "social",
+    primary_language: "Linux / LTSP",
+    default_branch: "distritos",
+    clipping_anchor: "#clipping",
+    highlights: [
+      "Mais de 7.000 cidadãos certificados em inclusão digital e tecnologias comunitárias",
+      "Implantação de redes públicas baseadas em LTSP (Linux Terminal Server) e software livre",
+      "Mais de 15 anos de sustentação, com ampla repercussão histórica registrada na imprensa"
+    ],
     is_featured: true,
-    display_order: 5
+    display_order: 7
   },
   {
     id: "proj-3",
@@ -132,11 +223,21 @@ export const initialProjects: Project[] = [
     slug: "projeto-escola-digital",
     short_description: "Revitalização e automação de laboratórios de informática em escolas municipais para viabilizar novas ferramentas de aprendizagem.",
     full_description: "Desenvolvido na Prefeitura de Ouro Preto visando reduzir os impactos da era da informação nas instituições municipais. Implantação de cursos, recuperação de parques de máquinas parados ou subutilizados e suporte técnico a educadores.",
-    technologies: ["Infraestrutura", "Hardware", "Linux / Windows", "Treinamento Técnico"],
+    technologies: ["Infraestrutura", "Hardware", "Linux / Windows", "Treinamento Técnico", "Inclusão Digital"],
     image_url: "/images/projects/ED.png",
     category: "Social / Inclusão",
+    repo_name: "Secretaria Municipal de Educação / PMOP",
+    repo_type: "social",
+    primary_language: "Hardware & Redes",
+    default_branch: "escolas",
+    clipping_anchor: "#clipping",
+    highlights: [
+      "Revitalização de parques de computadores e laboratórios inoperantes na rede municipal",
+      "Formação técnica continuada para servidores e corpo docente das escolas públicas",
+      "Redução da exclusão digital e modernização dos ambientes pedagógicos comunitários"
+    ],
     is_featured: true,
-    display_order: 6
+    display_order: 8
   }
 ];
 
@@ -183,7 +284,8 @@ export const initialCertificates: Certificate[] = [
     issue_date: "2026-07",
     image_url: "/images/certificates/AIR_Certified_Kiro_Agentic_AI.png",
     category: "Data & IA",
-    display_order: 1
+    display_order: 1,
+    is_featured: true
   },
   {
     id: "cert-reasoning",
@@ -192,7 +294,8 @@ export const initialCertificates: Certificate[] = [
     issue_date: "2026-07",
     image_url: "/images/certificates/AIR_AI_Cockpit_Reasoning_Certified.png",
     category: "Data & IA",
-    display_order: 2
+    display_order: 2,
+    is_featured: true
   },
   {
     id: "cert-kiro-dev",
@@ -210,7 +313,8 @@ export const initialCertificates: Certificate[] = [
     issue_date: "2024",
     image_url: "/images/certificates/AWS_Prompt_Engineering_Generative_AI.png",
     category: "Data & IA",
-    display_order: 4
+    display_order: 4,
+    is_featured: true
   },
   {
     id: "cert-aws-q-fund",
@@ -219,7 +323,8 @@ export const initialCertificates: Certificate[] = [
     issue_date: "2024",
     image_url: "/images/certificates/AWS_Amazon_Q_Developer_Fundamentals.png",
     category: "Data & IA",
-    display_order: 5
+    display_order: 5,
+    is_featured: true
   },
 
   // === METODOLOGIAS ÁGEIS ===
@@ -231,7 +336,8 @@ export const initialCertificates: Certificate[] = [
     credential_url: "https://www.credly.com",
     image_url: "/images/certificates/Certified_SAFe_6_Agilist.png",
     category: "Metodologias Ágeis",
-    display_order: 6
+    display_order: 6,
+    is_featured: true
   },
   {
     id: "cert-safe-popm",
@@ -240,7 +346,8 @@ export const initialCertificates: Certificate[] = [
     issue_date: "2025",
     image_url: "/images/certificates/SAFe_POPM.png",
     category: "Metodologias Ágeis",
-    display_order: 7
+    display_order: 7,
+    is_featured: true
   },
   {
     id: "cert-gov-mg-projetos",

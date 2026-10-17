@@ -2,11 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { initialProjects, initialCertificates, initialSkills } from "@/data/initialData";
-import { FolderGit2, Award, Layers, Plus, ExternalLink, ShieldCheck, Database } from "lucide-react";
-import { isSupabaseConfigured } from "@/lib/supabase/client";
+import { initialProjects, initialCertificates, initialSkills, initialClippings } from "@/data/initialData";
+import { FolderGit2, Award, Layers, Plus, ExternalLink, ShieldCheck, Database, Newspaper } from "lucide-react";
+import { isSupabaseConfigured, getProjects, getCertificates, getClippings } from "@/lib/supabase/client";
 
 export default function AdminDashboardPage() {
+  const [projectCount, setProjectCount] = useState(initialProjects.length);
+  const [certCount, setCertCount] = useState(initialCertificates.length);
+  const [clippingCount, setClippingCount] = useState(initialClippings.length);
+
+  const loadStats = async () => {
+    try {
+      const [p, c, cl] = await Promise.all([
+        getProjects(),
+        getCertificates(),
+        getClippings()
+      ]);
+      setProjectCount(p.length);
+      setCertCount(c.length);
+      setClippingCount(cl.length);
+    } catch (e) {
+      console.error("Erro ao carregar estatísticas:", e);
+    }
+  };
+
+  useEffect(() => {
+    loadStats();
+    window.addEventListener("portfolio_data_changed", loadStats);
+    return () => window.removeEventListener("portfolio_data_changed", loadStats);
+  }, []);
+
   return (
     <div className="space-y-8 max-w-6xl">
       
@@ -45,24 +70,24 @@ export default function AdminDashboardPage() {
           <Database className="w-5 h-5 text-blue-500" />
           <div>
             <h4 className="text-xs font-semibold text-zinc-900 dark:text-white">
-              Status do Banco de Dados
+              Status do Armazenamento
             </h4>
             <p className="text-xs text-zinc-500">
               {isSupabaseConfigured
-                ? "Conectado ao Supabase PostgreSQL com sucesso!"
-                : "Modo Local Ativo (Dados de seed em memória/localStorage prontos para sincronizar)."}
+                ? "Conectado ao Supabase PostgreSQL com persistência em nuvem ativa!"
+                : "Modo Local Dinâmico Ativo (Persistência reativa via LocalStorage com sincronização instantânea na Home)."}
             </p>
           </div>
         </div>
         <span className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold ${
-          isSupabaseConfigured ? "bg-emerald-500/10 text-emerald-500" : "bg-amber-500/10 text-amber-500"
+          isSupabaseConfigured ? "bg-emerald-500/10 text-emerald-500" : "bg-blue-500/10 text-blue-500"
         }`}>
-          {isSupabaseConfigured ? "ONLINE" : "LOCAL READY"}
+          {isSupabaseConfigured ? "SUPABASE ONLINE" : "LOCAL STORAGE DYNAMIC"}
         </span>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-mono text-zinc-500">Projetos Ativos</span>
@@ -71,7 +96,7 @@ export default function AdminDashboardPage() {
             </div>
           </div>
           <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
-            {initialProjects.length}
+            {projectCount}
           </span>
           <div className="mt-3">
             <Link href="/admin/projetos" className="text-xs text-blue-600 dark:text-cyan-400 font-semibold hover:underline">
@@ -82,18 +107,33 @@ export default function AdminDashboardPage() {
 
         <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono text-zinc-500">Certificados Cadastrados</span>
+            <span className="text-xs font-mono text-zinc-500">Certificados</span>
             <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center">
               <Award className="w-4 h-4" />
             </div>
           </div>
           <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
-            {initialCertificates.length}
+            {certCount}
           </span>
           <div className="mt-3">
             <Link href="/admin/certificados" className="text-xs text-blue-600 dark:text-cyan-400 font-semibold hover:underline">
               Gerenciar certificados →
             </Link>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono text-zinc-500">Matérias / Clipping</span>
+            <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+              <Newspaper className="w-4 h-4" />
+            </div>
+          </div>
+          <span className="text-3xl font-extrabold text-zinc-900 dark:text-white">
+            {clippingCount}
+          </span>
+          <div className="mt-3">
+            <span className="text-xs text-zinc-400">Telecentros & Inclusão</span>
           </div>
         </div>
 
@@ -108,7 +148,7 @@ export default function AdminDashboardPage() {
             {initialSkills.length}
           </span>
           <div className="mt-3">
-            <span className="text-xs text-zinc-400">Frontend, Backend, Agile, DevOps</span>
+            <span className="text-xs text-zinc-400">Frontend, Backend, IA, Cloud</span>
           </div>
         </div>
       </div>

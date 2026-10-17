@@ -42,29 +42,35 @@ export default function HomePage() {
   useEffect(() => {
     async function loadAllData() {
       try {
-        if (isSupabaseConfigured) {
-          const [p, projs, certs, sks, inits, clips] = await Promise.all([
-            getProfile(),
-            getProjects(),
-            getCertificates(),
-            getSkills(),
-            getSocialInitiatives(),
-            getClippings()
-          ]);
-          setProfile(p);
-          setProjects(projs);
-          setCertificates(certs);
-          setSkills(sks);
-          setInitiatives(inits);
-          setClippings(clips);
-        }
+        const [p, projs, certs, sks, inits, clips] = await Promise.all([
+          getProfile(),
+          getProjects(),
+          getCertificates(),
+          getSkills(),
+          getSocialInitiatives(),
+          getClippings()
+        ]);
+        setProfile(p);
+        setProjects(projs);
+        setCertificates(certs);
+        setSkills(sks);
+        setInitiatives(inits);
+        setClippings(clips);
       } catch (err) {
-        console.error("Error loading data from Supabase:", err);
+        console.error("Error loading portfolio data:", err);
       } finally {
         setLoading(false);
       }
     }
+
     loadAllData();
+
+    window.addEventListener("portfolio_data_changed", loadAllData);
+    window.addEventListener("storage", loadAllData);
+    return () => {
+      window.removeEventListener("portfolio_data_changed", loadAllData);
+      window.removeEventListener("storage", loadAllData);
+    };
   }, []);
 
   return (
