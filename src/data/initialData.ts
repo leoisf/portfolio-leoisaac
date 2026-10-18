@@ -13,7 +13,7 @@ export const initialProfile: ProfileSettings = {
   email: "contato@leoisaac.com.br",
   linkedin: "https://www.linkedin.com/in/leonardo-isaac-silva-flores-9b66236b",
   github: "https://github.com/leoisf",
-  location: "Ouro Preto - MG / São José dos Campos - SP, Brasil"
+  location: "Ouro Preto - MG, Brasil"
 };
 
 export const initialSkills: Skill[] = [
@@ -69,7 +69,7 @@ export const initialProjects: Project[] = [
     title: "Sustentação AMS & Engenharia Web Embraer (AI/R)",
     slug: "sustentacao-ams-embraer",
     short_description: "Atuação como Full-Stack Developer na Squad de Sustentação AMS Comercial da Embraer: sistemas web com Java, Kotlin, React, API First e Cloud AWS.",
-    full_description: "Atuação técnica como Desenvolvedor Web Full Stack na sustentação contínua de sistemas web de missão crítica para o segmento de aviação comercial da Embraer (São José dos Campos - SP). Aplicação de arquitetura API First, microsserviços em Java e Kotlin, interfaces reativas em React, banco de dados AWS Aurora / PostgreSQL, gerenciamento seguro de credenciais com AWS Secrets Manager, execuções serverless com AWS Lambda, observabilidade e monitoramento em tempo real com Datadog, além de tutoriais técnicos e documentações de alta qualidade com auxílio de GitHub Copilot e Kiro.",
+    full_description: "Atuação técnica remota como Desenvolvedor Web Full Stack na sustentação contínua de sistemas web de missão crítica para o segmento de aviação comercial da Embraer (sede em São José dos Campos - SP). Aplicação de arquitetura API First, microsserviços em Java e Kotlin, interfaces reativas em React, banco de dados AWS Aurora / PostgreSQL, gerenciamento seguro de credenciais com AWS Secrets Manager, execuções serverless com AWS Lambda, observabilidade e monitoramento em tempo real com Datadog, além de tutoriais técnicos e documentações de alta qualidade com auxílio de GitHub Copilot e Kiro.",
     technologies: ["Java", "Kotlin", "React", "AWS Aurora", "AWS Lambda", "Datadog", "PostgreSQL", "AWS Secrets Manager", "API First", "GitHub Copilot", "Kiro"],
     image_url: "/images/projects/system_e.jpg",
     category: "Full Stack",

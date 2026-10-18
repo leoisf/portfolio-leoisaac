@@ -169,9 +169,20 @@ export function HeroSection({ profile }: HeroSectionProps) {
                     <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white truncate mt-1">
                       {profile.full_name}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-mono truncate mt-0.5">
-                      {t.hero.aiHubAffiliation}
-                    </p>
+                    <div className="text-[11px] sm:text-xs font-mono mt-1 space-y-0.5 text-zinc-600 dark:text-zinc-400">
+                      <div className="flex items-center gap-1.5 leading-snug">
+                        <GraduationCap className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                        <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                          {t.hero.aiHubAffiliationLine1 || "UFOP (Pós em Ciência de Dados & BCC)"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 leading-snug">
+                        <Briefcase className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                        <span className="text-zinc-700 dark:text-zinc-300">
+                          {t.hero.aiHubAffiliationLine2 || "Embraer AMS Comercial (via AI/R)"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -239,7 +250,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   </span>
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
                     <MapPin className="w-3 h-3 text-rose-500" />
-                    <span>Ouro Preto • SJC</span>
+                    <span>{t.hero.location}</span>
                   </span>
                 </div>
 
