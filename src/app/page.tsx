@@ -10,8 +10,10 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SocialSection } from "@/components/sections/SocialSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
 import { ClippingSection } from "@/components/sections/ClippingSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { AdminFloatingBar } from "@/components/AdminFloatingBar";
+import { CvSelectorModal } from "@/components/ui/CvSelectorModal";
 import { 
   getProfile, 
   getProjects, 
@@ -19,6 +21,7 @@ import {
   getSkills, 
   getSocialInitiatives,
   getClippings,
+  getTestimonials,
   isSupabaseConfigured 
 } from "@/lib/supabase/client";
 import { 
@@ -27,9 +30,10 @@ import {
   initialCertificates, 
   initialSkills, 
   initialSocialInitiatives,
-  initialClippings 
+  initialClippings,
+  initialTestimonials
 } from "@/data/initialData";
-import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem } from "@/types/database";
+import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem, Testimonial } from "@/types/database";
 
 export default function HomePage() {
   const [profile, setProfile] = useState<ProfileSettings>(initialProfile);
@@ -38,18 +42,20 @@ export default function HomePage() {
   const [skills, setSkills] = useState<Skill[]>(initialSkills);
   const [initiatives, setInitiatives] = useState<SocialInitiative[]>(initialSocialInitiatives);
   const [clippings, setClippings] = useState<ClippingItem[]>(initialClippings);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(initialTestimonials);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadAllData() {
       try {
-        const [p, projs, certs, sks, inits, clips] = await Promise.all([
+        const [p, projs, certs, sks, inits, clips, tests] = await Promise.all([
           getProfile(),
           getProjects(),
           getCertificates(),
           getSkills(),
           getSocialInitiatives(),
-          getClippings()
+          getClippings(),
+          getTestimonials()
         ]);
         setProfile(p);
         setProjects(projs);
@@ -57,6 +63,7 @@ export default function HomePage() {
         setSkills(sks);
         setInitiatives(inits);
         setClippings(clips);
+        setTestimonials(tests);
       } catch (err) {
         console.error("Error loading portfolio data:", err);
       } finally {
@@ -86,10 +93,12 @@ export default function HomePage() {
         <ProjectsSection projects={projects} />
         <ClippingSection clippings={clippings} />
         <SocialSection initiatives={initiatives} />
+        <TestimonialsSection testimonials={testimonials} />
         <ContactSection profile={profile} />
       </main>
 
       <Footer />
+      <CvSelectorModal />
       <AdminFloatingBar />
     </div>
   );

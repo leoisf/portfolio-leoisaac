@@ -6,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
 import { Menu, X, Download, MessageSquare, History, ShieldCheck } from "lucide-react";
+import { openCvSelectorModal } from "@/components/ui/CvSelectorModal";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,6 +41,7 @@ export function Header() {
     { label: t.nav.projects, href: "#projetos" },
     { label: t.nav.clipping, href: "#clipping" },
     { label: t.nav.social, href: "#social" },
+    { label: t.nav.testimonials || "Depoimentos", href: "#depoimentos" },
   ];
 
   return (
@@ -116,14 +118,14 @@ export function Header() {
               <span className="w-2 h-2 rounded-full bg-emerald-500 absolute top-1 right-1 ring-2 ring-white dark:ring-zinc-950 animate-pulse" />
             )}
           </Link>
-          <a
-            href="/docs/curriculum_LEONARDO_ISAAC.pdf"
-            download
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors shadow-xs"
+          <button
+            type="button"
+            onClick={() => openCvSelectorModal()}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors shadow-xs cursor-pointer"
           >
             <Download className="w-3.5 h-3.5 text-blue-500" />
             <span>{t.nav.resume}</span>
-          </a>
+          </button>
           <a
             href="#contato"
             className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-600/20 hover:shadow-blue-600/30 transition-all duration-200"
@@ -187,13 +189,16 @@ export function Header() {
               )}
             </Link>
             <div className="pt-3 mt-2 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
-              <a
-                href="/docs/curriculum_LEONARDO_ISAAC.pdf"
-                download
-                className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200"
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openCvSelectorModal();
+                }}
+                className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 cursor-pointer"
               >
                 {t.nav.resume}
-              </a>
+              </button>
               <a
                 href="#contato"
                 onClick={() => setMobileMenuOpen(false)}

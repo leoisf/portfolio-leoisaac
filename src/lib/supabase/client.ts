@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import { initialProfile, initialProjects, initialCertificates, initialSkills, initialSocialInitiatives, initialClippings } from "@/data/initialData";
-import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem } from "@/types/database";
+import { initialProfile, initialProjects, initialCertificates, initialSkills, initialSocialInitiatives, initialClippings, initialTestimonials } from "@/data/initialData";
+import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem, Testimonial } from "@/types/database";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
@@ -19,6 +19,8 @@ export const supabase = isSupabaseConfigured
 const STORAGE_PROJECTS_KEY = "portfolio_projects_custom";
 const STORAGE_CERTS_KEY = "portfolio_certs_custom";
 const STORAGE_PROFILE_KEY = "portfolio_profile_custom";
+const STORAGE_TESTIMONIALS_KEY = "portfolio_testimonials_custom";
+
 
 function dispatchUpdate() {
   if (typeof window !== "undefined") {
@@ -336,3 +338,115 @@ export async function getClippings(): Promise<ClippingItem[]> {
   }
   return initialClippings;
 }
+
+// Helper: Fetch Approved Testimonials (Public)
+export async function getTestimonials(): Promise<Testimonial[]> {
+  const all = await getAllTestimonials();
+  return all.filter((item) => item.is_approved);
+}
+
+// Helper: Fetch All Testimonials (Admin & Internal)
+export async function getAllTestimonials(): Promise<Testimonial[]> {
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (!error && data && data.length > 0) return data as Testimonial[];
+    } catch {
+      // fallback
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const local = localStorage.getItem(STORAGE_TESTIMONIALS_KEY);
+      if (local) {
+        const parsed = JSON.parse(local);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error("Erro ao ler depoimentos do localStorage:", e);
+    }
+  }
+
+  return initialTestimonials;
+}
+
+// Helper: Submit / Save Testimonial
+export async function submitTestimonial(item: Testimonial): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("testimonials").insert([item]);
+    } catch (err) {
+      console.error("Erro ao salvar depoimento no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getAllTestimonials();
+      const updated = [item, ...current.filter((t) => t.id !== item.id)];
+      localStorage.setItem(STORAGE_TESTIMONIALS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao salvar depoimento no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Update Testimonial
+export async function updateTestimonial(item: Testimonial): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("testimonials").update(item).eq("id", item.id);
+    } catch (err) {
+      console.error("Erro ao atualizar depoimento no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getAllTestimonials();
+      const updated = current.map((t) => (t.id === item.id ? { ...t, ...item } : t));
+      localStorage.setItem(STORAGE_TESTIMONIALS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao atualizar depoimento no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Delete Testimonial
+export async function deleteTestimonial(id: string): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("testimonials").delete().eq("id", id);
+    } catch (err) {
+      console.error("Erro ao excluir depoimento no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      const current = await getAllTestimonials();
+      const updated = current.filter((t) => t.id !== id);
+      localStorage.setItem(STORAGE_TESTIMONIALS_KEY, JSON.stringify(updated));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao excluir depoimento do localStorage:", e);
+    }
+  }
+}
+
+// Helper: Reset Testimonials to seed data
+export function resetTestimonialsToDefault(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(STORAGE_TESTIMONIALS_KEY);
+    dispatchUpdate();
+  }
+}
+

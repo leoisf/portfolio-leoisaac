@@ -98,6 +98,21 @@ create table if not exists contact_messages (
   created_at timestamptz default now()
 );
 
+-- 8. TABELA DE DEPOIMENTOS / RECOMENDAÇÕES DE TRABALHO
+create table if not exists testimonials (
+  id text primary key,
+  name text not null,
+  role text not null,
+  company text,
+  relationship text not null default 'Colega de Equipe',
+  message text not null,
+  rating int default 5,
+  linkedin_url text,
+  is_approved boolean default true,
+  is_featured boolean default false,
+  created_at timestamptz default now()
+);
+
 -- ========================================================
 -- POLÍTICAS DE SEGURANÇA (ROW LEVEL SECURITY - RLS)
 -- Leitura pública para todos os visitantes
@@ -111,6 +126,7 @@ alter table skills enable row level security;
 alter table social_initiatives enable row level security;
 alter table clippings enable row level security;
 alter table contact_messages enable row level security;
+alter table testimonials enable row level security;
 
 -- Leitura pública
 create policy "Permitir leitura pública no perfil" on profile_settings for select using (true);
@@ -119,9 +135,11 @@ create policy "Permitir leitura pública em certificados" on certificates for se
 create policy "Permitir leitura pública em skills" on skills for select using (true);
 create policy "Permitir leitura pública em iniciativas sociais" on social_initiatives for select using (true);
 create policy "Permitir leitura pública em clippings" on clippings for select using (true);
+create policy "Permitir leitura pública em depoimentos" on testimonials for select using (true);
 
--- Permitir qualquer pessoa enviar mensagem de contato
+-- Permitir qualquer pessoa enviar mensagem de contato ou depoimento
 create policy "Permitir envio de mensagem de contato" on contact_messages for insert with check (true);
+create policy "Permitir envio de depoimento" on testimonials for insert with check (true);
 
 -- Escrita restrita ao usuário logado
 create policy "Admin edita perfil" on profile_settings for all using (auth.role() = 'authenticated');
@@ -131,6 +149,7 @@ create policy "Admin edita skills" on skills for all using (auth.role() = 'authe
 create policy "Admin edita iniciativas sociais" on social_initiatives for all using (auth.role() = 'authenticated');
 create policy "Admin edita clippings" on clippings for all using (auth.role() = 'authenticated');
 create policy "Admin gerencia mensagens" on contact_messages for select using (auth.role() = 'authenticated');
+create policy "Admin gerencia depoimentos" on testimonials for all using (auth.role() = 'authenticated');
 
 -- ========================================================
 -- BUCKETS DE ARMAZENAMENTO (STORAGE)

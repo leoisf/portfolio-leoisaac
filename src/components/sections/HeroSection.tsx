@@ -14,9 +14,12 @@ import {
   Briefcase, 
   MapPin,
   Brain,
-  Cpu
+  Cpu,
+  Globe
 } from "lucide-react";
 import { HeroConstellation } from "@/components/ui/HeroConstellation";
+import { openCvSelectorModal } from "@/components/ui/CvSelectorModal";
+
 
 interface HeroSectionProps {
   profile: ProfileSettings;
@@ -109,6 +112,15 @@ export function HeroSection({ profile }: HeroSectionProps) {
                 <span>{t.hero.btnProjects}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
+
+              <button
+                type="button"
+                onClick={() => openCvSelectorModal()}
+                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold rounded-2xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 shadow-xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+              >
+                <Download className="w-4 h-4 text-blue-500" />
+                <span>{t.hero.btnResume}</span>
+              </button>
 
               <a
                 href={`https://wa.me/${profile.whatsapp.replace(/[^0-9]/g, "")}?text=Olá%20Leonardo!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar.`}
@@ -234,8 +246,8 @@ export function HeroSection({ profile }: HeroSectionProps) {
                   </div>
                 </div>
 
-                {/* Footer Badges: 25 Anos em TI, UFOP, SAFe Governança & Localização */}
-                <div className="mt-4 pt-3.5 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 text-[10px] font-mono text-zinc-500">
+                {/* Footer Badges: 25 Anos em TI, UFOP, SAFe Governança, Inglês B1/B2 & Localização */}
+                <div className="mt-4 pt-3.5 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-wrap items-center justify-center sm:justify-between gap-1.5 text-[10px] font-mono text-zinc-500">
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold">
                     <Sparkles className="w-3 h-3 text-amber-500" />
                     <span>{t.hero.experienceYears}</span>
@@ -249,21 +261,25 @@ export function HeroSection({ profile }: HeroSectionProps) {
                     <span>{t.hero.safeBadge}</span>
                   </span>
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                    <Globe className="w-3 h-3 text-cyan-500" />
+                    <span>{t.hero.englishBadge || "Inglês: B1/B2"}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
                     <MapPin className="w-3 h-3 text-rose-500" />
                     <span>{t.hero.location}</span>
                   </span>
                 </div>
 
-                {/* Bottom Action: Download CV */}
+                {/* Bottom Action: Download CV Selector */}
                 <div className="mt-3.5">
-                  <a
-                    href={profile.cv_url}
-                    download
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-750 text-zinc-900 dark:text-white text-xs font-semibold transition-colors shadow-2xs"
+                  <button
+                    type="button"
+                    onClick={() => openCvSelectorModal()}
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-750 text-zinc-900 dark:text-white text-xs font-semibold transition-colors shadow-2xs cursor-pointer"
                   >
                     <Download className="w-4 h-4 text-blue-500" />
                     <span>{t.hero.downloadCvCard}</span>
-                  </a>
+                  </button>
                 </div>
 
               </div>

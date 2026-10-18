@@ -13,7 +13,8 @@ import {
   Menu, 
   X, 
   ShieldCheck,
-  UserCircle 
+  UserCircle,
+  MessageSquareQuote
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -32,6 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { label: "Perfil & Bio", href: "/admin/perfil", icon: UserCircle },
     { label: "Projetos", href: "/admin/projetos", icon: FolderGit2 },
     { label: "Certificados", href: "/admin/certificados", icon: Award },
+    { label: "Depoimentos", href: "/admin/depoimentos", icon: MessageSquareQuote },
   ];
 
   const handleLogout = () => {

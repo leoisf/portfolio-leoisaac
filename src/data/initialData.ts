@@ -1,4 +1,4 @@
-import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem } from "@/types/database";
+import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, ClippingItem, Testimonial } from "@/types/database";
 
 export const initialProfile: ProfileSettings = {
   id: "profile-leo-1",
@@ -1115,3 +1115,43 @@ export const initialClippings: ClippingItem[] = [
     display_order: 53
   },
 ];
+
+export const initialTestimonials: Testimonial[] = [
+  {
+    id: "test-1",
+    name: "Squad AMS Comercial",
+    role: "Engenharia de Software & Sustentação Crítica",
+    company: "AI/R Company • Alocação Embraer",
+    relationship: "Colega de Equipe",
+    message: "Excelente capacidade analítica na resolução de incidentes complexos em produção e domínio técnico exemplar em microsserviços Java/Kotlin, React e arquitetura AWS. Destaca-se também pela documentação impecável e uso estratégico de IA Generativa no fluxo de engenharia.",
+    rating: 5,
+    is_approved: true,
+    is_featured: true,
+    created_at: "2026-08-15"
+  },
+  {
+    id: "test-2",
+    name: "Programa Fênix B2B",
+    role: "Governança Ágil & Transformação Digital",
+    company: "Vivo (Telefônica Brasil) • AI/R",
+    relationship: "Liderança / Gestão",
+    message: "Profissional com visão sistêmica rara: conecta governança ágil em escala (SAFe 6) com profundidade técnica em dados e nuvem. Sua atuação facilitou o alinhamento entre múltiplas squads, reduzindo gargalos e acelerando entregas críticas de negócio.",
+    rating: 5,
+    is_approved: true,
+    is_featured: true,
+    created_at: "2025-11-20"
+  },
+  {
+    id: "test-3",
+    name: "Coordenação de Inclusão Digital",
+    role: "Gestão Pública & Educação Tecnológica",
+    company: "Câmara & Prefeitura Municipal de Ouro Preto",
+    relationship: "Comunidade / Acadêmico",
+    message: "O trabalho liderado por Leonardo nos Telecentros Comunitários e no Projeto Escola Digital transformou a realidade de milhares de cidadãos em Ouro Preto e distritos. Mais de 15 anos de dedicação técnica, empatia e impacto social concreto através da tecnologia.",
+    rating: 5,
+    is_approved: true,
+    is_featured: true,
+    created_at: "2024-05-10"
+  }
+];
+

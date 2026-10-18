@@ -8,6 +8,7 @@ import {
   FolderGit2, 
   Award, 
   UserCircle, 
+  MessageSquareQuote,
   LogOut, 
   ChevronUp, 
   ChevronDown, 
@@ -107,6 +108,15 @@ export function AdminFloatingBar() {
           >
             <Award className="w-3.5 h-3.5 text-amber-400" />
             <span>Certificados</span>
+          </Link>
+
+          <Link
+            href="/admin/depoimentos"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg sm:rounded-full text-xs font-medium text-zinc-200 hover:text-white hover:bg-zinc-800 transition-colors"
+            title="Moderar Depoimentos e Mensagens"
+          >
+            <MessageSquareQuote className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden sm:inline">Depoimentos</span>
           </Link>
 
           {/* Controls */}

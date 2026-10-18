@@ -90,3 +90,18 @@ export interface ClippingItem {
   category: "Telecentros" | "Escola Digital" | "Inclusão Digital" | "Geral";
   display_order: number;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company?: string;
+  relationship: "Liderança / Gestão" | "Colega de Equipe" | "Cliente / Parceiro" | "Comunidade / Acadêmico";
+  message: string;
+  rating: number;
+  linkedin_url?: string;
+  is_approved: boolean;
+  is_featured?: boolean;
+  created_at: string;
+}
+
