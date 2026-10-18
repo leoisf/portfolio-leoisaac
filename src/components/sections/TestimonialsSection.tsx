@@ -7,7 +7,6 @@ import { submitTestimonial } from "@/lib/supabase/client";
 import { Modal } from "@/components/ui/Modal";
 import { 
   Quote, 
-  Star, 
   MessageSquarePlus, 
   CheckCircle2, 
   ExternalLink, 
@@ -30,19 +29,23 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
   const [submitting, setSubmitting] = useState(false);
   const [showAll, setShowAll] = useState(false);
 
-  const displayedTestimonials = showAll
-    ? testimonials
-    : testimonials.slice(0, INITIAL_TESTIMONIAL_COUNT);
-
   const [formData, setFormData] = useState({
     name: "",
     role: "",
     company: "",
     relationship: "Colega de Equipe" as Testimonial["relationship"],
-    rating: 5,
     linkedin_url: "",
     message: ""
   });
+
+  // Não exibir nada inventado no site enquanto não houver depoimentos reais aprovados
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
+
+  const displayedTestimonials = showAll
+    ? testimonials
+    : testimonials.slice(0, INITIAL_TESTIMONIAL_COUNT);
 
   const handleOpenModal = () => {
     setSubmittedSuccess(false);
@@ -62,7 +65,6 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
         company: formData.company.trim() || undefined,
         relationship: formData.relationship,
         message: formData.message.trim(),
-        rating: formData.rating,
         linkedin_url: formData.linkedin_url.trim() || undefined,
         is_approved: true,
         is_featured: false,
@@ -76,7 +78,6 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
         role: "",
         company: "",
         relationship: "Colega de Equipe",
-        rating: 5,
         linkedin_url: "",
         message: ""
       });
@@ -144,27 +145,17 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
               className="rounded-2xl sm:rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 p-4 sm:p-7 shadow-xs hover:shadow-xl hover:border-blue-500/40 dark:hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between relative group"
             >
               <div>
-                {/* Top Meta: Stars & Relationship Badge */}
+                {/* Top Meta: Relationship Badge */}
                 <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-4">
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <Star
-                        key={idx}
-                        className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                          idx < (item.rating || 5)
-                            ? "text-amber-400 fill-amber-400"
-                            : "text-zinc-300 dark:text-zinc-700"
-                        }`}
-                      />
-                    ))}
-                  </div>
-
                   <span
-                    className={`px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-semibold border ${getRelationshipBadgeStyle(
+                    className={`px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-mono font-semibold border ${getRelationshipBadgeStyle(
                       item.relationship
                     )}`}
                   >
                     {item.relationship}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-mono text-zinc-400">
+                    {item.created_at}
                   </span>
                 </div>
 
@@ -327,43 +318,17 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-                <div>
-                  <label className="block text-xs font-mono text-zinc-700 dark:text-zinc-300 mb-1">
-                    {t.testimonials.formLinkedin}
-                  </label>
-                  <input
-                    type="url"
-                    value={formData.linkedin_url}
-                    onChange={(e) => setFormData({ ...formData, linkedin_url: e.target.value })}
-                    placeholder="https://linkedin.com/in/seu-perfil"
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-hidden focus:border-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono text-zinc-700 dark:text-zinc-300 mb-1">
-                    {t.testimonials.formRating}
-                  </label>
-                  <div className="flex items-center gap-1.5 py-1.5">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <button
-                        key={star}
-                        type="button"
-                        onClick={() => setFormData({ ...formData, rating: star })}
-                        className="p-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
-                      >
-                        <Star
-                          className={`w-5 h-5 ${
-                            star <= formData.rating
-                              ? "text-amber-400 fill-amber-400"
-                              : "text-zinc-300 dark:text-zinc-600"
-                          }`}
-                        />
-                      </button>
-                    ))}
-                  </div>
-                </div>
+              <div>
+                <label className="block text-xs font-mono text-zinc-700 dark:text-zinc-300 mb-1">
+                  {t.testimonials.formLinkedin}
+                </label>
+                <input
+                  type="url"
+                  value={formData.linkedin_url}
+                  onChange={(e) => setFormData({ ...formData, linkedin_url: e.target.value })}
+                  placeholder="https://linkedin.com/in/seu-perfil"
+                  className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:outline-hidden focus:border-blue-500"
+                />
               </div>
 
               <div>

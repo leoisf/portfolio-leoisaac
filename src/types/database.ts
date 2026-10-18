@@ -98,7 +98,7 @@ export interface Testimonial {
   company?: string;
   relationship: "Liderança / Gestão" | "Colega de Equipe" | "Cliente / Parceiro" | "Comunidade / Acadêmico";
   message: string;
-  rating: number;
+  rating?: number;
   linkedin_url?: string;
   is_approved: boolean;
   is_featured?: boolean;

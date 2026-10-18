@@ -10,7 +10,6 @@ import {
   Check, 
   RotateCcw, 
   MessageSquareQuote, 
-  Star, 
   Eye, 
   EyeOff 
 } from "lucide-react";
@@ -33,7 +32,6 @@ export default function AdminDepoimentosPage() {
     role: "",
     company: "",
     relationship: "Colega de Equipe" as Testimonial["relationship"],
-    rating: 5,
     linkedin_url: "",
     message: "",
     is_approved: true
@@ -61,7 +59,6 @@ export default function AdminDepoimentosPage() {
       role: "",
       company: "",
       relationship: "Colega de Equipe",
-      rating: 5,
       linkedin_url: "",
       message: "",
       is_approved: true
@@ -76,7 +73,6 @@ export default function AdminDepoimentosPage() {
       role: item.role,
       company: item.company || "",
       relationship: item.relationship,
-      rating: item.rating || 5,
       linkedin_url: item.linkedin_url || "",
       message: item.message,
       is_approved: item.is_approved
@@ -94,7 +90,6 @@ export default function AdminDepoimentosPage() {
       role: formData.role.trim() || "Profissional",
       company: formData.company.trim() || undefined,
       relationship: formData.relationship,
-      rating: Number(formData.rating) || 5,
       linkedin_url: formData.linkedin_url.trim() || undefined,
       message: formData.message.trim(),
       is_approved: formData.is_approved,
@@ -208,11 +203,6 @@ export default function AdminDepoimentosPage() {
                         <p className="text-zinc-500 text-[11px]">
                           {item.role} {item.company ? `• ${item.company}` : ""}
                         </p>
-                        <div className="flex items-center gap-0.5 mt-1">
-                          {Array.from({ length: item.rating || 5 }).map((_, i) => (
-                            <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </td>

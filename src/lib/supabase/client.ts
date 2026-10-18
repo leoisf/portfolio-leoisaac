@@ -364,8 +364,9 @@ export async function getAllTestimonials(): Promise<Testimonial[]> {
       const local = localStorage.getItem(STORAGE_TESTIMONIALS_KEY);
       if (local) {
         const parsed = JSON.parse(local);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+        if (Array.isArray(parsed)) {
+          const realItems = parsed.filter((item: Testimonial) => !["test-1", "test-2", "test-3"].includes(item.id));
+          return realItems;
         }
       }
     } catch (e) {
