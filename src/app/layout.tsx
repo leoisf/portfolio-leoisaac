@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Leonardo Isaac | Cientista da Computação & Desenvolvedor Full Stack",
-  description: "Portfólio profissional de Leonardo Isaac - Bacharel em Ciência da Computação (UFOP), Desenvolvedor Full Stack, Certified SAFe® 6 Agilist com mais de 22 anos de trajetória em TI e transformação digital.",
+  description: "Portfólio profissional de Leonardo Isaac - Bacharel em Ciência da Computação (UFOP), Pós em Ciência de Dados, Desenvolvedor Full Stack com 25 anos de trajetória em TI e inteligência artificial.",
   icons: {
     icon: "/images/logo/ivector-g.png",
     apple: "/images/logo/ivector-g.png",

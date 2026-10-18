@@ -9,10 +9,12 @@ import {
   MessageSquare, 
   CheckCircle2, 
   Sparkles, 
-  ShieldCheck,
-  GraduationCap,
-  Briefcase,
-  MapPin
+  ShieldCheck, 
+  GraduationCap, 
+  Briefcase, 
+  MapPin,
+  Brain,
+  Cpu
 } from "lucide-react";
 import { HeroConstellation } from "@/components/ui/HeroConstellation";
 
@@ -120,94 +122,133 @@ export function HeroSection({ profile }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: Unified Official Profile Card */}
+          {/* Right Column: AI & Data Science Architecture Cockpit */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-md">
-              <div className="relative rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl p-6 shadow-2xl">
+            <div className="w-full max-w-lg">
+              <div className="relative rounded-3xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl p-5 sm:p-6 shadow-2xl transition-all duration-300">
                 
-                {/* Header of code card */}
-                <div className="flex items-center justify-between pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                {/* Header of Cockpit */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-zinc-200/80 dark:border-zinc-800/80">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                    </div>
+                    <span className="text-xs font-mono text-zinc-400 pl-1">{t.hero.aiHubTag}</span>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400">leonardo-isaac.ts</span>
-                </div>
-
-                {/* Profile Photo in High Quality & Role Badge */}
-                <div className="my-5 flex flex-col items-center text-center">
-                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl bg-gradient-to-b from-blue-600/20 via-indigo-600/10 to-zinc-900 p-1 group">
-                    {!imgError ? (
-                      <img
-                        src={avatarSrc}
-                        alt={profile.full_name}
-                        className="w-full h-full object-cover object-top rounded-xl transition-transform duration-300 group-hover:scale-105"
-                        onError={() => setImgError(true)}
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center gap-1 w-full h-full">
-                        <span className="font-mono text-2xl font-bold text-blue-600 dark:text-blue-400">
-                          LI
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-500/30 text-blue-600 dark:text-cyan-400 text-[11px] font-mono font-medium shadow-2xs">
-                    <Briefcase className="w-3.5 h-3.5" />
-                    <span>{t.hero.currentRole}</span>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-mono font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>{t.hero.aiHubStatus}</span>
                   </div>
                 </div>
 
-                {/* Unified Specs & Credential Lines */}
-                <div className="space-y-2 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
-                      <GraduationCap className="w-3.5 h-3.5 text-blue-500" />
-                      <span>{language === "en" ? "Education:" : "Formação:"}</span>
-                    </span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
-                      {t.hero.graduation}
-                    </span>
+                {/* Identity & Avatar Presentation - Natural & Modern Blend */}
+                <div className="my-4 sm:my-5 flex items-center gap-3.5 sm:gap-4">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 shadow-md shadow-cyan-500/15 shrink-0 group">
+                    <div className="w-full h-full rounded-[14px] overflow-hidden bg-zinc-900">
+                      {!imgError ? (
+                        <img
+                          src={avatarSrc}
+                          alt={profile.full_name}
+                          className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          onError={() => setImgError(true)}
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center gap-1 w-full h-full">
+                          <span className="font-mono text-xl font-bold text-cyan-400">LI</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                      <span>{language === "en" ? "Agile Method:" : "Metodologia:"}</span>
+                  <div className="min-w-0 flex-1">
+                    <span className="inline-block px-2 py-0.5 rounded-md bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-500/30 text-cyan-700 dark:text-cyan-300 font-mono text-[11px] font-semibold tracking-tight">
+                      {t.hero.aiHubRole}
                     </span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
-                      {t.hero.safeRole}
-                    </span>
-                  </div>
-
-                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
-                      <MapPin className="w-3.5 h-3.5 text-amber-500" />
-                      <span>{language === "en" ? "Location:" : "Localização:"}</span>
-                    </span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-semibold text-left sm:text-right">
-                      {t.hero.location}
-                    </span>
-                  </div>
-
-                  <div className="p-2.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <span className="text-zinc-500 flex items-center gap-1.5 shrink-0">
-                      <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>{language === "en" ? "Trajectory:" : "Trajetória:"}</span>
-                    </span>
-                    <span className="text-blue-600 dark:text-cyan-400 font-semibold text-left sm:text-right">
-                      {t.hero.experienceSummary}
-                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white truncate mt-1">
+                      {profile.full_name}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-mono truncate mt-0.5">
+                      {t.hero.aiHubAffiliation}
+                    </p>
                   </div>
                 </div>
 
-                {/* Bottom Card Action: Official CV Download */}
-                <div className="mt-4 pt-3 border-t border-zinc-200/80 dark:border-zinc-800/80">
+                {/* Data & AI Capability Pillars (Foco em Ciência de Dados & IA) */}
+                <div className="space-y-2.5">
+                  {/* Pilar 1: Ciência de Dados & Machine Learning */}
+                  <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-50/70 via-cyan-50/40 to-transparent dark:from-blue-950/40 dark:via-cyan-950/20 dark:to-transparent border border-blue-200/60 dark:border-blue-900/40 hover:border-blue-400/60 transition-colors">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="p-1 rounded-lg bg-blue-600 text-white shadow-xs">
+                        <Brain className="w-3.5 h-3.5" />
+                      </span>
+                      <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                        {t.hero.pillarDataTitle}
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-zinc-600 dark:text-zinc-300 font-mono pl-7 leading-relaxed">
+                      {t.hero.pillarDataDesc}
+                    </p>
+                  </div>
+
+                  {/* Pilar 2: Agentic AI & Modelos de Raciocínio */}
+                  <div className="p-3 rounded-2xl bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-transparent dark:from-indigo-950/40 dark:via-purple-950/20 dark:to-transparent border border-indigo-200/60 dark:border-indigo-900/40 hover:border-indigo-400/60 transition-colors">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="p-1 rounded-lg bg-indigo-600 text-white shadow-xs">
+                        <Sparkles className="w-3.5 h-3.5" />
+                      </span>
+                      <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                        {t.hero.pillarAiTitle}
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-zinc-600 dark:text-zinc-300 font-mono pl-7 leading-relaxed">
+                      {t.hero.pillarAiDesc}
+                    </p>
+                  </div>
+
+                  {/* Pilar 3: Sistemas Críticos & Nuvem */}
+                  <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-50/70 via-teal-50/40 to-transparent dark:from-emerald-950/40 dark:via-teal-950/20 dark:to-transparent border border-emerald-200/60 dark:border-emerald-900/40 hover:border-emerald-400/60 transition-colors">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="p-1 rounded-lg bg-emerald-600 text-white shadow-xs">
+                        <Cpu className="w-3.5 h-3.5" />
+                      </span>
+                      <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
+                        {t.hero.pillarEngTitle}
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-zinc-600 dark:text-zinc-300 font-mono pl-7 leading-relaxed">
+                      {t.hero.pillarEngDesc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Footer Badges: 25 Anos em TI, UFOP, SAFe Governança & Localização */}
+                <div className="mt-4 pt-3.5 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 text-[10px] font-mono text-zinc-500">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold">
+                    <Sparkles className="w-3 h-3 text-amber-500" />
+                    <span>{t.hero.experienceYears}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                    <GraduationCap className="w-3 h-3 text-blue-500" />
+                    <span>UFOP (BCC & Pós)</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                    <ShieldCheck className="w-3 h-3 text-emerald-500" />
+                    <span>{t.hero.safeBadge}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                    <MapPin className="w-3 h-3 text-rose-500" />
+                    <span>Ouro Preto • SJC</span>
+                  </span>
+                </div>
+
+                {/* Bottom Action: Download CV */}
+                <div className="mt-3.5">
                   <a
                     href={profile.cv_url}
                     download
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100/80 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-800 text-zinc-900 dark:text-white text-xs font-semibold transition-colors shadow-2xs"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100/80 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-750 text-zinc-900 dark:text-white text-xs font-semibold transition-colors shadow-2xs"
                   >
                     <Download className="w-4 h-4 text-blue-500" />
                     <span>{t.hero.downloadCvCard}</span>

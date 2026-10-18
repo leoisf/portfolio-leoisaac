@@ -3,9 +3,9 @@ import { Project, Certificate, Skill, SocialInitiative, ProfileSettings, Clippin
 export const initialProfile: ProfileSettings = {
   id: "profile-leo-1",
   full_name: "Leonardo Isaac",
-  headline: "Full-Stack Developer (Embraer) | Ciência de Dados & IA (UFOP) | Certified SAFe® 6 Agilist",
-  bio: "Desenvolvedor Full-Stack na AI/R Company, atualmente alocado na Embraer na squad de sustentação de sistemas críticos da aviação comercial. Tenho mais de 20 anos de trajetória em tecnologia — comecei na infraestrutura e suporte comunitário, liderei entregas ágeis em larga escala na Vivo B2B (Certified SAFe® 6 Agilist) e hoje concilio desenvolvimento web moderno (Java, Kotlin, React, AWS) com pós-graduação em Ciência de Dados na UFOP. Foco em código limpo, arquitetura sólida e soluções que realmente funcionam em produção.",
-  years_experience: 22,
+  headline: "Cientista da Computação & Full-Stack | Pós em Ciência de Dados & IA (UFOP)",
+  bio: "Profissional com 25 anos de carreira em tecnologia — atuando como Desenvolvedor Full-Stack na AI/R Company (alocado na squad AMS Comercial da Embraer) e na pós-graduação em Ciência de Dados e Inteligência Artificial na UFOP. Especialista em unir engenharia de software de alta criticidade, modelos analíticos e inteligência artificial aplicada.",
+  years_experience: 25,
   people_impacted: "+7.000",
   cv_url: "/docs/curriculum_LEONARDO_ISAAC.pdf",
   avatar_url: "/images/profile/foto_perfil.png",

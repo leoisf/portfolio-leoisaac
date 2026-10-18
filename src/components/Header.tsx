@@ -27,7 +27,6 @@ export function Header() {
     { label: t.nav.projects, href: "#projetos" },
     { label: t.nav.clipping, href: "#clipping" },
     { label: t.nav.social, href: "#social" },
-    { label: t.nav.contact, href: "#contato" },
   ];
 
   return (
