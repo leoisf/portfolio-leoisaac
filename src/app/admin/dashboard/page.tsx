@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { initialProjects, initialCertificates, initialSkills, initialClippings } from "@/data/initialData";
-import { FolderGit2, Award, Layers, Plus, ExternalLink, ShieldCheck, Database, Newspaper } from "lucide-react";
+import { FolderGit2, Award, Layers, Plus, ExternalLink, ShieldCheck, Database, Newspaper, UserCircle } from "lucide-react";
 import { isSupabaseConfigured, getProjects, getCertificates, getClippings } from "@/lib/supabase/client";
 
 export default function AdminDashboardPage() {
@@ -46,17 +46,24 @@ export default function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/admin/perfil"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800"
+          >
+            <UserCircle className="w-3.5 h-3.5 text-purple-500" />
+            <span>Editar Perfil</span>
+          </Link>
           <Link
             href="/admin/projetos"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500 shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500 shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Novo Projeto</span>
           </Link>
           <Link
             href="/admin/certificados"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Novo Certificado</span>

@@ -5,19 +5,32 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
-import { Menu, X, Download, MessageSquare, History } from "lucide-react";
+import { Menu, X, Download, MessageSquare, History, ShieldCheck } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    const checkAdmin = () => {
+      if (typeof window !== "undefined") {
+        setIsAdmin(Boolean(localStorage.getItem("admin_session")));
+      }
+    };
+    checkAdmin();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("storage", checkAdmin);
+    window.addEventListener("portfolio_data_changed", checkAdmin);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("storage", checkAdmin);
+      window.removeEventListener("portfolio_data_changed", checkAdmin);
+    };
   }, []);
 
   const navLinks = [
@@ -91,6 +104,18 @@ export function Header() {
           </a>
           <LanguageToggle />
           <ThemeToggle />
+          {/* CMS Studio Quick Access */}
+          <Link
+            href={isAdmin ? "/admin/dashboard" : "/admin/login"}
+            className="relative p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:border-blue-500/50 transition-colors shadow-xs"
+            title={isAdmin ? "Painel CMS Studio (Ativo)" : "Acesso CMS Studio (Gestão do Site)"}
+            aria-label="CMS Studio"
+          >
+            <ShieldCheck className="w-4 h-4" />
+            {isAdmin && (
+              <span className="w-2 h-2 rounded-full bg-emerald-500 absolute top-1 right-1 ring-2 ring-white dark:ring-zinc-950 animate-pulse" />
+            )}
+          </Link>
           <a
             href="/docs/curriculum_LEONARDO_ISAAC.pdf"
             download
@@ -146,6 +171,21 @@ export function Header() {
               <History className="w-4 h-4" />
               <span>{t.nav.legacySite}</span>
             </a>
+            <Link
+              href={isAdmin ? "/admin/dashboard" : "/admin/login"}
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center justify-between"
+            >
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-blue-500" />
+                <span>Painel CMS Studio</span>
+              </div>
+              {isAdmin && (
+                <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500 text-[10px] font-mono font-bold">
+                  ATIVO
+                </span>
+              )}
+            </Link>
             <div className="pt-3 mt-2 border-t border-zinc-200 dark:border-zinc-800 flex gap-2">
               <a
                 href="/docs/curriculum_LEONARDO_ISAAC.pdf"

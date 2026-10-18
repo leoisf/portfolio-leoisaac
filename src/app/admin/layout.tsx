@@ -12,7 +12,8 @@ import {
   Layers, 
   Menu, 
   X, 
-  ShieldCheck 
+  ShieldCheck,
+  UserCircle 
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -28,6 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { label: "Visão Geral", href: "/admin/dashboard", icon: LayoutDashboard },
+    { label: "Perfil & Bio", href: "/admin/perfil", icon: UserCircle },
     { label: "Projetos", href: "/admin/projetos", icon: FolderGit2 },
     { label: "Certificados", href: "/admin/certificados", icon: Award },
   ];

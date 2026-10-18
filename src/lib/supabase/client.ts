@@ -18,6 +18,7 @@ export const supabase = isSupabaseConfigured
 // Storage Keys for Local Dynamic Fallback
 const STORAGE_PROJECTS_KEY = "portfolio_projects_custom";
 const STORAGE_CERTS_KEY = "portfolio_certs_custom";
+const STORAGE_PROFILE_KEY = "portfolio_profile_custom";
 
 function dispatchUpdate() {
   if (typeof window !== "undefined") {
@@ -25,7 +26,7 @@ function dispatchUpdate() {
   }
 }
 
-// Helper: Fetch Profile with fallback to local seed
+// Helper: Fetch Profile with fallback to local storage and seed
 export async function getProfile(): Promise<ProfileSettings> {
   if (supabase) {
     try {
@@ -35,7 +36,47 @@ export async function getProfile(): Promise<ProfileSettings> {
       // fallback on error
     }
   }
+
+  if (typeof window !== "undefined") {
+    try {
+      const local = localStorage.getItem(STORAGE_PROFILE_KEY);
+      if (local) {
+        return JSON.parse(local) as ProfileSettings;
+      }
+    } catch (e) {
+      console.error("Erro ao ler profile do localStorage:", e);
+    }
+  }
+
   return initialProfile;
+}
+
+// Helper: Update Profile Settings
+export async function updateProfile(profile: ProfileSettings): Promise<void> {
+  if (supabase) {
+    try {
+      await supabase.from("profile_settings").upsert(profile);
+    } catch (err) {
+      console.error("Erro ao atualizar profile no Supabase:", err);
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    try {
+      localStorage.setItem(STORAGE_PROFILE_KEY, JSON.stringify(profile));
+      dispatchUpdate();
+    } catch (e) {
+      console.error("Erro ao salvar profile no localStorage:", e);
+    }
+  }
+}
+
+// Helper: Reset Profile Settings
+export function resetProfileToDefault(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(STORAGE_PROFILE_KEY);
+    dispatchUpdate();
+  }
 }
 
 // Helper: Fetch Projects (Supabase -> LocalStorage -> initialData)

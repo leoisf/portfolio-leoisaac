@@ -11,6 +11,7 @@ import { SocialSection } from "@/components/sections/SocialSection";
 import { CertificatesSection } from "@/components/sections/CertificatesSection";
 import { ClippingSection } from "@/components/sections/ClippingSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { AdminFloatingBar } from "@/components/AdminFloatingBar";
 import { 
   getProfile, 
   getProjects, 
@@ -89,6 +90,7 @@ export default function HomePage() {
       </main>
 
       <Footer />
+      <AdminFloatingBar />
     </div>
   );
 }
