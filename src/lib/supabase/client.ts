@@ -450,3 +450,55 @@ export function resetTestimonialsToDefault(): void {
   }
 }
 
+// ==========================================
+// Admin Authentication Credentials Management
+// ==========================================
+const STORAGE_ADMIN_CREDENTIALS_KEY = "portfolio_admin_credentials";
+
+export interface AdminCredentials {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export const defaultAdminCredentials: AdminCredentials = {
+  username: process.env.NEXT_PUBLIC_ADMIN_USER || "leoisaac",
+  email: process.env.NEXT_PUBLIC_ADMIN_EMAIL || "contato@leoisaac.com.br",
+  password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "LeoIsaac@2026",
+};
+
+export function getAdminCredentials(): AdminCredentials {
+  if (typeof window !== "undefined") {
+    try {
+      const saved = localStorage.getItem(STORAGE_ADMIN_CREDENTIALS_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.username && parsed.password) {
+          return { ...defaultAdminCredentials, ...parsed };
+        }
+      }
+    } catch (e) {
+      console.error("Erro ao ler credenciais de admin:", e);
+    }
+  }
+  return defaultAdminCredentials;
+}
+
+export function updateAdminCredentials(creds: AdminCredentials): void {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(STORAGE_ADMIN_CREDENTIALS_KEY, JSON.stringify(creds));
+    dispatchUpdate();
+  }
+}
+
+export function verifyAdminCredentials(identifier: string, passwordInput: string): boolean {
+  const creds = getAdminCredentials();
+  const normalizedInput = identifier.trim().toLowerCase();
+  const matchesUser =
+    normalizedInput === creds.username.trim().toLowerCase() ||
+    normalizedInput === creds.email.trim().toLowerCase();
+
+  return matchesUser && passwordInput === creds.password;
+}
+
+

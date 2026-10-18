@@ -15,18 +15,23 @@ import {
   Check, 
   HeartHandshake, 
   CheckCircle2, 
-  Layers 
+  Layers,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 
 interface ProjectsSectionProps {
   projects: Project[];
 }
 
+const INITIAL_PROJECT_COUNT = 3;
+
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const categories = [
     { key: "all", label: t.projects.categories.all },
@@ -35,6 +40,11 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
     { key: "fullstack", label: t.projects.categories.fullstack },
     { key: "social", label: t.projects.categories.social }
   ];
+
+  const handleCategoryChange = (key: string) => {
+    setActiveCategory(key);
+    setShowAll(false);
+  };
 
   const filteredProjects = projects.filter((project) => {
     if (activeCategory === "all") return true;
@@ -52,6 +62,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
     }
     return true;
   });
+
+  const displayedProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_PROJECT_COUNT);
 
   const handleCopyClone = (e: React.MouseEvent, id: string, repoUrl: string) => {
     e.stopPropagation();
@@ -75,31 +89,31 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   };
 
   return (
-    <section id="projetos" className="py-24 bg-zinc-50/70 dark:bg-zinc-950/60 border-y border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
+    <section id="projetos" className="py-12 sm:py-24 bg-zinc-50/70 dark:bg-zinc-950/60 border-y border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20 mb-3">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-mono font-semibold bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20 mb-2 sm:mb-3">
               <FolderGit2 className="w-3.5 h-3.5" />
               <span>{t.projects.tag}</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               {t.projects.title}
             </h3>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400 text-sm max-w-2xl leading-relaxed">
+            <p className="mt-1.5 sm:mt-2 text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
               {t.projects.subtitle}
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
-                className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+                onClick={() => handleCategoryChange(cat.key)}
+                className={`px-3 py-1.5 sm:px-3.5 text-[11px] sm:text-xs font-semibold rounded-xl transition-all cursor-pointer ${
                   activeCategory === cat.key
                     ? "bg-blue-600 text-white shadow-xs"
                     : "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
@@ -112,10 +126,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
 
         {/* GitHub Developer Terminal Bar */}
-        <div className="mb-10 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-6 sm:mb-10 rounded-xl sm:rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md p-3.5 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-zinc-900 text-white dark:bg-zinc-800 flex items-center justify-center shrink-0 shadow-xs">
-              <Terminal className="w-4 h-4 text-emerald-400" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-zinc-900 text-white dark:bg-zinc-800 flex items-center justify-center shrink-0 shadow-xs">
+              <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -127,7 +141,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   repositories
                 </span>
               </div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">
+              <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">
                 {t.projects.terminalStatus}
               </p>
             </div>
@@ -137,7 +151,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             href="https://github.com/leoisf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-800 dark:text-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-700 transition-colors shadow-xs"
+            className="inline-flex items-center gap-2 px-3.5 py-2 sm:px-4 rounded-xl text-[11px] sm:text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-800 dark:text-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-700 transition-colors shadow-xs"
           >
             <GithubIcon className="w-3.5 h-3.5" />
             <span>{t.projects.gitHubProfileCta}</span>
@@ -145,9 +159,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           </a>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => {
+        {/* Projects List (Compact List View on Mobile, Rich Cards on Desktop) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-8">
+          {displayedProjects.map((project) => {
             const isPublicGit = project.repo_type === "public" || Boolean(project.github_url);
             const isSocial = project.category === "Social / Inclusão" || project.repo_type === "social";
             const repoSlug = project.repo_name || `leoisf/${project.slug}`;
@@ -155,35 +169,35 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             return (
               <div
                 key={project.id}
-                className="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 flex flex-col justify-between group"
+                className="rounded-2xl sm:rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Repo Header Bar */}
-                  <div className="px-6 py-4 border-b border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/60 flex items-center justify-between gap-3">
+                  <div className="px-4 py-2.5 sm:px-6 sm:py-4 border-b border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/80 dark:bg-zinc-900/60 flex items-center justify-between gap-2 sm:gap-3">
                     <div className="flex items-center gap-2 min-w-0">
                       {isSocial ? (
-                        <HeartHandshake className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 shrink-0" />
                       ) : isPublicGit ? (
-                        <FolderGit2 className="w-4 h-4 text-blue-500 shrink-0" />
+                        <FolderGit2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500 shrink-0" />
                       ) : (
-                        <Layers className="w-4 h-4 text-purple-500 shrink-0" />
+                        <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500 shrink-0" />
                       )}
                       
-                      <span className="font-mono text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                      <span className="font-mono text-[11px] sm:text-xs font-bold text-zinc-900 dark:text-zinc-100 truncate">
                         {repoSlug}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                       {project.default_branch && (
-                        <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono bg-zinc-200/70 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                        <div className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-mono bg-zinc-200/70 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
                           <GitBranch className="w-3 h-3 text-zinc-400" />
                           <span>{project.default_branch}</span>
                         </div>
                       )}
 
                       <span 
-                        className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold ${
+                        className={`px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold ${
                           isSocial
                             ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                             : isPublicGit
@@ -200,10 +214,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     </div>
                   </div>
 
-                  {/* Optional Image Banner */}
+                  {/* Desktop Image Banner (Hidden on mobile for lightweight List View) */}
                   {project.image_url && (
                     <div 
-                      className="relative h-44 sm:h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 cursor-pointer border-b border-zinc-100 dark:border-zinc-800/80"
+                      className="hidden sm:block relative h-44 sm:h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 cursor-pointer border-b border-zinc-100 dark:border-zinc-800/80"
                       onClick={() => setActiveProject(project)}
                     >
                       <img
@@ -220,21 +234,21 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   )}
 
                   {/* Card Main Body */}
-                  <div className="p-6 sm:p-7">
+                  <div className="p-4 sm:p-7">
                     <h4 
                       onClick={() => setActiveProject(project)}
-                      className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors cursor-pointer"
+                      className="text-sm sm:text-xl font-bold text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors cursor-pointer"
                     >
                       {project.title}
                     </h4>
 
-                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2 sm:line-clamp-none">
                       {project.short_description}
                     </p>
 
-                    {/* Key Technical Highlights (Enriched Emphasis) */}
+                    {/* Key Technical Highlights (Hidden on mobile list view, visible on desktop & inside modal) */}
                     {project.highlights && project.highlights.length > 0 && (
-                      <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                      <div className="hidden sm:block mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
                         <p className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-2">
                           {t.projects.highlights}
                         </p>
@@ -250,32 +264,37 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     )}
 
                     {/* Technologies & Language Indicator */}
-                    <div className="mt-5 pt-4 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-wrap items-center gap-2">
+                    <div className="mt-3 sm:mt-5 pt-2.5 sm:pt-4 border-t border-zinc-100 dark:border-zinc-800/60 flex flex-wrap items-center gap-1.5 sm:gap-2">
                       {project.primary_language && (
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200">
                           <span className={`w-2 h-2 rounded-full ${getLanguageColor(project.primary_language)}`} />
                           <span>{project.primary_language}</span>
                         </div>
                       )}
 
-                      {project.technologies.map((tech) => (
+                      {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-1 rounded-lg text-xs font-mono bg-zinc-100/70 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-300 border border-zinc-200/50 dark:border-zinc-700/50"
+                          className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono bg-zinc-100/70 dark:bg-zinc-800/70 text-zinc-600 dark:text-zinc-300 border border-zinc-200/50 dark:border-zinc-700/50"
                         >
                           {tech}
                         </span>
                       ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="px-6 sm:px-7 py-4 bg-zinc-50/70 dark:bg-zinc-900/60 border-t border-zinc-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-3">
+                <div className="px-4 py-3 sm:px-7 sm:py-4 bg-zinc-50/70 dark:bg-zinc-900/60 border-t border-zinc-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setActiveProject(project)}
-                      className="text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline inline-flex items-center gap-1 cursor-pointer"
+                      className="text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-cyan-400 hover:underline inline-flex items-center gap-1 cursor-pointer"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>{t.projects.viewDetails}</span>
@@ -285,7 +304,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     {project.github_url && (
                       <button
                         onClick={(e) => handleCopyClone(e, project.id, project.github_url!)}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-300/60 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-300/60 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
                         title={t.projects.copyClone}
                       >
                         {copiedId === project.id ? (
@@ -305,13 +324,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
                     {project.clipping_anchor && (
                       <a
                         href={project.clipping_anchor}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 text-[11px] sm:text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                       >
-                        <HeartHandshake className="w-3.5 h-3.5 text-emerald-500" />
+                        <HeartHandshake className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-500" />
                         <span>{t.projects.viewClipping}</span>
                       </a>
                     )}
@@ -321,10 +340,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                         href={project.github_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold transition-colors"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-[11px] sm:text-xs font-semibold transition-colors"
                         title="Ver Código no GitHub"
                       >
-                        <GithubIcon className="w-3.5 h-3.5" />
+                        <GithubIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         <span>GitHub</span>
                       </a>
                     )}
@@ -334,10 +353,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                         href={project.live_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-xs transition-colors"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[11px] sm:text-xs font-semibold shadow-xs transition-colors"
                         title="Acessar projeto online"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         <span>Demo</span>
                       </a>
                     )}
@@ -347,6 +366,25 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             );
           })}
         </div>
+
+        {/* Show More / Show All Projects Button */}
+        {filteredProjects.length > INITIAL_PROJECT_COUNT && (
+          <div className="mt-8 sm:mt-12 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-blue-400 transition-all shadow-xs cursor-pointer"
+            >
+              <span>
+                {showAll
+                  ? (language === "en" ? "Show Fewer Projects" : "Mostrar Menos Projetos")
+                  : (language === "en"
+                      ? `View All Projects (${filteredProjects.length})`
+                      : `Ver Todos os Projetos (${filteredProjects.length})`)}
+              </span>
+              {showAll ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+          </div>
+        )}
 
         {/* Modal: Project Details */}
         <Modal
@@ -395,7 +433,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 <h5 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-2">
                   {t.projects.aboutProject}
                 </h5>
-                <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                <p className="text-xs sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {activeProject.full_description || activeProject.short_description}
                 </p>
               </div>

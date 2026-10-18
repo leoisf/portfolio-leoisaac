@@ -22,7 +22,7 @@ interface AboutSectionProps {
 export function AboutSection({ profile }: AboutSectionProps) {
   const { t, language } = useLanguage();
 
-  const INITIAL_VISIBLE_COUNT = 3;
+  const INITIAL_VISIBLE_COUNT = 2;
 
   // Initially expand the current active role (index 0)
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set([0]));
@@ -78,29 +78,29 @@ export function AboutSection({ profile }: AboutSectionProps) {
   };
 
   return (
-    <section id="sobre" className="py-24 bg-zinc-50/50 dark:bg-zinc-950/40 border-y border-zinc-200/80 dark:border-zinc-800/80">
+    <section id="sobre" className="py-12 sm:py-24 bg-zinc-50/50 dark:bg-zinc-950/40 border-y border-zinc-200/80 dark:border-zinc-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-2">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-1.5 sm:mb-2">
             {t.about.tag}
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+          <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
             {t.about.title}
           </h3>
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
+          <p className="mt-2.5 sm:mt-4 text-zinc-600 dark:text-zinc-400 text-xs sm:text-base leading-relaxed">
             {t.about.summary}
           </p>
         </div>
 
         {/* Global Expand / Collapse Control */}
-        <div className="flex justify-center sm:justify-end mb-8">
+        <div className="flex justify-center sm:justify-end mb-5 sm:mb-8">
           <button
             onClick={toggleAll}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-zinc-700 dark:text-zinc-200 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-xs hover:shadow transition-all duration-200"
+            className="inline-flex items-center gap-2 px-3.5 py-2 sm:px-4 rounded-xl text-xs font-semibold text-zinc-700 dark:text-zinc-200 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-xs hover:shadow transition-all duration-200"
           >
-            <ChevronsUpDown className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
+            <ChevronsUpDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 dark:text-cyan-400" />
             <span>{allExpanded ? t.about.collapseAll : t.about.expandAll}</span>
           </button>
         </div>
@@ -110,7 +110,7 @@ export function AboutSection({ profile }: AboutSectionProps) {
           {/* Vertical Timeline spine on desktop */}
           <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-800" />
 
-          <div className="space-y-8 sm:space-y-10">
+          <div className="space-y-4 sm:space-y-10">
             {displayedMilestones.map((item, index) => {
               const Icon = getMilestoneIcon(index);
               const isEven = index % 2 === 0;
@@ -124,9 +124,9 @@ export function AboutSection({ profile }: AboutSectionProps) {
                     isEven ? "lg:flex-row-reverse" : ""
                   }`}
                 >
-                  <div className="w-full lg:w-1/2 p-2 sm:p-4">
+                  <div className="w-full lg:w-1/2 p-1 sm:p-4">
                     <div 
-                      className={`p-6 rounded-2xl border transition-all duration-300 bg-white dark:bg-zinc-900 shadow-xs ${
+                      className={`p-4 sm:p-6 rounded-2xl border transition-all duration-300 bg-white dark:bg-zinc-900 shadow-xs ${
                         isCurrent
                           ? "border-emerald-500/50 dark:border-emerald-500/40 ring-1 ring-emerald-500/20 shadow-emerald-500/5"
                           : isExpanded
@@ -139,9 +139,9 @@ export function AboutSection({ profile }: AboutSectionProps) {
                         onClick={() => toggleItem(index)}
                         className="cursor-pointer select-none"
                       >
-                        <div className="flex flex-wrap items-center gap-2 mb-2.5">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
                           {/* Year Badge */}
-                          <span className={`px-2.5 py-0.5 text-xs font-mono font-bold rounded-md border ${
+                          <span className={`px-2 py-0.5 text-[10px] sm:text-xs font-mono font-bold rounded-md border ${
                             isCurrent
                               ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60"
                               : "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-900/60"
@@ -151,10 +151,10 @@ export function AboutSection({ profile }: AboutSectionProps) {
 
                           {/* Current Role Badge */}
                           {isCurrent && (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
-                              <span className="relative flex h-2 w-2">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+                              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500" />
                               </span>
                               {t.about.currentRoleBadge}
                             </span>
@@ -162,26 +162,26 @@ export function AboutSection({ profile }: AboutSectionProps) {
 
                           {/* Role tag if present */}
                           {item.role && (
-                            <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                            <span className="text-[11px] sm:text-xs font-semibold text-zinc-500 dark:text-zinc-400">
                               • {item.role}
                             </span>
                           )}
                         </div>
 
                         {/* Title */}
-                        <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white leading-snug">
+                        <h4 className="text-sm sm:text-lg font-bold text-zinc-900 dark:text-white leading-snug">
                           {item.title}
                         </h4>
 
                         {/* Company / Client Subtitle */}
                         {item.company && (
-                          <p className="text-xs font-medium text-blue-600 dark:text-cyan-400 mt-1">
+                          <p className="text-[11px] sm:text-xs font-medium text-blue-600 dark:text-cyan-400 mt-0.5 sm:mt-1">
                             {item.company}
                           </p>
                         )}
 
                         {/* Summary Description */}
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mt-2.5">
+                        <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mt-1.5 sm:mt-2.5">
                           {item.desc}
                         </p>
                       </div>

@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, Lock, Mail, ArrowRight } from "lucide-react";
+import { ShieldCheck, Lock, User, ArrowRight, Eye, EyeOff } from "lucide-react";
+import { verifyAdminCredentials, getAdminCredentials } from "@/lib/supabase/client";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -16,12 +18,22 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError("");
 
-    // Simple authentication verification (can be wired with Supabase Auth or master key)
-    if (email === "contato@leoisaac.com.br" || email === "admin" || email.includes("@")) {
-      localStorage.setItem("admin_session", JSON.stringify({ email, loggedAt: Date.now() }));
+    const isValid = verifyAdminCredentials(identifier, password);
+
+    if (isValid) {
+      const creds = getAdminCredentials();
+      localStorage.setItem(
+        "admin_session",
+        JSON.stringify({
+          username: creds.username,
+          email: creds.email,
+          loggedAt: Date.now(),
+        })
+      );
+      window.dispatchEvent(new Event("portfolio_data_changed"));
       router.push("/admin/dashboard");
     } else {
-      setError("Credenciais inválidas. Verifique o e-mail ou senha.");
+      setError("Usuário ou senha incorretos. Verifique suas credenciais e tente novamente.");
     }
     setLoading(false);
   };
@@ -36,7 +48,7 @@ export default function AdminLoginPage() {
             <ShieldCheck className="w-6 h-6" />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">
-            Acesso Restrito
+            Acesso Restrito — CMS Studio
           </h1>
           <p className="text-xs text-zinc-400 mt-1">
             Painel Administrativo do Portfólio (Leonardo Isaac)
@@ -44,7 +56,7 @@ export default function AdminLoginPage() {
         </div>
 
         {error && (
-          <div className="p-3 mb-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs">
+          <div className="p-3.5 mb-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-medium">
             {error}
           </div>
         )}
@@ -53,16 +65,17 @@ export default function AdminLoginPage() {
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-xs font-mono text-zinc-400 mb-1.5">
-              E-mail Administrativo
+              Usuário ou E-mail Administrativo
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-zinc-500 absolute left-3.5 top-3.5" />
+              <User className="w-4 h-4 text-zinc-500 absolute left-3.5 top-3" />
               <input
-                type="email"
+                type="text"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="contato@leoisaac.com.br"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                placeholder="leoisaac ou contato@leoisaac.com.br"
+                autoComplete="username"
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-white text-sm focus:outline-hidden focus:border-blue-500"
               />
             </div>
@@ -73,24 +86,34 @@ export default function AdminLoginPage() {
               Senha de Acesso
             </label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-zinc-500 absolute left-3.5 top-3.5" />
+              <Lock className="w-4 h-4 text-zinc-500 absolute left-3.5 top-3" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-white text-sm focus:outline-hidden focus:border-blue-500"
+                placeholder="••••••••••••"
+                autoComplete="current-password"
+                className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-white text-sm focus:outline-hidden focus:border-blue-500"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-2.5 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
+                tabIndex={-1}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider transition-all mt-6 shadow-md shadow-blue-600/30"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider transition-all mt-6 shadow-md shadow-blue-600/30 cursor-pointer"
           >
-            <span>{loading ? "Entrando..." : "Acessar Painel"}</span>
+            <span>{loading ? "Verificando..." : "Acessar Painel"}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
