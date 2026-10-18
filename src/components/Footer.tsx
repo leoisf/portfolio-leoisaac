@@ -95,7 +95,7 @@ export function Footer() {
               <span className="font-medium underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700 hover:decoration-blue-500">{t.footer.legacySite}</span>
             </a>
             <span className="text-zinc-300 dark:text-zinc-700 hidden sm:inline">•</span>
-            <span>Next.js 15 • Supabase • Cloudflare Pages</span>
+            <span>Next.js 16 • Supabase • Cloudflare Pages</span>
             <span className="text-zinc-300 dark:text-zinc-700 hidden sm:inline">•</span>
             <Link
               href="/admin/login"
