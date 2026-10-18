@@ -25,7 +25,8 @@ export default function AdminCertificadosPage() {
     issue_date: "",
     image_url: "",
     hours: "",
-    credential_url: ""
+    credential_url: "",
+    is_featured: false
   });
 
   const loadData = async () => {
@@ -52,7 +53,8 @@ export default function AdminCertificadosPage() {
       issue_date: "",
       image_url: "",
       hours: "",
-      credential_url: ""
+      credential_url: "",
+      is_featured: false
     });
     setIsModalOpen(true);
   };
@@ -66,7 +68,8 @@ export default function AdminCertificadosPage() {
       issue_date: cert.issue_date || "",
       image_url: cert.image_url || "",
       hours: cert.hours ? String(cert.hours) : "",
-      credential_url: cert.credential_url || ""
+      credential_url: cert.credential_url || "",
+      is_featured: Boolean(cert.is_featured)
     });
     setIsModalOpen(true);
   };
@@ -83,7 +86,8 @@ export default function AdminCertificadosPage() {
         issue_date: formData.issue_date || undefined,
         image_url: formData.image_url || "/images/certificates/01.png",
         hours: formData.hours ? Number(formData.hours) : undefined,
-        credential_url: formData.credential_url || undefined
+        credential_url: formData.credential_url || undefined,
+        is_featured: formData.is_featured
       };
       await updateCertificate(updated);
     } else {
@@ -96,6 +100,7 @@ export default function AdminCertificadosPage() {
         image_url: formData.image_url || "/images/certificates/01.png",
         hours: formData.hours ? Number(formData.hours) : undefined,
         credential_url: formData.credential_url || undefined,
+        is_featured: formData.is_featured,
         display_order: certs.length + 1,
       };
       await saveCertificate(newCert);
@@ -286,6 +291,23 @@ export default function AdminCertificadosPage() {
               placeholder="/images/certificates/01.png"
               className="w-full px-3 py-2 text-xs rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white"
             />
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/60">
+            <label className="flex items-center gap-2.5 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={formData.is_featured}
+                onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                className="w-4 h-4 rounded border-zinc-400 text-blue-600 focus:ring-blue-500"
+              />
+              <span className="text-xs font-semibold text-zinc-900 dark:text-white">
+                Destacar na Vitrine VIP do topo (Featured Showcase)
+              </span>
+            </label>
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 pl-6.5 mt-0.5">
+              Exibe este certificado com card premium na seção VIP de credenciais verificadas.
+            </p>
           </div>
 
           <div className="pt-4 flex justify-end gap-2 border-t border-zinc-200 dark:border-zinc-800">

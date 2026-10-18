@@ -41,7 +41,13 @@ export function Header() {
         {/* Brand Logo Oficial Autoral */}
         <Link 
           href="/" 
-          className="flex items-center group py-1"
+          onClick={(e) => {
+            if (typeof window !== "undefined" && window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center group py-1 cursor-pointer"
           title="Leonardo Isaac"
         >
           {/* Logo Clara para Modo Dark */}
