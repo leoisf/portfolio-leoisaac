@@ -12,14 +12,15 @@ create table if not exists profile_settings (
   full_name text not null default 'Leonardo Isaac',
   headline text not null,
   bio text not null,
-  years_experience int default 22,
+  years_experience int default 25,
   people_impacted text default '+7.000',
   cv_url text,
+  avatar_url text default '/images/profile/foto_perfil.png',
   whatsapp text,
   email text,
   linkedin text,
   github text,
-  location text,
+  location text default 'Ouro Preto - MG, Brasil',
   updated_at timestamptz default now()
 );
 
@@ -50,6 +51,7 @@ create table if not exists certificates (
   credential_url text,
   image_url text not null,
   category text default 'Desenvolvimento',
+  is_featured boolean default false,
   display_order int default 0,
   created_at timestamptz default now()
 );
