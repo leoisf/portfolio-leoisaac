@@ -80,6 +80,7 @@ export function JsonLd() {
     sameAs: [
       initialProfile.linkedin,
       initialProfile.github,
+      initialProfile.instagram,
     ].filter(Boolean),
   };
 

@@ -38,14 +38,21 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
     message: ""
   });
 
-  // Não exibir nada inventado no site enquanto não houver depoimentos reais aprovados
-  if (!testimonials || testimonials.length === 0) {
-    return null;
-  }
+  // Mantém a seção visível mesmo sem depoimentos ainda, para permitir que o
+  // botão "Deixar Depoimento" e o item de menu "Depoimentos" funcionem (ver estado vazio abaixo).
+  const hasTestimonials = Boolean(testimonials && testimonials.length > 0);
 
   const displayedTestimonials = showAll
     ? testimonials
     : testimonials.slice(0, INITIAL_TESTIMONIAL_COUNT);
+
+  // Evita colunas vazias no grid quando há poucos depoimentos: centraliza e limita a largura.
+  const gridLayoutClass =
+    displayedTestimonials.length === 1
+      ? "grid-cols-1 max-w-sm sm:max-w-md mx-auto"
+      : displayedTestimonials.length === 2
+      ? "grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto"
+      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
 
   const handleOpenModal = () => {
     setSubmittedSuccess(false);
@@ -138,8 +145,9 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
         </div>
 
         {/* Testimonials List (Compact on Mobile, Grid on Desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
-          {displayedTestimonials.map((item) => (
+        {hasTestimonials ? (
+          <div className={`grid ${gridLayoutClass} gap-3.5 sm:gap-6`}>
+            {displayedTestimonials.map((item) => (
             <div
               key={item.id}
               className="rounded-2xl sm:rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/90 p-4 sm:p-7 shadow-xs hover:shadow-xl hover:border-blue-500/40 dark:hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between relative group"
@@ -201,11 +209,22 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
                 )}
               </div>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="max-w-xl mx-auto text-center rounded-2xl sm:rounded-3xl border border-dashed border-zinc-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/40 p-8 sm:p-12">
+            <Quote className="w-8 h-8 mx-auto text-blue-500/30 dark:text-cyan-400/30 mb-3" />
+            <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white">
+              {t.testimonials.emptyStateTitle}
+            </h4>
+            <p className="mt-1.5 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
+              {t.testimonials.emptyStateDesc}
+            </p>
+          </div>
+        )}
 
         {/* Show More / Show All Testimonials Button */}
-        {testimonials.length > INITIAL_TESTIMONIAL_COUNT && (
+        {hasTestimonials && testimonials.length > INITIAL_TESTIMONIAL_COUNT && (
           <div className="mt-8 sm:mt-10 flex justify-center">
             <button
               onClick={() => setShowAll(!showAll)}

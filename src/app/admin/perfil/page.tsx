@@ -21,7 +21,7 @@ import {
   Eye,
   EyeOff
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 import { 
   getProfile, 
   updateProfile, 
@@ -318,6 +318,24 @@ export default function AdminPerfilPage() {
                   type="url"
                   name="github"
                   value={profile.github}
+                  onChange={handleChange}
+                  className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-sm text-zinc-900 dark:text-white focus:outline-hidden focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-mono text-zinc-500 mb-1.5">
+                URL do Instagram
+              </label>
+              <div className="relative">
+                <div className="absolute left-3 top-2.5 text-zinc-400">
+                  <InstagramIcon className="w-4 h-4" />
+                </div>
+                <input
+                  type="url"
+                  name="instagram"
+                  value={profile.instagram ?? ""}
                   onChange={handleChange}
                   className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-sm text-zinc-900 dark:text-white focus:outline-hidden focus:border-blue-500"
                 />

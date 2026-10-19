@@ -321,7 +321,9 @@ export const translations = {
       submitBtn: "Publicar Mensagem",
       cancelBtn: "Cancelar",
       successTitle: "Mensagem Registrada com Sucesso!",
-      successDesc: "Muito obrigado pela sua recomendação e carinho! Sua mensagem já foi adicionada ao mural."
+      successDesc: "Muito obrigado pela sua recomendação e carinho! Sua mensagem já foi adicionada ao mural.",
+      emptyStateTitle: "Seja o primeiro a deixar um depoimento",
+      emptyStateDesc: "Ainda não há mensagens publicadas. Clique em \"Deixar Mensagem / Recomendação\" acima para compartilhar sua experiência trabalhando ou interagindo com Leonardo Isaac."
     },
     cvModal: {
       title: "Central de Currículos & Documentos Oficiais",
@@ -734,7 +736,9 @@ export const translations = {
       submitBtn: "Publish Message",
       cancelBtn: "Cancel",
       successTitle: "Message Successfully Published!",
-      successDesc: "Thank you very much for your recommendation! Your message has been added to the wall."
+      successDesc: "Thank you very much for your recommendation! Your message has been added to the wall.",
+      emptyStateTitle: "Be the first to leave a testimonial",
+      emptyStateDesc: "No messages have been published yet. Click \"Leave a Message / Recommendation\" above to share your experience working or collaborating with Leonardo Isaac."
     },
     cvModal: {
       title: "Official Resumes & Career Documents Hub",

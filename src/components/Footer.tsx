@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUp, Mail, Shield, History } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
@@ -52,13 +52,22 @@ export function Footer() {
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/leonardo-isaac-silva-flores-9b66236b"
+              href="https://www.linkedin.com/in/leonardo-isaac-76148b52/?isSelfProfile=true"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:scale-105 transition-all"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/isaac_leonardo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:scale-105 transition-all"
+              aria-label="Instagram"
+            >
+              <InstagramIcon className="w-4 h-4" />
             </a>
             <a
               href="mailto:contato@leoisaac.com.br"

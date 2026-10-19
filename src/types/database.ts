@@ -69,6 +69,7 @@ export interface ProfileSettings {
   email: string;
   linkedin: string;
   github: string;
+  instagram?: string;
   location: string;
 }
 

@@ -20,9 +20,14 @@ create table if not exists profile_settings (
   email text,
   linkedin text,
   github text,
+  instagram text,
   location text default 'Ouro Preto - MG, Brasil',
   updated_at timestamptz default now()
 );
+
+-- Migração: se a tabela profile_settings já existir em produção (sem a coluna instagram),
+-- rode este comando avulso no SQL Editor do Supabase para adicioná-la sem perder dados:
+-- alter table profile_settings add column if not exists instagram text;
 
 -- 2. TABELA DE PROJETOS
 create table if not exists projects (

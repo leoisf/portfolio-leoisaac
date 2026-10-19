@@ -24,7 +24,7 @@ interface ProjectsSectionProps {
   projects: Project[];
 }
 
-const INITIAL_PROJECT_COUNT = 3;
+const INITIAL_PROJECT_COUNT = 2;
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { t, language } = useLanguage();

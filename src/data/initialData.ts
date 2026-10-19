@@ -11,8 +11,9 @@ export const initialProfile: ProfileSettings = {
   avatar_url: "/images/profile/foto_perfil.png",
   whatsapp: "+5531988527732",
   email: "contato@leoisaac.com.br",
-  linkedin: "https://www.linkedin.com/in/leonardo-isaac-silva-flores-9b66236b",
+  linkedin: "https://www.linkedin.com/in/leonardo-isaac-76148b52/?isSelfProfile=true",
   github: "https://github.com/leoisf",
+  instagram: "https://www.instagram.com/isaac_leonardo/",
   location: "Ouro Preto - MG, Brasil"
 };
 
@@ -65,6 +66,50 @@ export const initialSkills: Skill[] = [
 
 export const initialProjects: Project[] = [
   {
+    id: "proj-data-1",
+    title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
+    slug: "pipeline-ciencia-dados-ufop",
+    short_description: "Pipelines analíticos com Python (Pandas, Scikit-learn, Seaborn) para recuperação de informação, redução dimensional (PCA) e modelagem descritiva.",
+    full_description: "Projeto acadêmico e técnico desenvolvido no programa de Pós-Graduação em Ciência de Dados da UFOP (Conceito A). Abrange pré-processamento avançado de dados heterogêneos, engenharia de atributos, redução dimensional com PCA e t-SNE, treinamento de classificadores supervisionados e visualizações interpretáveis em Jupyter Notebooks.",
+    technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "t-SNE", "Matplotlib", "Seaborn", "Jupyter"],
+    image_url: "/images/projects/system.jpg",
+    category: "Data & IA",
+    repo_name: "leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
+    repo_type: "public",
+    primary_language: "Python",
+    default_branch: "main",
+    highlights: [
+      "Pipelines analíticos com Pandas, NumPy, Scikit-learn e visualizações interpretáveis",
+      "Redução dimensional avançada com PCA e t-SNE preservando variância estatística",
+      "Notebooks reprodutíveis focados em recuperação de informação e estatística descritiva"
+    ],
+    github_url: "https://github.com/leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
+    is_featured: true,
+    display_order: 1
+  },
+  {
+    id: "proj-turguides",
+    title: "TurGuides - Plataforma Conectando Guias a Turistas",
+    slug: "turguides-app",
+    short_description: "Aplicativo mobile desenvolvido em Dart/Flutter para intermediação direta entre guias locais e turistas com geolocalização e roteiros.",
+    full_description: "Solução para turismo inteligente com geolocalização de atrativos históricos e conexão entre guias credenciados e visitantes. Construído com arquitetura reativa em Flutter/Dart, integração de APIs de mapas, gerenciamento de estado e interface intuitiva.",
+    technologies: ["Dart", "Flutter", "Mobile", "REST API", "Geolocalização", "Git"],
+    image_url: "/images/projects/system.jpg",
+    category: "Full Stack",
+    repo_name: "leoisf/TurGuides",
+    repo_type: "public",
+    primary_language: "Dart",
+    default_branch: "main",
+    highlights: [
+      "Aplicativo móvel multiplataforma com interfaces reativas em Dart e Flutter",
+      "Mapeamento de rotas turísticas e conexão dinâmica entre guias e viajantes",
+      "Código aberto disponibilizado sob licença MIT no GitHub"
+    ],
+    github_url: "https://github.com/leoisf/TurGuides",
+    is_featured: true,
+    display_order: 2
+  },
+  {
     id: "proj-embraer-ams",
     title: "Sustentação AMS & Engenharia Web Embraer (AI/R)",
     slug: "sustentacao-ams-embraer",
@@ -83,7 +128,7 @@ export const initialProjects: Project[] = [
       "Observabilidade APM em tempo real com Datadog e suporte de IA generativa (GitHub Copilot/Kiro)"
     ],
     is_featured: true,
-    display_order: 1
+    display_order: 3
   },
   {
     id: "proj-1",
@@ -105,50 +150,6 @@ export const initialProjects: Project[] = [
     ],
     github_url: "https://github.com/leoisf/portfolio-leoisaac",
     live_url: "https://leoisaac.com.br",
-    is_featured: true,
-    display_order: 2
-  },
-  {
-    id: "proj-data-1",
-    title: "Pipeline de Ciência de Dados & Machine Learning (UFOP)",
-    slug: "pipeline-ciencia-dados-ufop",
-    short_description: "Pipelines analíticos com Python (Pandas, Scikit-learn, Seaborn) para recuperação de informação, redução dimensional (PCA) e modelagem descritiva.",
-    full_description: "Projeto acadêmico e técnico desenvolvido no programa de Pós-Graduação em Ciência de Dados da UFOP (Conceito A). Abrange pré-processamento avançado de dados heterogêneos, engenharia de atributos, redução dimensional com PCA e t-SNE, treinamento de classificadores supervisionados e visualizações interpretáveis em Jupyter Notebooks.",
-    technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "t-SNE", "Matplotlib", "Seaborn", "Jupyter"],
-    image_url: "/images/projects/system.jpg",
-    category: "Data & IA",
-    repo_name: "leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
-    repo_type: "public",
-    primary_language: "Python",
-    default_branch: "main",
-    highlights: [
-      "Pipelines analíticos com Pandas, NumPy, Scikit-learn e visualizações interpretáveis",
-      "Redução dimensional avançada com PCA e t-SNE preservando variância estatística",
-      "Notebooks reprodutíveis focados em recuperação de informação e estatística descritiva"
-    ],
-    github_url: "https://github.com/leoisf/CDD106---TECNICAS-DE-REDUCAO-DE-DIMENSAO",
-    is_featured: true,
-    display_order: 3
-  },
-  {
-    id: "proj-turguides",
-    title: "TurGuides - Plataforma Conectando Guias a Turistas",
-    slug: "turguides-app",
-    short_description: "Aplicativo mobile desenvolvido em Dart/Flutter para intermediação direta entre guias locais e turistas com geolocalização e roteiros.",
-    full_description: "Solução para turismo inteligente com geolocalização de atrativos históricos e conexão entre guias credenciados e visitantes. Construído com arquitetura reativa em Flutter/Dart, integração de APIs de mapas, gerenciamento de estado e interface intuitiva.",
-    technologies: ["Dart", "Flutter", "Mobile", "REST API", "Geolocalização", "Git"],
-    image_url: "/images/projects/system.jpg",
-    category: "Full Stack",
-    repo_name: "leoisf/TurGuides",
-    repo_type: "public",
-    primary_language: "Dart",
-    default_branch: "main",
-    highlights: [
-      "Aplicativo móvel multiplataforma com interfaces reativas em Dart e Flutter",
-      "Mapeamento de rotas turísticas e conexão dinâmica entre guias e viajantes",
-      "Código aberto disponibilizado sob licença MIT no GitHub"
-    ],
-    github_url: "https://github.com/leoisf/TurGuides",
     is_featured: true,
     display_order: 4
   },

@@ -93,9 +93,7 @@ export default function HomePage() {
         <ProjectsSection projects={projects} />
         <ClippingSection clippings={clippings} />
         <SocialSection initiatives={initiatives} />
-        {testimonials && testimonials.length > 0 && (
-          <TestimonialsSection testimonials={testimonials} />
-        )}
+        <TestimonialsSection testimonials={testimonials} />
         <ContactSection profile={profile} />
       </main>
 
