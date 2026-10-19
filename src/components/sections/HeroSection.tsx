@@ -146,7 +146,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
 
                 {/* Identity & Avatar Presentation - Natural & Modern Blend */}
                 <div className="my-3.5 sm:my-5 flex items-center gap-3 sm:gap-4">
-                  <div className="relative w-14 h-14 sm:w-20 sm:h-20 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 shadow-md shadow-cyan-500/15 shrink-0 group">
+                  <div className="relative w-16 aspect-[4/5] sm:w-28 sm:aspect-[4/5] rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 shadow-md shadow-cyan-500/15 shrink-0 group">
                     <div className="w-full h-full rounded-[14px] overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center relative">
                       {!imgError ? (
                         <>
@@ -154,7 +154,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
                             src={avatarSrc}
                             alt={profile.full_name}
                             onError={() => setImgError(true)}
-                            className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-all duration-500 contrast-[1.03] saturate-[0.98]"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500 contrast-[1.03] saturate-[0.98]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/25 via-transparent to-cyan-400/10 pointer-events-none mix-blend-overlay" />
                           <div className="absolute inset-0 ring-1 ring-inset ring-black/10 dark:ring-white/15 rounded-[14px] pointer-events-none" />

@@ -9,7 +9,9 @@ interface SkillsSectionProps {
   skills: Skill[];
 }
 
-const INITIAL_SKILL_COUNT = 8;
+// Mantém número par de habilidades no estado inicial (colapsado) para não deixar
+// cards "órfãos" na última linha da grade em telas de desktop (lg:grid-cols-5).
+const INITIAL_SKILL_COUNT = 10;
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
   const { t, language } = useLanguage();
